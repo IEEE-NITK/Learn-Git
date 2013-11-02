@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
 
-
+ has_and_belongs_to_many :teams
+ has_many :repos
 
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
