@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="index_files/bootstrap.css">
+<title>User Page</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div  width="100px">
+		<div style="display:inline;float:left; " >
+	<img src="images/user.jpeg"  height="200px" width="200px" alt="Profile Pic" class="img-rounded" style="padding-bottom:10px;"></div>
+	<h1>Name</h1>
+	<div ><h3><a href="">My Repository</a></h3>
+<div class="btn-group">
+  <button type="button" class="btn  btn-default dropdown-toggle" data-toggle="dropdown">
+    Notifications <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+   <!--  <li><h5>Email : </h5><input type="email"></input></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li> -->
+    <form class="form-inline" role="form">
+  <div class="form-group" style="padding:5px; width:250px;">
+  	<ul style="list-style:none;	">
+  		<li>Notification 1</li>
+  		<li>Notification 2</li>
+  		<li>Notification 3</li>
+  		<li><button class="btn btn-success">See More</button></li>
+
+  	</ul>
+    </div>
+</form>
+
+  </ul>
+</div>
+<div class="btn-group">
+<button type="button" class="btn btn-default"><a href="messages.html" style="color:black;">Messages</a></button>
+</div>
+</div>
+</br></br></br></br>
+
+<div style="width:500px;">
+	<h3>My Progress</h3>
+	<div class="progress" >
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    <span class="sr-only">60% Complete</span>
+  </div></div>
+</div>
+</div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script language="javascript">
+    $('.dropdown-toggle').dropdown();
+    $('.dropdown-menu').find('form').click(function (e) {
+        e.stopPropagation();
+      });
+</script>
+</body>
+</html>
