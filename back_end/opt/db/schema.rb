@@ -83,6 +83,10 @@ ActiveRecord::Schema.define(version: 20131102092946) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.float    "status"
+    t.string   "provider"
+    t.string   "uid"
     t.integer  "repo_id"
     t.integer  "team_id"
   end
