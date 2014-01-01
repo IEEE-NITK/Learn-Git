@@ -167,6 +167,8 @@ c.mcount=2
 c.save
 
 #Stage 1(both A and B)
+#A = 1,2,3,4,810,11,12
+#B = 1,2,3,5,6,7,8,9
 s=Stage.new
 s.course_id=c.id
 s.step_number=1
