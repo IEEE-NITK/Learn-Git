@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20140101143149) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
-    t.string   "name"
     t.string   "url"
+    t.string   "name"
   end
 
   create_table "repos", force: true do |t|
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 20140101143149) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "repo_id"
+    t.integer  "team_id"
     t.string   "name"
     t.float    "status"
     t.string   "provider"

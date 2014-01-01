@@ -13,7 +13,7 @@ c.problem = "Git"
 c.prerequisites = "None"
 c.rating = 10.00
 c.references = "http://www.git-tower.com/blog/git-cheat-sheet-detail/,http://git-scm.com/"
-c.useful_material = "http://git-scm.com/book"
+c.useful_materials = "http://git-scm.com/book"
 c.mcount = 1
 c.save
 
@@ -161,8 +161,8 @@ c.objective="To develop a quiz game using Git, on being paired with another deve
 c.problem="Git"
 c.prerequisites="Git Basics Course"
 c.rating=10.0
-c.references="JSON reference: www.w3schools.com/json/‎\n GIT Cheatsheet : http://www.git-tower.com/blog/git-cheat-sheet-detail/"
-c.useful_material=""
+c.references= "JSON reference: www.w3schools.com/json/ ; GIT Cheatsheet : http://www.git-tower.com/blog/git-cheat-sheet-detail/"
+c.useful_materials=""
 c.mcount=2
 c.save
 
@@ -201,7 +201,7 @@ s.step_number=3
 s.objective="To edit a JSON file by adding questions."
 s.pbody="JSON file has to be modified and questions have to be added." 
 s.hints='{"name":"answer","alt":"question"}'
-s.references="www.w3schools.com/json/‎"
+s.references="www.w3schools.com/json/"
 s.useful_links=""
 s.extras=""
 s.save
@@ -246,7 +246,7 @@ s.step_number=5
 s.objective="To make a mistake, and commit the same by accident(done by B)."
 s.pbody="The developer B has to cross this stage" 
 s.hints=""
-s.references="‎"
+s.references=
 s.useful_links=""
 s.extras=""
 s.save
@@ -258,7 +258,7 @@ s.step_number=6
 s.objective="To rollback to the previous commit."
 s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)." 
 s.hints="$ git revert HEAD~3"
-s.references="http://git-scm.com/docs/git-revert.html‎"
+s.references="http://git-scm.com/docs/git-revert"
 s.useful_links=""
 s.extras=""
 s.save
@@ -303,8 +303,8 @@ s.step_number=8
 s.objective="Adding more questions to the JSON file."
 s.pbody="Both developers edit and add more questions." 
 s.hints=""
-s.references="‎"
-s.useful_links="www.w3schools.com/json/‎"
+s.references=""
+s.useful_links="www.w3schools.com/json/"
 s.extras=""
 s.save
 
@@ -348,7 +348,7 @@ s.step_number=10
 s.objective="To make a mistake, and commit the same by accident.(done by A)"
 s.pbody="The developer A has to cross this stage" 
 s.hints=""
-s.references="‎"
+s.references=""
 s.useful_links=""
 s.extras=""
 s.save
@@ -360,7 +360,7 @@ s.step_number=11
 s.objective="To rollback to the previous commit."
 s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)." 
 s.hints="$ git revert HEAD~3"
-s.references="http://git-scm.com/docs/git-revert.html‎"
+s.references="http://git-scm.com/docs/git-revert.html"
 s.useful_links=""
 s.extras=""
 s.save
