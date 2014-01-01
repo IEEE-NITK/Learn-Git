@@ -3,7 +3,7 @@ require 'open3'
 # Change the db in Production
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: '../opt/db/development.sqlite3')
 
-Dir["../opt/app/models/*.rb"].each {|file| require file if (file != '../opt/app/models/user.rb' || file != '../opt/app/model/admin_user.rb') }
+Dir["../opt/app/models/*.rb"].each {|file| require file if (file != '../opt/app/models/user.rb' && file != '../opt/app/models/admin_user.rb') }
 # require '../opt/app/models/'
 # The class GitUser will be used for each user who joins the web server
 # id: to uniquely identify each user 
@@ -17,6 +17,7 @@ class GitUser
 
 	def execute cmd
 		# if cmd ~= 'git clone *'
+		cmd = cmd[3,cmd.length]
 		stdin, stdout, stderr = Open3.popen3('git-shell')
 		stdin.puts "git --git-dir /home/vikas/OPT/git-server/online_programming_tool/.git --work-tree=/home/vikas/OPT/git-server/online_programming_tool/ #{cmd}\n"
 		stdin.close
