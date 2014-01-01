@@ -1,44 +1,24 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>NITK OPT</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<link href="/assets/bootstrap.css" rel="stylesheet">
+<link href="/assets/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- Le styles -->
-    <%= stylesheet_link_tag "bootstrap" %>
-    <%= stylesheet_link_tag "bootstrap-responsive" %>
-    <!--<link href="index_files/bootstrap.css" rel="stylesheet">-->
-    <%= stylesheet_link_tag "sb-admin" %>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<!-- Add custom CSS here -->
+<link href="/assets/sb-admin.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<!-- Page Specific CSS -->
+<!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
 
-    <!-- <link href="index_files/bootstrap-responsive.css" rel="stylesheet">-->
-    <%= stylesheet_link_tag "heroic-features" %>
-    <%= stylesheet_link_tag "jquery.terminal" %>
-    <%= stylesheet_link_tag "jquery-ui" %>
+<link href="/assets/heroic-features.css" rel="stylesheet">
+<link href="/assets/jquery.terminal.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/jquery-ui.css" />
 
+<script src="/assets/jquery-ui.js"></script>
+  <script type="text/javascript" src="/assets/jquery-1.10.2.min.js"></script>
+  <script src="/assets/jquery-1.7.1.min.js"></script>
+  <script src="/assets/simple-expand.js"></script>
 
-  <!--<link href="jquery.terminal.css" rel="stylesheet"/>
-   <link rel="stylesheet" href="jquery-ui.css" />-->
-
-   <%= javascript_include_tag "jquery-ui.js" %>
-   <%= javascript_include_tag "jquery-1.10.2.min.js" %>
-   <%= javascript_include_tag "jquery-1.7.1.min.js" %>
-   <%= javascript_include_tag "simple-expand.js" %>
-   <%= javascript_include_tag "jquery.mousewheel-min.js" %>
-   <%= javascript_include_tag "jquery.terminal-0.7.7.js" %>
-   <%= javascript_include_tag "jquery.jstree.js" %>
-
-<!--<script src="jquery-ui.js"></script>
-  <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
-  <script src="jquery-1.7.1.min.js"></script>
-  <script src="simple-expand.js"></script>
-
-  <script src="jquery.mousewheel-min.js"></script>
-  <script src="jquery.terminal-0.7.7.js"></script>
-  <script type="text/javascript" src="jquery.jstree.js"></script>-->
+  <script src="/assets/jquery.mousewheel-min.js"></script>
+  <script src="/assets/jquery.terminal-0.7.7.js"></script>
+  <script type="text/javascript" src="/assets/jquery.jstree.js"></script>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     
@@ -90,35 +70,7 @@ $('#treeView').jstree({
                     })
             });
 </script>
-<!--[if IE]>
-<style>
-body {
-    margin: 0;
-    padding: 0;
-}
-.tilda {
-    position: relative;
-}
-#editor {         
-        
-        position: relative;
-        top: 50%;
-        bottom: 10%;  
-        left: 70%;
-        right: 10%;
-        height: 150px;
-    }
-</style>
-<script>
-jQuery(document).ready(function($) {
-   $(window).scroll(function() {
-      $('.tilda').each(function() {
-         $(this).css({top: $('body').prop('scrollTop')});
-      });
-   });
-});
-</script>
-<![endif]-->
+
 <script>
 
 
@@ -202,7 +154,9 @@ jQuery(document).ready(function($) {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <%= stylesheet_link_tag "style.css" %>
+    
+
+<!-- <link href="/assets/style.css" rel="stylesheet" type="text/css" /> -->
 
 <style type="text/css">
     .selection {
@@ -279,7 +233,7 @@ jQuery(document).ready(function($) {
                 <li class="divider"></li>
                 <li class="message-preview">
                   <a href="#">
-                    <span class="avatar"><%=image_tag("thej.jpeg",width:"50px", height:"50px",class: "img-circle")%></span>
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
                     <span class="name">Thej</span>
                     <span class="message">Hey there !</span>
                     <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
@@ -362,19 +316,8 @@ jQuery(document).ready(function($) {
      
         </div>
         <hr>
-
-      
-      
     </div>
-  
-
     <!-- JavaScript -->
-    
-     <%= javascript_include_tag "bootstrap.js" %>
-
-   
-
-   
-
+     <script src="/assets/bootstrap.js"></script>
   </body>
 </html>

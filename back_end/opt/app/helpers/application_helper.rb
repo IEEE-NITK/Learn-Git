@@ -1,12 +1,12 @@
 module ApplicationHelper
 
 	def sty
-	["/assets/stylesheets/bootstrap.css",
-	"/assets/stylesheets/bootstrap-responsive.css",
-	"/assets/stylesheets/sb-admin.css",
-	"/assets/stylesheets/heroic-features.css",
-	"/assets/stylesheets/jquery.terminal.css",
-	"/assets/stylesheets/jquery-ui.css"]
+	["/assets/bootstrap.css",
+	"/assets/bootstrap-responsive.css",
+	"/assets/sb-admin.css",
+	"/assets/heroic-features.css",
+	"/assets/jquery.terminal.css",
+	"/assets/jquery-ui.css"]
 	end
 
 	def render_styles
