@@ -628,7 +628,7 @@
         self.append('<span class="prompt"></span><span id="new1"></span>' +
                     '<span class="cursor">&nbsp;</span><span></span>');
         var clip = $('<textarea/>').addClass('clipboard').appendTo(self);
-        self.append('<button class="btn btn-danger btn-small" id="testbutton">Output</button>');
+        //self.append('<button class="btn btn-danger btn-small" id="testbutton">Output</button>');
         if (options.width) {
             self.width(options.width);
         }

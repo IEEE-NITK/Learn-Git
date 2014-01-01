@@ -131,7 +131,7 @@
   .navbar-static-top .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container {
-    width: 1170px;
+    width: 90%;
   }
   .span12 {
     width: 1170px;
@@ -256,16 +256,16 @@
     *width: 65.75877432260411%;
   }
   .row-fluid .span7 {
-    width: 57.26495726495726%;
-    *width: 57.21176577559556%;
+    width: 50%;
+    *width: 50%;
   }
   .row-fluid .span6 {
     width: 48.717948717948715%;
     *width: 48.664757228587014%;
   }
   .row-fluid .span5 {
-    width: 40.17094017094017%;
-    *width: 40.11774868157847%;
+    width: 30%;
+    *width: 30%;
   }
   .row-fluid .span4 {
     width: 31.623931623931625%;
@@ -276,8 +276,8 @@
     *width: 23.023731587561375%;
   }
   .row-fluid .span2 {
-    width: 14.52991452991453%;
-    *width: 14.476723040552828%;
+    width: 14%;
+    *width: 14%;
   }
   .row-fluid .span1 {
     width: 5.982905982905983%;

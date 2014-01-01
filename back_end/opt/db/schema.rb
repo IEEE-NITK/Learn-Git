@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102092946) do
+ActiveRecord::Schema.define(version: 20140101143149) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,11 +46,41 @@ ActiveRecord::Schema.define(version: 20131102092946) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "courses", force: true do |t|
+    t.string   "objective"
+    t.string   "problem"
+    t.string   "prerequisites"
+    t.float    "rating"
+    t.string   "references"
+    t.string   "useful_materials"
+    t.integer  "mcount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "author_id"
+    t.string   "url"
+  end
+
   create_table "repos", force: true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
     t.string   "name"
     t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status"
+  end
+
+  create_table "stages", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "step_number"
+    t.string   "objective"
+    t.text     "pbody"
+    t.text     "hints"
+    t.text     "references"
+    t.text     "useful_links"
+    t.string   "commit_number"
+    t.text     "extras"
+    t.text     "validation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +90,8 @@ ActiveRecord::Schema.define(version: 20131102092946) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "ordera"
+    t.text     "orderb"
   end
 
   create_table "teams_users", id: false, force: true do |t|
