@@ -5,3 +5,149 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#Make the initial Git course
+c = Course.new
+c.name = "Git Basics"
+c.objective  = "Teach the students of git in an interactive way with team collobration."
+c.problem = "Git"
+c.prerequisites = "None"
+c.rating = 10.00
+c.references = "http://www.git-tower.com/blog/git-cheat-sheet-detail/,http://git-scm.com/"
+c.useful_material = "http://git-scm.com/book"
+c.mcount = 1
+c.save
+
+#Add stages to the Git course
+#Stage 1
+s = Stage.new
+s.course_id=1
+s.step_number=1
+s.objective="To configure git with the shell"
+s.pbody="One can specify Git configuration settings with the git config command. Set up your name and e-mail address."
+s.hints='$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com'
+s.references="http://git-scm.com/book/en/Customizing-Git-Git-Configuration"
+s.useful_links=""
+s.extras=""
+s.save
+
+#Stage 2
+s = Stage.new
+s.course_id=1
+s.step_number=2
+s.objective="To initialise a git repository"
+s.pbody="This command creates an empty Git repository - basically a .git directory with subdirectories for objects, refs/heads, refs/tags, and template files. An initial HEAD file that references the HEAD of the master branch is also created."
+s.hints="$ git init"
+s.references="http://git-scm.com/docs/git-init"
+s.useful_links=""
+s.extras="-q\n
+--quiet\n
+Only print error and warning messages, all other output will be suppressed.\n
+
+--bare\n
+Create a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+s.save
+
+#Stage 3
+s = Stage.new
+s.course_id=1
+s.step_number=3
+s.objective="To create a new file with some contents."
+s.pbody=""
+s.hints=""
+s.references=""
+s.useful_links=""
+s.extras=""
+s.save
+
+#Stage 4
+s = Stage.new
+s.course_id=1
+s.step_number=4
+s.objective="To check the status of the repository"
+s.pbody="Displays paths that have differences between the index file and the current HEAD file, paths that have differences between the working tree and the index file, and paths in the working tree that are not tracked by Git"
+s.hints="$ git status"
+s.references="http://git-scm.com/docs/git-status"
+s.useful_links=""
+s.extras="-s\n
+--short\n
+Give the output in the short-format.\n
+
+-b\n
+--branch\n
+Show the branch and tracking info even in short-format."
+s.save
+
+#Stage 5
+s = Stage.new
+s.course_id=1
+s.step_number=5
+s.objective="To add a file to be tracked by Git."
+s.pbody="This command updates the index using the current content found in the working tree.It typically adds the current content of existing paths as a whole."
+s.hints="$ git add <filename>\n
+$ git add ."
+s.references="http://git-scm.com/docs/git-add"
+s.useful_links=""
+s.extras=""
+s.save
+
+#Stage 6
+s = Stage.new
+s.course_id=1
+s.step_number=6
+s.objective="To check the status of the repository"
+s.pbody="Displays paths that have differences between the index file and the current HEAD file, paths that have differences between the working tree and the index file, and paths in the working tree that are not tracked by Git"
+s.hints="$ git status"
+s.references="http://git-scm.com/docs/git-status"
+s.useful_links=""
+s.extras="-s\n
+--short\n
+Give the output in the short-format.\n
+
+-b\n
+--branch\n
+Show the branch and tracking info even in short-format."
+s.save
+
+#Stage 7
+s = Stage.new
+s.course_id=1
+s.step_number=7
+s.objective="To commit the current stage of the tracked repository."
+s.pbody="Stores the current contents of the index in a new commit along with a log message from the user describing the changes."
+s.hints='$ git commit -m "<commit message>"'
+s.references="http://git-scm.com/docs/git-commit"
+s.useful_links=""
+s.extras='$ git commit -am "<commit message>" : To directly commit with all tracked files.' 
+s.save
+
+#Stage 8
+s = Stage.new
+s.course_id=1
+s.step_number=8
+s.objective="To check the status of the repository"
+s.pbody="Displays paths that have differences between the index file and the current HEAD file, paths that have differences between the working tree and the index file, and paths in the working tree that are not tracked by Git"
+s.hints="$ git status"
+s.references="http://git-scm.com/docs/git-status"
+s.useful_links=""
+s.extras="-s\n
+--short\n
+Give the output in the short-format.\n
+
+-b\n
+--branch\n
+Show the branch and tracking info even in short-format."
+s.save
+
+#Stage 9
+s = Stage.new
+s.course_id=1
+s.step_number=9
+s.objective="To customize the git add/commit command to ignore particular kind of files."
+s.pbody="A gitignore file specifies intentionally untracked files that Git should ignore. Files already tracked by Git are not affected"
+s.hints="Edit .gitignore file"
+s.references="http://git-scm.com/docs/gitignore"
+s.useful_links=""
+s.extras=""
+s.save
+
