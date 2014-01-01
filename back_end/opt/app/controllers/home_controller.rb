@@ -10,7 +10,12 @@ before_filter :getNotifications
     end
 
     def dashboard
-
+        @course = Course.find(params[:id])
+        # unless current_user.repos.nil?
+        #     @stage = @course.stages.find_by_id(current_user.repos.first.status)
+        # else
+            @stage = @course.stages.first
+        # end
     end
 
 private

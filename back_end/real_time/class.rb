@@ -10,3 +10,4 @@ Dir["../opt/app/models/*.rb"].each {|file| require file if (file != '../opt/app/
 # id: to uniquely identify each user
 require_relative 'git_user'
 require_relative 'directory'
+require_relative 'validator'

@@ -118,7 +118,7 @@ s.pbody="Stores the current contents of the index in a new commit along with a l
 s.hints='$ git commit -m "<commit message>"'
 s.references="http://git-scm.com/docs/git-commit"
 s.useful_links=""
-s.extras='$ git commit -am "<commit message>" : To directly commit with all tracked files.' 
+s.extras='$ git commit -am "<commit message>" : To directly commit with all tracked files.'
 s.save
 
 #Stage 8
@@ -167,6 +167,8 @@ c.mcount=2
 c.save
 
 #Stage 1(both A and B)
+#A = 1,2,3,4,810,11,12
+#B = 1,2,3,5,6,7,8,9
 s=Stage.new
 s.course_id=c.id
 s.step_number=1
@@ -176,6 +178,7 @@ s.hints="$ git clone <repo name>"
 s.references="http://git-scm.com/docs/git-clone"
 s.useful_links=""
 s.extras=""
+s.validation= ["cmd_r","git clone https://github.com/nitkrug/quiz.git"]
 s.save
 
 #Stage 2(both A and B)
@@ -192,6 +195,7 @@ Rename the remote named <old> to <new>.\n
 remove\n
 rm\n
 Remove the remote named <name>. All remote-tracking branches and configuration settings for the remote are removed. "
+s.validation=["cmd_r",]
 s.save
 
 #Stage 3(both A and B)
@@ -199,7 +203,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=3
 s.objective="To edit a JSON file by adding questions."
-s.pbody="JSON file has to be modified and questions have to be added." 
+s.pbody="JSON file has to be modified and questions have to be added."
 s.hints='{"name":"answer","alt":"question"}'
 s.references="www.w3schools.com/json/"
 s.useful_links=""
@@ -211,7 +215,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=4
 s.objective="To learn pulling and merging code using git(done by developer A)."
-s.pbody='<p>Assume the following history exists and the current branch is 
+s.pbody='<p>Assume the following history exists and the current branch is
 &quot;<tt>master</tt>&quot;:
 </p>
 </div>
@@ -232,7 +236,7 @@ until its current commit (<tt>C</tt>) on top of <tt>master</tt> and record the
 result in a new commit along with the names of the two parent commits
 and a log message from the user describing the changes.
 </p>
-</div>' 
+</div>'
 s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
@@ -244,7 +248,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=5
 s.objective="To make a mistake, and commit the same by accident(done by B)."
-s.pbody="The developer B has to cross this stage" 
+s.pbody="The developer B has to cross this stage"
 s.hints=""
 s.references=
 s.useful_links=""
@@ -256,7 +260,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=6
 s.objective="To rollback to the previous commit."
-s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)." 
+s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
 s.hints="$ git revert HEAD~3"
 s.references="http://git-scm.com/docs/git-revert"
 s.useful_links=""
@@ -268,7 +272,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=7
 s.objective="To learn pulling and merging code using git(done by developer B)."
-s.pbody='<p>Assume the following history exists and the current branch is 
+s.pbody='<p>Assume the following history exists and the current branch is
 &quot;<tt>master</tt>&quot;:
 </p>
 </div>
@@ -289,7 +293,7 @@ until its current commit (<tt>C</tt>) on top of <tt>master</tt> and record the
 result in a new commit along with the names of the two parent commits
 and a log message from the user describing the changes.
 </p>
-</div>' 
+</div>'
 s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
@@ -301,7 +305,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=8
 s.objective="Adding more questions to the JSON file."
-s.pbody="Both developers edit and add more questions." 
+s.pbody="Both developers edit and add more questions."
 s.hints=""
 s.references=""
 s.useful_links="www.w3schools.com/json/"
@@ -313,7 +317,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=9
 s.objective="To learn pulling and merging code using git(done by developer B)."
-s.pbody='<p>Assume the following history exists and the current branch is 
+s.pbody='<p>Assume the following history exists and the current branch is
 &quot;<tt>master</tt>&quot;:
 </p>
 </div>
@@ -334,7 +338,7 @@ until its current commit (<tt>C</tt>) on top of <tt>master</tt> and record the
 result in a new commit along with the names of the two parent commits
 and a log message from the user describing the changes.
 </p>
-</div>' 
+</div>'
 s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
@@ -346,7 +350,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=10
 s.objective="To make a mistake, and commit the same by accident.(done by A)"
-s.pbody="The developer A has to cross this stage" 
+s.pbody="The developer A has to cross this stage"
 s.hints=""
 s.references=""
 s.useful_links=""
@@ -358,7 +362,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=11
 s.objective="To rollback to the previous commit."
-s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)." 
+s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
 s.hints="$ git revert HEAD~3"
 s.references="http://git-scm.com/docs/git-revert.html"
 s.useful_links=""
@@ -370,7 +374,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=12
 s.objective="To learn pulling and merging code using git(done by developer A)."
-s.pbody='<p>Assume the following history exists and the current branch is 
+s.pbody='<p>Assume the following history exists and the current branch is
 &quot;<tt>master</tt>&quot;:
 </p>
 </div>
@@ -391,7 +395,7 @@ until its current commit (<tt>C</tt>) on top of <tt>master</tt> and record the
 result in a new commit along with the names of the two parent commits
 and a log message from the user describing the changes.
 </p>
-</div>' 
+</div>'
 s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""

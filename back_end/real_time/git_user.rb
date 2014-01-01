@@ -2,8 +2,9 @@ class GitUser
 
 	attr_accessor :id
 
-	def initialize
+	def initialize(id)
 		#check the status and load the question!!
+		@id = id
 	end
 
 	def execute cmd
