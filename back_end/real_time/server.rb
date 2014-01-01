@@ -16,7 +16,7 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 	end
 
 	ws.onmessage do |msg|
-		
+		# msg 
 		git_user = GitUser.new()
 		#Create an instance of the git repo !! 
 		puts "got message #{msg}"
