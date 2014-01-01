@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs",  you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
+before_filter :getNotifications
 
 
 
@@ -47,6 +47,18 @@ class ApplicationController < ActionController::Base
         @aname = names[a].to_s+"_" + ((1000..9999).to_a.sample).to_s
         puts @aname
         return @aname
-
     end
+
+
+    def getNotifications
+        if current_user
+            f = $Rnotification.LLEN current_user.id
+            @notifications = $Rnotification.lrange(current_user.id,0,f)
+          else
+            @notification = nil
+        end
+            return @notifications
+    end
+
+
 end
