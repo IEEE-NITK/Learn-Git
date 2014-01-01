@@ -13,6 +13,12 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 	ws.onopen do
 		soc << ws
 		puts "#{soc.length} clients are connected"
+		d = Directory.new
+		tmp = []
+		d.get_files_in_directory ".." , "" , tmp
+		hash = {opt: "dir",content: tmp}
+		puts hash
+		ws.send(hash.to_json)
 	end
 
 	ws.onmessage do |msg|
@@ -31,7 +37,7 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 
 	ws.onclose do
 		puts "Someone disconnected" 
-		git_user.destroy
+		# git_user.destroy
 		soc.delete(ws)
 	end
 

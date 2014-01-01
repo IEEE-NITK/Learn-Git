@@ -46,27 +46,27 @@ jQuery(document).ready(function($) {
    });
 });
 $(document).ready(function(){
-$('#treeView').jstree({
+// $('#treeView').jstree({
 
 
-"json_data" : {
-  "data":[  
-{"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
-  ]
+// "json_data" : {
+//   "data":[  
+// {"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
+//   ]
 
-},"plugins":["themes","json_data","ui"]
+// },"plugins":["themes","json_data","ui"]
 
-}).bind("select_node.jstree", function(e, data)
-                    {
-                        if(jQuery.data(data.rslt.obj[0], "href"))
-                        {
-                            window.location=jQuery.data(data.rslt.obj[0], "href");
-                        }
-                        else
-                        {
-                            alert("No href defined for this element");
-                        }
-                    })
+// }).bind("select_node.jstree", function(e, data)
+//                     {
+//                         if(jQuery.data(data.rslt.obj[0], "href"))
+//                         {
+//                             window.location=jQuery.data(data.rslt.obj[0], "href");
+//                         }
+//                         else
+//                         {
+//                             alert("No href defined for this element");
+//                         }
+//                     })
             });
 </script>
 
@@ -105,7 +105,7 @@ $.extend_if_has = function(desc, source, array) {
             height: 550,
             // width: 550,
             enabled: false,
-            greetings: 'Terminal Emulator',
+            greetings: 'Git Terminal',
             keypress: function(e) {
                 if (e.which == 96) {
                     // return false;
@@ -328,15 +328,33 @@ String.prototype.replaceAll = function(search, replace)
     // ws.send("Connnecting");
   } 
   ws.onmessage = function(msg){ 
-    console.log(msg.data);
-    console.log(msg.data);
-    $(".terminal-output").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
-    $('.terminal-output').css('line-height','initial')
+    obj = jQuery.parseJSON(msg.data);
+    if (obj.opt == "dir")
+    {  
+       $('#treeView').jstree({
+          "json_data" : {
+            "data": obj.content
+          },"plugins":["themes","json_data","ui"]
+          }).bind("select_node.jstree", function(e, data)
+                    {
+                      if(jQuery.data(data.rslt.obj[0], "href"))
+                      {
+                        console.log(jQuery.data(data.rslt.obj[0], "href"));
+                          // window.location=jQuery.data(data.rslt.obj[0], "href");
+                      }
+                    });  
+    }
+    else
+    {
+      $(".terminal-output").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
+      $(".terminal-output").css("line-height","initial");
+      $(".terminal-output").css("font-size","15px");
+      $(".terminal-output").css("color","yellowgreen");
+    }
   }
   ws.onclose = function(){
     // $("body").append("End");
   }
-  $(".terminal-output").css("line-height","initial");
 </script>
 
     </div>
