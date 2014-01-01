@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Merge Tool</title></head>
+
+</body>
+
+
+<div style="margin-top:50px">
+	<div id="left" style="border:2px solid; width:350px; margin-left:30px; float:left;"></div>
+	<div id="center" style="border:2px solid; width: 0px;margin-left:0px; float:left;"></div>
+	<div id="right" style="border:2px solid; width:350px; margin-left:30px; float:left;"></div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+<center><h1>MERGE TOOL</h1></center>
+<center><h1>Press 'Esc' to undo all merges.</h1></center>
+var file1='';
+var file2='';
+var file3='';
+var diff = '';
+start();
+
+
+var diff='';
+function reload(event){
+	document.getElementById('left').innerHTML="";
+	document.getElementById('center').innerHTML="";
+	document.getElementById('right').innerHTML="";
+
+	if(event.keyCode == 27) //'Esc' key
+	start();
+}
+
+
+var color=['#ACFA58','#F7BE81','#58ACFA'];
+
+
+function start(){
+
+	document.addEventListener('keydown',reload,false)
+
+for(var i = 1;i<=file1.length;i++)
+{
+	var div=document.createElement('div');
+	div.id='file1_'+i;
+	div.innerText = file1[i-1];
+	if(div.innerText == '')
+		div.innerText = '\n';
+	
+	document.getElementById("left").appendChild(div);
+	
+	
+}
+
+
+
+
+
+for(var i = 1;i<=file3.length;i++)
+{
+	var div=document.createElement('div');
+	div.id='file3_'+i;
+	div.innerText = file3[i-1];
+	if(div.innerHTML == '')
+		div.innerHTML = '<br>';
+
+	document.getElementById('right').appendChild(div);
+}
+
+
+
+
+function get_global_dict(diff)
+{
+	var chunks=diff.split('====');
+	var global_dicts = [];
+
+	chunks.splice(0,1);
+	for(var i=0;i<chunks.length; i++)
+	{
+		var dict={};
+		
+		var lines=chunks[i].split('\n');
+		lines.splice(0,1);
+
+		dict['color_1']=1;
+		dict['color_2']=1;
+		dict['color_3']=1;
+
+		for(var j in lines)
+		{
+			switch(lines[j][0])
+			{
+				case '1' : var temp=lines[j].substring(2,lines[j].length-1);
+						   var lines_arr=temp.split(',');
+
+						   					   
+
+						   if(lines_arr.length == 1)
+						   {
+						   	dict["file1_from"]=lines_arr[0];
+						   	dict["file1_to"]=lines_arr[0];
+						   }
+						   else
+						   {
+						   	dict["file1_from"]=lines_arr[0];
+						   	dict["file1_to"]=lines_arr[1];
+						   }
+
+
+						   if(lines[j].search('a')!=-1)
+						   	dict['color_1']=0;
+						   break;
+
+				
+
+				case '3' : var temp=lines[j].substring(2,lines[j].length-1);
+						   var lines_arr=temp.split(',');
+
+						    
+
+
+						   if(lines_arr.length == 1)
+						   {
+						   	dict["file3_from"]=lines_arr[0];
+						   	dict["file3_to"]=lines_arr[0];
+						   }
+						   else
+						   {
+						   	dict["file3_from"]=lines_arr[0];
+						   	dict["file3_to"]=lines_arr[1];
+						   }
+							if(lines[j].search('a')!=-1)
+						   	dict['color_3']=0;
+
+						   break;
+
+				default : 
+						break;                  
+
+			}
+
+
+
+		}
+
+
+		global_dicts[i]=dict;
+	
+	}
+	return global_dicts
+}
+//////////////////////////////////////////////
+
+
+
+
+
+
+
+function handler3(chunk){
+	return (function(e){
+										
+											
+		
+											merge_lines('file1_',parseInt(chunk["file1_from"]),chunk["content_3"]);	
+										
+
+											for(var remove=chunk["file1_from"]; remove>0 && parseInt(remove)<=parseInt(chunk["file1_to"]); remove=(parseInt(remove)+1).toString())
+											{
+												
+												var div = document.getElementById('file1_'+remove);
+												
+												div.parentNode.removeChild(div);				
+										    }	
+
+										    
+
+
+											for(var disable=chunk["file3_from"]; disable>0 && parseInt(disable)<=parseInt(chunk["file3_to"]); disable=(parseInt(disable)+1).toString())
+											{
+												var temp=document.getElementById('file3_'+disable);
+												temp.onclick=function(){alert('Already merged');};			
+												temp.style.backgroundColor='transparent';			
+										    }			
+	});
+
+}
+
+
+
+
+var global=get_global_dict(diff);
+var color_index=0;
+for(var i=0;i<global.length;i++)
+{
+	var chunk=global[i];
+	
+	
+	for(var g_line=chunk["file1_from"]; parseInt(g_line)<=parseInt(chunk["file1_to"]) && chunk["color_1"]!=0; g_line=(parseInt(g_line)+1).toString())
+			{
+				
+				var red=document.getElementById('file1_'+g_line);
+				
+				red.style.backgroundColor=color[color_index];
+			}
+
+
+
+
+
+	chunk["content_3"]='';	
+	for(var g_line=chunk["file3_from"]; parseInt(g_line)<=parseInt(chunk["file3_to"]) && chunk["color_3"]!=0; g_line=(parseInt(g_line)+1).toString())
+			{
+				var red=document.getElementById('file3_'+g_line);				
+				red.style.backgroundColor=color[color_index];
+
+
+				chunk["content_3"]=chunk["content_3"].concat(file3[parseInt(g_line)-1]).concat('\n');					
+				red.onclick=handler3(chunk);
+			}
+	
+	color_index = (color_index+1) % color.length;
+}
+
+
+function merge_lines(file,line,content)
+{
+	
+	if(line==0)
+		line=1;
+	
+	var destination =document.getElementById(file+line.toString());
+	
+
+	var div=document.createElement('div');
+	div.id="#";
+	div.innerText = content;  
+	destination.parentNode.insertBefore(div,destination);
+	
+}
+
+} 
+</script>
+
+
+</html>
