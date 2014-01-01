@@ -260,7 +260,38 @@ $( document.getElementById("clickme") ).click(function() {
 $( "#toggle" ).toggle( "slide" );
 });
 </script>
-    
+
+<script>
+String.prototype.replaceAll = function(search, replace)
+{
+    //if replace is null, return original string otherwise it will
+    //replace search string with 'undefined'.
+    if(!replace) 
+        return this;
+
+    return this.replace(new RegExp('[' + search + ']', 'g'), replace);
+};
+
+// var str = 'ABCADRAE';
+// alert(str.replaceAll('A','X')); 
+
+//There is gonna be problem with firefox websockets, solve that later 
+  address= "ws:127.0.0.1:4000";
+  ws = new WebSocket(address);
+  ws.onopen = function(){
+    ws.send("Connnecting");
+  } 
+  ws.onmessage = function(msg){ 
+    console.log(msg.data);
+    console.log(msg.data);
+    $("body").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('\n','<br />')+"</div>");
+  }
+  ws.onclose = function(){
+    $("body").append("End");
+  }
+</script>
+
+
       
     <!-- /container -->
 
