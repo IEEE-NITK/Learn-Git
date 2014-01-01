@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101115820) do
+ActiveRecord::Schema.define(version: 20140101143149) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140101115820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
-    t.string   "name"
+    t.string   "url"
   end
 
   create_table "repos", force: true do |t|
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140101115820) do
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
   end
 
   create_table "stages", force: true do |t|
@@ -89,6 +90,8 @@ ActiveRecord::Schema.define(version: 20140101115820) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "ordera"
+    t.text     "orderb"
   end
 
   create_table "teams_users", id: false, force: true do |t|
@@ -112,6 +115,8 @@ ActiveRecord::Schema.define(version: 20140101115820) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "repo_id"
+    t.integer  "team_id"
     t.string   "name"
     t.float    "status"
     t.string   "provider"
