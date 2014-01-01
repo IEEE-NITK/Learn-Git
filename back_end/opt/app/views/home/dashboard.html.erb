@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>NITK OPT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <%= stylesheet_link_tag "bootstrap" %>
+    <%= stylesheet_link_tag "bootstrap-responsive.css" %>
+    <!--<link href="index_files/bootstrap.css" rel="stylesheet">-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- <link href="index_files/bootstrap-responsive.css" rel="stylesheet">-->
+
+    <%= stylesheet_link_tag "jquery.terminal" %>
+    <%= stylesheet_link_tag "jquery-ui.css" %>
+
+
+  <!--<link href="jquery.terminal.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="jquery-ui.css" />-->
+
+   <%= javascript_include_tag "jquery-ui.js" %>
+   <%= javascript_include_tag "jquery-1.10.2.min.js" %>
+   <%= javascript_include_tag "jquery-1.7.1.min.js" %>
+   <%= javascript_include_tag "simple-expand.js" %>
+   <%= javascript_include_tag "jquery.mousewheel-min.js" %>
+   <%= javascript_include_tag "jquery.terminal-0.7.7.js" %>
+   <%= javascript_include_tag "jquery.jstree.js" %>
+
+<!--<script src="jquery-ui.js"></script>
+  <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+  <script src="jquery-1.7.1.min.js"></script>
+  <script src="simple-expand.js"></script>
+
+  <script src="jquery.mousewheel-min.js"></script>
+  <script src="jquery.terminal-0.7.7.js"></script>
+  <script type="text/javascript" src="jquery.jstree.js"></script>-->
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
+  <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+.tilda {
+    position: relative;
+}
+#editor {         
+        
+        position: relative;
+        height: 550px;
+    }
+</style>
+<script>
+
+
+jQuery(document).ready(function($) {
+   $(window).scroll(function() {
+      $('.tilda').each(function() {
+         $(this).css({top: $('body').prop('scrollTop')});
+      });
+   });
+});
+$(document).ready(function(){
+$('#treeView').jstree({
+
+
+"json_data" : {
+  "data":[  
+{"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
+  ]
+
+},"plugins":["themes","json_data","ui"]
+
+}).bind("select_node.jstree", function(e, data)
+                    {
+                        if(jQuery.data(data.rslt.obj[0], "href"))
+                        {
+                            window.location=jQuery.data(data.rslt.obj[0], "href");
+                        }
+                        else
+                        {
+                            alert("No href defined for this element");
+                        }
+                    })
+            });
+</script>
+<!--[if IE]>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+.tilda {
+    position: relative;
+}
+#editor {         
+        
+        position: relative;
+        top: 50%;
+        bottom: 10%;  
+        left: 70%;
+        right: 10%;
+        height: 150px;
+    }
+</style>
+<script>
+jQuery(document).ready(function($) {
+   $(window).scroll(function() {
+      $('.tilda').each(function() {
+         $(this).css({top: $('body').prop('scrollTop')});
+      });
+   });
+});
+</script>
+<![endif]-->
+<script>
+
+
+String.prototype.strip = function(char) {
+    return this.replace(new RegExp("^" + char + "*"), '').
+        replace(new RegExp(char + "*$"), '');
+}
+
+
+$.extend_if_has = function(desc, source, array) {
+    for (var i=array.length;i--;) {
+        if (typeof source[array[i]] != 'undefined') {
+            desc[array[i]] = source[array[i]];
+        }
+    }
+    return desc;
+};
+
+
+(function($) {
+    $.fn.tilda = function(eval, options) {
+        if ($('body').data('tilda')) {
+            return $('body').data('tilda').terminal;
+        }
+        this.addClass('tilda');
+        options = options || {};
+        eval = eval || function(command, term) {
+            term.echo("you don't set eval for tilda");
+        };
+        var settings = {
+            prompt: '$> ',
+            name: 'tilda',
+            height: 550,
+            // width: 550,
+            enabled: false,
+            greetings: 'Terminal Emulator',
+            keypress: function(e) {
+                if (e.which == 96) {
+                    // return false;
+                }
+            }
+        };
+        if (options) {
+            $.extend(settings, options);
+        }
+        this.append('<div class="td"></div>');
+        var self = this;
+        self.terminal = this.find('.td').terminal(eval, settings);
+        var focus = false;
+        // $(document.documentElement).keypress(function(e) {
+        //     if (e.which == 96) {
+        //         self.slideToggle('fast');
+        //         self.terminal.focus(focus = !focus);
+        //         self.terminal.attr({
+        //             scrollTop: self.terminal.attr("scrollHeight")
+        //         });
+        //     }
+        // });
+        $('body').data('tilda', this);
+        // this.hide();
+        return self;
+    };
+})(jQuery);
+
+//--------------------------------------------------------------------------
+jQuery(document).ready(function($) {
+
+    $('#tilda').tilda(function(command, terminal) {
+        terminal.echo('you type command "' + command + '"');
+    });
+    $('#testbutton').click(function(){
+     var searchThis = document.getElementById('new1').innerHTML;
+      alert(searchThis);
+    });
+});
+
+
+</script>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <%= stylesheet_link_tag "bootstrap-responsive.css" %>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="http://getbootstrap.com/2.3.2/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">NITK OPT</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    
+     
+      
+      <div class="row-fluid span12" height="20%">
+        <div class="span1"><h3>Directory</h3></div>
+        <div class="span4 offset1 "><h3>Code Editor</h3></div>
+        <div class="span5 offset1"><h3>Terminal</h3></div></div> 
+       
+     <div class="row-fluid"><button type="button" class="btn btn-default btn-small" id="clickme">
+  <span class=".glyphicon .glyphicon-list"></span> Click
+</button>
+<br/> 
+</div>
+      <div class="row-fluid span12">
+        <div class="span2" id="toggle">
+      <div id="treeView"></div></div>
+        <div class="span5 ">
+
+          <pre id="editor">// Type your code here </pre>
+          <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/chrome");
+    editor.getSession().setMode("ace/mode/javascript");</script>
+    </div>
+    
+    <div class="span5">
+
+    <div id="tilda"></div>
+        </div>
+      </div>
+      <script>
+$( document.getElementById("clickme") ).click(function() {
+$( "#toggle" ).toggle( "slide" );
+});
+</script>
+    
+      
+    <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- // <script src="index_files/jquery.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-transition.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-alert.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-modal.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-dropdown.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-scrollspy.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-tab.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-tooltip.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-popover.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-button.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-collapse.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-carousel.js"></script> -->
+    <!-- // <script src="index_files/bootstrap-typeahead.js"></script> -->
+
+  
+
+</body></html>
