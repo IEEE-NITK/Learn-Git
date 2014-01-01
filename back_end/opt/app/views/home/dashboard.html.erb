@@ -20,7 +20,7 @@
   <script type="text/javascript" src="/assets/jquery.jstree.js"></script>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
+
   <style>
 body {
     margin: 0;
@@ -29,8 +29,8 @@ body {
 .tilda {
     position: inherit;
 }
-#editor {         
-        
+#editor {
+
         position: relative;
         height: 550px;
     }
@@ -50,7 +50,7 @@ $('#treeView').jstree({
 
 
 "json_data" : {
-  "data":[  
+  "data":[
 {"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
   ]
 
@@ -154,7 +154,7 @@ jQuery(document).ready(function($) {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    
+
 
 <!-- <link href="/assets/style.css" rel="stylesheet" type="text/css" /> -->
 
@@ -183,7 +183,7 @@ jQuery(document).ready(function($) {
    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          
+
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -200,19 +200,19 @@ jQuery(document).ready(function($) {
       <li class="active"><a href="index.html">Home</a></li>
       <li ><a href="#">About</a></li>
       <li ><a href="#">Contact</a></li>
-      
-      
-     
+
+
+
     </ul>
-    
+
     <ul class="nav navbar-nav navbar-right">
-    
+
 
        <li class="dropdown messages-dropdown" >
 
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> Notifications <span class="badge">7</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                
+
                 <li class="message-preview">
                   <a href="#">
                     <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
@@ -243,53 +243,55 @@ jQuery(document).ready(function($) {
                 <li><a href="notif.html">View All  <span class="badge">7</span></a></li>
               </ul>
             </li>
-     
+
       <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thejdeep <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="fa fa-user" style="color:#BEBEBE;"></i> Profile</a></li>
-                
+
                 <li><a href="#"><i class="fa fa-gear" style="color:#BEBEBE;"></i> Settings</a></li>
-                
+
                 <li class="divider"></li>
                 <li><a href="#"><i class="fa fa-power-off" style="color:#BEBEBE;"></i> Log Out</a></li>
               </ul>
             </li>
 
     </ul>
-  </div><!-- /.navbar-collapse --> 
-         
+  </div><!-- /.navbar-collapse -->
 
-         
+
+
         <!-- /.navbar-collapse -->
       </nav>
        <div class="container">
 
       <div class="jumbotron hero-spacer">
-        <h1>Problem</h1>
-        <p>An introduction to the problem statment</p>
-        <p><a class="btn btn-primary btn-large">Start</a></p>
+        <h1><%= @stage.objective %></h1>
+        <p><%= @stage.pbody %></p>
+        <h3>References:</h3>
+        <p><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
+        <h3>Useful Links:</h3>
+        <p><%= @stage.useful_links %></p>
+        <h3 id="shint">Show hint</h3>
+        <div style="display:none;" id="hint"><p><%= @stage.hints %></p></div>
       </div>
-      
-      
-      
       <div class="row">
         <div class="col-lg-12">
            <h3>Workspace</h3>
         </div>
       </div><!-- /.row -->
-      
+
       <!-- /.row -->
-      
+
       <hr>
       <div class="row">
         <div class="col-lg-12">
            <div class="row-fluid span12" height="20%">
         <div class="span1"><h3>Directory</h3></div>
         <div class="span4 offset1 "><h3>Code Editor</h3></div>
-        <div class="span5"><h3>Terminal</h3></div></div> 
-       
-    
+        <div class="span5"><h3>Terminal</h3></div></div>
+
+
       <div class="row-fluid span12">
         <div class="span2" id="toggle">
       <div id="treeView"></div></div>
@@ -307,22 +309,22 @@ String.prototype.replaceAll = function(search, replace)
 {
     //if replace is null, return original string otherwise it will
     //replace search string with 'undefined'.
-    if(!replace) 
+    if(!replace)
         return this;
 
     return this.replace(new RegExp('[' + search + ']', 'g'), replace);
 };
 
 // var str = 'ABCADRAE';
-// alert(str.replaceAll('A','X')); 
+// alert(str.replaceAll('A','X'));
 
-//There is gonna be problem with firefox websockets, solve that later 
+//There is gonna be problem with firefox websockets, solve that later
   address= "ws:127.0.0.1:4000";
   ws = new WebSocket(address);
   ws.onopen = function(){
     // ws.send("Connnecting");
-  } 
-  ws.onmessage = function(msg){ 
+  }
+  ws.onmessage = function(msg){
     console.log(msg.data);
     console.log(msg.data);
     $(".terminal-output").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
@@ -335,13 +337,13 @@ String.prototype.replaceAll = function(search, replace)
 </script>
 
     </div>
-    
+
     <div class="span7">
 
     <div id="tilda"></div>
         </div>
       </div>
-     
+
         </div>
         <hr>
     </div>
