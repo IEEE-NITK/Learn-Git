@@ -1,0 +1,172 @@
+====1
+1:1c
+  
+2:1c
+3:1c
+  #include<iostream>
+====1
+1:14,15c
+  sdf
+  sdfs
+2:14,18c
+3:14,18c
+  void sort_primary();
+  void insert();
+  int search_index(string key);
+  void search(string key);
+  };
+====1
+1:16a
+2:20,21c
+3:20,21c
+  void primary::create_index()
+  {
+====1
+1:18c
+  sdfeam file;
+2:23c
+3:23c
+  fstream file;
+====
+1:54c
+  for(j=i+
+2:59,65c
+  for(j=i+1;j<=count;j++)
+  {
+  if(usnl[j]>usnl[i])
+  {
+  tempu=usnl[i];
+  usnl[i]=usnl[j];
+  usnl[j]=tempu;
+3:58a
+====
+1:55a
+2:67,73c
+  tempa=addl[i];
+  addl[i]=addl[j];
+  addl[j]=tempa;
+  }
+  }
+  }
+  }
+3:60,62c
+  }
+  }
+  }
+====1
+1:57c
+  /n/n/n
+2:74a
+3:63a
+====1
+1:58a
+2:76,77c
+3:65,66c
+  void primary::insert()
+  {
+====
+1:60c
+  /n
+2:79,100c
+  string usn,name,branch,sem,buffer;
+  int semester,pos;
+  cout<<"usn: ";
+  cin>>usn;
+  cout<<"name: ";
+  cin>>nam sdfsdf
+  
+  sdf
+  
+  345
+  ;
+  buffer=usn+'|'+name+'|'+branch+'|'+sem+'$'+'\n';
+  
+  fstream file;
+  file.open("1.txt",ios::out|ios::app);
+  pos=file.tellp();
+  file<<buffer;
+  usnl[++count]=usn;
+  addl[count]=pos;
+  sort_primary();
+  file.close();
+  }
+3:68,73c
+  string usn,name,branch,sem,buffer;
+  int semester,pos;
+  cout<<"usn: ";
+  cin>>usn;
+  cout<<"name: ";
+  cin>>name;
+====
+1:62,87c
+  cout<<"branch: ";
+  cin>>branch;
+  cout<<"semester";
+  cin>>semester;
+  stringstream out;
+  out<<semester;
+  sem=out.str();
+  buffer.erase();
+  buffer=usn+'|'+name+'|'+branch+'|'+sem+'$'+'\n';
+  
+  fstream file;
+  file.open("1.txt",ios::out|iosuiyui
+  uyi
+  
+  yui
+  }
+  
+  
+  int primary::search_index(string key)
+  {
+  int i;
+  for(i=0;i<=count;i++)
+  {
+  cout<<"usn:"<<usnl[i]<<"\n";
+  cout<<"add"<<addl[i]<<"\n";
+  }
+2:102,110c
+  
+  int primary::search_index(string key)
+  {
+  int i;
+  for(i=0;i<=count;i++)
+  {
+  cout<<"usn:"<<usnl[i]<<"\n";
+  cout<<"add"<<addl[i]<<"\n";
+  }
+3:75,78c
+  cout<<"branch: ";
+  cin>>branch;
+  cout<<"semester";cvbvccvb
+  cvb
+====2
+1:124c
+3:115c
+  }
+2:147c
+  }sdfsdf
+====2
+1:126,132c
+3:117,123c
+  
+  int main()
+  {
+  int choice;
+  primary p;string key;
+  p.create_index();
+  while(1)
+2:149c
+  sxcv
+====3
+1:142,148c
+2:159,165c
+  cout<<"enter key";
+  cin>>key;
+  p.search(key);
+  break;
+  }
+  }
+  }
+3:133c
+  cou
