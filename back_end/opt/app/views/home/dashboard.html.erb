@@ -266,12 +266,12 @@ jQuery(document).ready(function($) {
        <div class="container">
 
       <div class="jumbotron hero-spacer">
-        <h1><%= @stage.objective %></h1>
-        <p><%= @stage.pbody %></p>
+        <h1 class="course-objective"><%= @stage.objective %></h1>
+        <p class="course-body"><%= @stage.pbody %></p>
         <h3>References:</h3>
-        <p><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
+        <p class="course-references"><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
         <h3>Useful Links:</h3>
-        <p><%= @stage.useful_links %></p>
+        <p class="links"><%= @stage.useful_links %></p>
         <h3 id="shint">Show hint</h3>
         <div style="display:none;" id="hint"><p><%= @stage.hints %></p></div>
       </div>
@@ -317,6 +317,16 @@ String.prototype.replaceAll = function(search, replace)
 
     return this.replace(new RegExp('[' + search + ']', 'g'), replace);
 };
+function trim_str (str) {
+    str = str.replace(/^\s+/, '');
+    for (var i = str.length - 1; i >= 0; i--) {
+        if (/\S/.test(str.charAt(i))) {
+            str = str.substring(0, i + 1);
+            break;
+        }
+    }
+    return str;
+}
 
 // var str = 'ABCADRAE';
 // alert(str.replaceAll('A','X'));
@@ -338,16 +348,56 @@ String.prototype.replaceAll = function(search, replace)
           },"plugins":["themes","json_data","ui"]
           }).bind("select_node.jstree", function(e, data)
                     {
-                      if(jQuery.data(data.rslt.obj[0], "href"))
+                      // alert('sdiugfsadug')
+                      var parents = [];
+                      data.rslt.obj.parents("li").each(function () {
+                          parents.push({ id: $(this).attr("id"), description: $(this).children("a").text() });
+                      });
+                      str="."
+                      for(i=parents.length-1;i>=0;i--)
                       {
-                        console.log(jQuery.data(data.rslt.obj[0], "href"));
-                          // window.location=jQuery.data(data.rslt.obj[0], "href");
+                        str+="/"+trim_str(parents[i].description)
+                        // console.log(parents[i].description)
                       }
+                      // console.log(data.rslt.obj.text());
+                      // console.log(str);
+                      ws.send("open:"+str+"/"+trim_str(data.rslt.obj.text()))
+                      editor.getSession().setValue("")
+                      // if(jQuery.data(data.rslt.obj[0], "href"))
+                      // {
+                      //   console.log(jQuery.data(data.rslt.obj[0], "href"));
+                      //     // window.location=jQuery.data(data.rslt.obj[0], "href");
+                      // }
                     });
+    }
+    else if(obj.opt == "course-objective")
+    {
+      $(".course-objective").html(obj.content)
+    }
+    else if(obj.opt == "course-references")
+    {
+      $(".course-references").html(obj.content)
+    }
+    else if(obj.opt == "course-links")
+    {
+      $(".course-links").html(obj.content)
+    }
+    else if(obj.opt == "course-body")
+    {
+      $(".course-body").html(obj.content)
+    }
+    else if(obj.opt == "course-hint")
+    {
+      $("#hint").html(obj.content)
+    }
+    else if(obj.opt == "file-content")
+    {
+      var myCode = editor.getSession().getValue();
+      editor.getSession().setValue(myCode+obj.content)
     }
     else
     {
-      $(".terminal-output").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
+      $(".terminal-output").append("<div>"+obj.content.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
       $(".terminal-output").css("line-height","initial");
       $(".terminal-output").css("font-size","15px");
       $(".terminal-output").css("color","yellowgreen");

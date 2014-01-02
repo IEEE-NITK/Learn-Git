@@ -10,6 +10,7 @@ class GitUser
 	def execute cmd
 		# if cmd ~= 'git clone *'
 		cmd = cmd[3,cmd.length]
+		puts "git --git-dir #{Dir.pwd}/../../.git --work-tree=#{Dir.pwd}/../../ #{cmd}\n"
 		stdin, stdout, stderr = Open3.popen3('git-shell')
 		stdin.puts "git --git-dir #{Dir.pwd}/../../.git --work-tree=#{Dir.pwd}/../../ #{cmd}\n"
 		stdin.close
@@ -35,6 +36,8 @@ class GitUser
 		#Remove from the db
 
 	end
+
+	# def get_content 
 
 
 private

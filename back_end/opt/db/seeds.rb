@@ -24,9 +24,10 @@ s.course_id=1
 s.step_number=1
 s.objective="To configure git with the shell"
 s.pbody="One can specify Git configuration settings with the git config command. Set up your name and e-mail address."
-s.hints='$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com'
+s.hints='$ git config --local user.name "John Doe"
+$ git config --local user.email johndoe@example.com'
 s.references="http://git-scm.com/book/en/Customizing-Git-Git-Configuration"
+# s.validation = []
 s.useful_links=""
 s.extras=""
 s.save
@@ -195,7 +196,7 @@ Rename the remote named <old> to <new>.\n
 remove\n
 rm\n
 Remove the remote named <name>. All remote-tracking branches and configuration settings for the remote are removed. "
-s.validation=["cmd_r",]
+s.validation=["cmd_r","git remote add"]
 s.save
 
 #Stage 3(both A and B)

@@ -1,9 +1,11 @@
 require 'json'
 
 class Directory
-  attr_accessor :counter
-  def initialize
-    @counter = 1
+
+  # attr_accessor :prefix
+  
+  def initialize 
+    # @prefix = prefix
   end
 
   def get_files_in_directory path , prefix , child
@@ -27,11 +29,23 @@ class Directory
         # p childrens
         child << {data: entry,children: childrens}
       else
-        tmp_hash = {data: entry,href: prefix+path+'/'+entry}
+        tmp_hash = {data: entry}
         child << tmp_hash
       end
     end
     # p child
   child
   end
+
+  def get_content prefix,file_path
+    f = File.open(prefix+file_path,"r+")
+  end
+
+  def save_content prefix,file_path,content
+    #CHECK THE AUTHORIZATION BASED ON THE URL!!
+    f = File.open(prefix+file_path,"w+")
+    f.puts content
+    f.close
+  end
+
 end

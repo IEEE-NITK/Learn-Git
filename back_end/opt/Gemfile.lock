@@ -218,6 +218,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth
   omniauth-github
   omniauth-google-oauth2
   rails (= 4.0.0)
