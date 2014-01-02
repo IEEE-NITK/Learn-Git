@@ -17,6 +17,7 @@ c.rating = 10.00
 c.references = "http://www.git-tower.com/blog/git-cheat-sheet-detail/,http://git-scm.com/"
 c.useful_materials = "http://git-scm.com/book"
 c.mcount = 1
+c.id=1
 c.save
 
 #Add stages to the Git course
@@ -167,6 +168,7 @@ c.rating=10.0
 c.references= "JSON reference: www.w3schools.com/json/ ; GIT Cheatsheet : http://www.git-tower.com/blog/git-cheat-sheet-detail/"
 c.useful_materials=""
 c.mcount=2
+c.id=2
 c.save
 
 #Stage 1(both A and B)
@@ -181,7 +183,7 @@ s.hints="$ git clone <repo name>"
 s.references="http://git-scm.com/docs/git-clone"
 s.useful_links=""
 s.extras=""
-s.validation= ["cmd_r","git clone https://github.com/nitkrug/quiz.git"]
+s.validation= ["cmd_r",/git clone https:\/\/github.com\/nitkrug\/quiz.git/]
 s.save
 
 #Stage 2(both A and B)

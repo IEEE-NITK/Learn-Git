@@ -273,8 +273,8 @@ jQuery(document).ready(function($) {
         <p class="course-references"><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
         <h3>Useful Links:</h3>
         <p class="links"><%= @stage.useful_links %></p>
-        <h3 id="shint">Show hint</h3>
-        <div style="display:none;" id="hint"><p><%= @stage.hints %></p></div>
+        <h3>Command:</h3>
+        <p><%= @stage.hints %></p>
       </div>
 
 
@@ -333,7 +333,7 @@ function trim_str (str) {
 // alert(str.replaceAll('A','X'));
 
 //There is gonna be problem with firefox websockets, solve that later
-  address= "ws:127.0.0.1:4000";
+  address= "ws:10.42.0.1:4000";
   ws = new WebSocket(address);
   ws.onopen = function(){
     // ws.send("Connnecting");
@@ -395,6 +395,19 @@ function trim_str (str) {
     {
       var myCode = editor.getSession().getValue();
       editor.getSession().setValue(myCode+obj.content)
+    }
+    else if(obj.opt == "file-content")
+    {
+      var myCode = editor.getSession().getValue();
+      editor.getSession().setValue(myCode+obj.content)
+    }
+    else if(obj.opt == "progess1")
+    {
+      progess1(obj.content)
+    }
+    else if(obj.opt == "progess2")
+    {
+      progess2(obj.content)
     }
     else
     {

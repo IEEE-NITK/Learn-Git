@@ -11,6 +11,11 @@ before_filter :getNotifications
 
     def dashboard
         puts "**"*100
+        @num1 = current_user.repos.first.order.find_index(@repo.status)
+        t = current_user.teams.first
+        r = Repo.where(team_id: t.id)
+        r = r.select{|s| s.id != current_user.repos.first.id}
+        @numB = r.order.find_index(@repo.status)
         puts current_user.inspect
         puts params[:id]
         @course = Course.find(params[:id])
