@@ -274,7 +274,7 @@ jQuery(document).ready(function($) {
         <h3>Useful Links:</h3>
         <p class="links"><%= @stage.useful_links %></p>
         <h3>Command:</h3>
-        <p><%= @stage.hints %></p>
+        <p id="hint"><%= @stage.hints %></p>
       </div>
 
 
@@ -335,6 +335,7 @@ function trim_str (str) {
 //There is gonna be problem with firefox websockets, solve that later
   address= "ws:10.42.0.1:4000";
   ws = new WebSocket(address);
+
   ws.onopen = function(){
     // ws.send("Connnecting");
     ws.send("id:<%= current_user.repos.where(course_id:params[:id]).first.id %>")
@@ -401,13 +402,17 @@ function trim_str (str) {
       var myCode = editor.getSession().getValue();
       editor.getSession().setValue(myCode+obj.content)
     }
-    else if(obj.opt == "progess1")
+    else if(obj.opt == "progress1")
     {
-      progess1(obj.content)
+      console.log("sdiuhsdiuh");
+      // alert("jfshioh");
+      progress1(obj.content)
     }
-    else if(obj.opt == "progess2")
+    else if(obj.opt == "progress2")
     {
-      progess2(obj.content)
+      console.log("vvvvvvvvvvv");
+      // alert("jfshioh");
+      progress2(obj.content)
     }
     else
     {
@@ -420,14 +425,15 @@ function trim_str (str) {
   ws.onclose = function(){
     // $("body").append("End");
   }
+
 </script>
-  <button class="btn btn-success" style="float:right;">Save</button>
+  <button class="btn btn-success" style="float:right;" onclick="write_content();">Save</button>
     </div>
 
     <div class="span5" style="diplay:inline;">
 
     <div id="tilda"></div>
-    
+
         </div>
         <div class="span1">
         <div class="progress" style="width:20px;min-height:240px;">
@@ -437,28 +443,28 @@ function trim_str (str) {
   <div class="progress-bar progress-bar-success" style="height:55%;width:100%;" id="test2">
     <span class="sr-only">35% Complete (success)</span>
   </div>
-  
+
 </div>
 User1
 </div>
 <div class="span1">
 
 <div class="progress" style="width:20px;min-height:240px;">
- 
+
   <div class="progress-bar progress-bar-warning" style="height: 20%;width:100%;" id="test3">
     <span class="sr-only">20% Complete (warning)</span>
   </div>
   <div class="progress-bar progress-bar-default" style="height: 80%;width:100%;" id="test4">
     <span class="sr-only">20% Complete (warning)</span>
   </div>
-  
+
 </div>
 User2
 </div>
         </div>
-        
-       
-     
+
+
+
 
         </div>
         <hr>
@@ -480,6 +486,15 @@ User2
       // document.getElementById("test2").style.height=num;
       // document.getElementById("test1").style.height=100-num;
      }
+       progress1(<%= @numA %>)
+  progress2(<%= @numB %>)
+
+  function write_content()
+  {
+      alert("sdkuhdsfuig");
+      var myCode = editor.getSession().getValue();
+      ws.send("save:"+myCode);
+  }
      </script>
   </body>
 </html>
