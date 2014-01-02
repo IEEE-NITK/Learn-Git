@@ -10,16 +10,23 @@ class Validator
 	end
 
 	def validate msg,output
+		puts "***********WRONGjhesgbuhy!************"*100
 		if @stage && @stage.validation[0] == "cmd_r"
-			if (msg =~ /#{@stage.validation[1]}+/).nil?
+			puts "**#{(msg =~ @stage.validation[1]).nil?}" *50
+			if (msg =~ @stage.validation[1]).nil?
+				puts "***********WRONG!************"*100
 				return false
 			else
+				puts "***********CORRECT!************"*100
 				#This will be more complicated!![TODO]
-				@repo.status+=1
-				@repo.save
+				num = @repo.order.find_index(@repo.status)
+				unless num.nil?
+					@repo.status = @repo.order[num+1]
+					@repo.save
+				end
 				return true
 			end
-		end	
+		end
 	end
 
 	def next_stage
