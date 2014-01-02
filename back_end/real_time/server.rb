@@ -34,7 +34,6 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			puts out.inspect
 			puts "HEREE"
 			out.each_line do |line|
-				puts line
 				ws.send({opt: "output",content: line}.to_json)
 			end
 			valid = Validator.new(repo_id)
@@ -53,6 +52,7 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			temp.delete(op)
 			text=Directory.new.get_content "../",temp.join(':')
 			text.each_line do |line|
+				puts line
 			  ws.send({opt: "file-content",content: line}.to_json)
 			end
 		elsif op == "save"
@@ -74,3 +74,4 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 	end
 
 end
+	
