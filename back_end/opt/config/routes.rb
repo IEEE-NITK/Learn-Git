@@ -6,6 +6,8 @@ Opt::Application.routes.draw do
   # get "/:controller/:action" => "controller#action"
   # post "/:controller/:action" => "controller#action"
   get "/home/dashboard" => "home#dashboard"
+  get "/team/new" => "team#new"
+  post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
