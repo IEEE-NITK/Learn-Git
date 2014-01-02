@@ -15,6 +15,9 @@ class TeamController < ApplicationController
             t.status = 0.00
             #Add orderA and orderB here
             t.save
+            current_user.team_ids << t.id
+            current_user.save
+            u.team_ids << t.id
             #TODO: ON accepting of inv and not when the user is actually invited
 
             r = Repo.new
