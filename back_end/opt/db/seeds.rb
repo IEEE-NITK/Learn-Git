@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Make the initial Git course
+Course.delete_all
+Stage.delete_all
 c = Course.new
 c.name = "Git Basics"
 c.objective  = "Teach the students of git in an interactive way with team collobration."
@@ -168,7 +170,7 @@ c.mcount=2
 c.save
 
 #Stage 1(both A and B)
-#A = 1,2,3,4,810,11,12
+#A = 1,2,3,4,8,10,11,12
 #B = 1,2,3,5,6,7,8,9
 s=Stage.new
 s.course_id=c.id
@@ -196,7 +198,7 @@ Rename the remote named <old> to <new>.\n
 remove\n
 rm\n
 Remove the remote named <name>. All remote-tracking branches and configuration settings for the remote are removed. "
-s.validation=["cmd_r","git remote add"]
+s.validation=["cmd_r",/git remote add/]
 s.save
 
 #Stage 3(both A and B)
@@ -209,6 +211,7 @@ s.hints='{"name":"answer","alt":"question"}'
 s.references="www.w3schools.com/json/"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git commit -/]
 s.save
 
 #Stage 4(developer A)
@@ -242,6 +245,7 @@ s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git pull B master/]
 s.save
 
 #Stage 5(developer B)
@@ -254,6 +258,7 @@ s.hints=""
 s.references=
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git commit -/]
 s.save
 
 #Stage 6(developer B)
@@ -261,11 +266,12 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=6
 s.objective="To rollback to the previous commit."
-s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
-s.hints="$ git revert HEAD~3"
-s.references="http://git-scm.com/docs/git-revert"
+s.pbody="git reset is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
+s.hints="$ git reset HEAD"
+s.references="http://git-scm.com/docs/git-reset"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git reset HEAD/]
 s.save
 
 #Stage 7(developer B)
@@ -299,6 +305,7 @@ s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git pull A master/]
 s.save
 
 #Stage 8(both A and B)
@@ -311,6 +318,7 @@ s.hints=""
 s.references=""
 s.useful_links="www.w3schools.com/json/"
 s.extras=""
+s.validation = ["cmd_r",/git commit -/]
 s.save
 
 #Stage 9(developer B)
@@ -344,6 +352,7 @@ s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git pull A master/]
 s.save
 
 #Stage 10(developer A)
@@ -356,6 +365,7 @@ s.hints=""
 s.references=""
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git commit -/]
 s.save
 
 #Stage 11(developer A)
@@ -363,11 +373,12 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=11
 s.objective="To rollback to the previous commit."
-s.pbody="git revert is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
-s.hints="$ git revert HEAD~3"
-s.references="http://git-scm.com/docs/git-revert.html"
+s.pbody="git reset is used to record some new commits to reverse the effect of some earlier commits (often only a faulty one)."
+s.hints="$ git reset HEAD"
+s.references="http://git-scm.com/docs/git-reset.html"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git reset HEAD/]
 s.save
 
 #Stage 12(developer A)
@@ -401,4 +412,5 @@ s.hints="$ git pull <remote> <branch>,$ git merge <branch1> <branch2>"
 s.references="http://git-scm.com/docs/git-pull,http://git-scm.com/docs/git-merge"
 s.useful_links=""
 s.extras=""
+s.validation = ["cmd_r",/git pull B master/]
 s.save
