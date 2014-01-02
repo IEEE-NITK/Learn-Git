@@ -1,0 +1,155 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<fstream>
+using namespace std;
+class primary
+{
+public:
+string usnl[100];
+int addl[100];
+int count;
+void create_index();
+string extract_usn(string);
+void sort_primary();
+void insert();
+int search_index(string key);
+void search(string key);
+};
+
+void primary::create_index()
+{
+
+fstream file;
+int pos;
+string usn,buffer;
+count=0;
+file.open("1.txt",ios::in);
+while(!file.eof())
+{
+buffer.erase();
+pos=file.tellg();
+getline(file,buffer);
+usn=extract_usn(buffer);
+usnl[++count]=usn;
+addl[count]=pos;
+}
+file.close();
+sort_primary();
+}
+
+
+string primary::extract_usn(string buffer)
+{
+string usn;
+int i=0;
+usn.erase();
+while(buffer[i]!='|')
+usn+=buffer[i++];
+return usn;
+}
+
+
+void primary::sort_primary()
+{
+int i,j,tempa;
+string tempu;
+for(i=0;i<=count;i++)
+{
+
+}
+}
+}
+
+
+void primary::insert()
+{
+
+string usn,name,branch,sem,buffer;
+int semester,pos;
+cout<<"usn: ";
+cin>>usn;
+cout<<"name: ";
+cin>>name;
+
+cout<<"branch: ";
+cin>>branch;
+cout<<"semester";cvbvccvb
+cvb
+cout<<"count"<<count<<"\n";
+int low=0,high=count,mid=0,flag=0;
+while(low<=high)
+{
+mid=(high-low)/2;
+if(usnl[mid]==key) { flag=1;
+break;
+}
+if(usnl[mid]>key) high=mid-1;
+if(usnl[mid]<key) low=mid+1;
+}
+cout<<"mid:"<<mid<<"\n";
+if(flag) return mid;
+else return 0;
+} 
+
+
+void primary::search(string key)
+{
+fstream file;
+int address;
+file.open("1.txt",ios::in);
+string buffer;
+int pos;
+pos=search_index(key);
+
+{
+buffer.erase();
+address=addl[pos];
+file.seekp(address,ios::beg);
+cout<<"address"<<address;
+getline(file,buffer);
+cout<<"found:"<<buffer;
+}
+
+file.close();
+}
+
+
+int main()
+{
+int choice;
+primary p;string key;
+p.create_index();
+while(1)
+{
+
+cout<<"1 add\n2 search";
+cin>>choice;
+switch(choice)
+{
+case 1:p.insert();
+break;
+case 2:
+cou
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
