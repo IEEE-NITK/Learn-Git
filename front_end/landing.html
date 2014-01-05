@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NITK OPT</title>
+
+    <!-- Bootstrap core CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <!-- Page Specific CSS -->
+    <!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
+    
+    <link href="css/heroic-features.css" rel="stylesheet">
+    
+<link href="jquery.terminal.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="jquery-ui.css" />
+
+<script src="jquery-ui.js"></script>
+  <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+  <script src="jquery-1.7.1.min.js"></script>
+  <script src="simple-expand.js"></script>
+
+  <script src="jquery.mousewheel-min.js"></script>
+  <script src="jquery.terminal-0.7.7.js"></script>
+  <script type="text/javascript" src="jquery.jstree.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
+  <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+.tilda {
+    position: inherit;
+}
+#editor {         
+        
+        position: relative;
+        height: 550px;
+    }
+</style>
+<script>
+
+
+jQuery(document).ready(function($) {
+   $(window).scroll(function() {
+      $('.tilda').each(function() {
+         $(this).css({top: $('body').prop('scrollTop')});
+      });
+   });
+});
+$(document).ready(function(){
+$('#treeView').jstree({
+
+
+"json_data" : {
+  "data":[  
+{"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
+  ]
+
+},"plugins":["themes","json_data","ui"]
+
+}).bind("select_node.jstree", function(e, data)
+                    {
+                        if(jQuery.data(data.rslt.obj[0], "href"))
+                        {
+                            window.location=jQuery.data(data.rslt.obj[0], "href");
+                        }
+                        else
+                        {
+                            alert("No href defined for this element");
+                        }
+                    })
+            });
+</script>
+
+<script>
+
+
+String.prototype.strip = function(char) {
+    return this.replace(new RegExp("^" + char + "*"), '').
+        replace(new RegExp(char + "*$"), '');
+}
+
+
+$.extend_if_has = function(desc, source, array) {
+    for (var i=array.length;i--;) {
+        if (typeof source[array[i]] != 'undefined') {
+            desc[array[i]] = source[array[i]];
+        }
+    }
+    return desc;
+};
+
+
+(function($) {
+    $.fn.tilda = function(eval, options) {
+        if ($('body').data('tilda')) {
+            return $('body').data('tilda').terminal;
+        }
+        this.addClass('tilda');
+        options = options || {};
+        eval = eval || function(command, term) {
+            term.echo("you don't set eval for tilda");
+        };
+        var settings = {
+            prompt: '$> ',
+            name: 'tilda',
+            height: 550,
+            // width: 550,
+            enabled: false,
+            greetings: '',
+            keypress: function(e) {
+                if (e.which == 96) {
+                    // return false;
+                }
+            }
+        };
+        if (options) {
+            $.extend(settings, options);
+        }
+        this.append('<div class="td"></div>');
+        var self = this;
+        self.terminal = this.find('.td').terminal(eval, settings);
+        var focus = false;
+        // $(document.documentElement).keypress(function(e) {
+        //     if (e.which == 96) {
+        //         self.slideToggle('fast');
+        //         self.terminal.focus(focus = !focus);
+        //         self.terminal.attr({
+        //             scrollTop: self.terminal.attr("scrollHeight")
+        //         });
+        //     }
+        // });
+        $('body').data('tilda', this);
+        // this.hide();
+        return self;
+    };
+})(jQuery);
+
+//--------------------------------------------------------------------------
+jQuery(document).ready(function($) {
+
+    $('#tilda').tilda(function(command, terminal) {
+        terminal.echo('you type command "' + command + '"');
+    });
+    $('#testbutton').click(function(){
+     var searchThis = document.getElementById('new1').innerHTML;
+      alert(searchThis);
+    });
+});
+
+
+</script>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    .selection {
+        display: none;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+      function test(name)
+      {
+        document.getElementById("new1").innerHTML=name;
+
+      }
+
+
+      </script>
+
+  </head>
+
+  <body>
+
+   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+ <a class="navbar-brand" href="index.html"><i class="fa fa-home" style="margin-right:15px;color:white;"></i>NITK-OPT</a>
+          </div>
+
+
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="landing.html">Home</a></li>
+      
+      <li ><a href="#">About</a></li>
+      <li ><a href="#">Contact</a></li>
+      
+      
+     
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+    
+
+       <li class="dropdown messages-dropdown" >
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> Notifications <span class="badge">7</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="notif.html">View All  <span class="badge">7</span></a></li>
+              </ul>
+            </li>
+     
+      <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thejdeep <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user" style="color:#BEBEBE;"></i> Profile</a></li>
+                
+                <li><a href="#"><i class="fa fa-gear" style="color:#BEBEBE;"></i> Settings</a></li>
+                
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off" style="color:#BEBEBE;"></i> Log Out</a></li>
+              </ul>
+            </li>
+
+    </ul>
+  </div><!-- /.navbar-collapse --> 
+
+
+
+
+
+         
+
+         
+        <!-- /.navbar-collapse -->
+      </nav>
+       <div class="container">
+
+      <div class="jumbotron hero-spacer">
+        <div class="row">
+          <div class="col-lg-2">
+        <img src="profile.jpg" class="img-circle" width="140px" height="140px">
+      </div>
+      <div class="col-lg-9">
+        <h2>Welcome User !</h2>
+        
+      </div>
+    </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+          <h3>Select a course </h3>
+          <hr>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="jumbotron hero-spacer">
+          <div class="row">
+            <div class="col-lg-3">
+          
+            <img src="git.jpg" class="img-circle" width="100px" height="100px">
+          </div>
+          <div class="col-lg-4">
+            <h2>Git Basics</h2>
+          </div>
+          <div class="col-lg-2 offset1" style="margin-top:20px;">
+            <button class="btn btn-success">Start</button>
+          </div>
+          </div>
+        </div>
+      </div>
+         <div class="col-lg-6">
+          <div class="jumbotron hero-spacer">
+          <div class="row">
+            <div class="col-lg-3">
+          
+            <img src="git1.jpg" class="img-circle" width="100px" height="100px">
+          </div>
+          <div class="col-lg-4">
+            <h2>First steps to Git</h2>
+          </div>
+          <div class="col-lg-2 offset1" style="margin-top:20px;">
+            <button class="btn btn-success">Start</button>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      
+      
+      
+  
+
+    <!-- JavaScript -->
+    
+     <script src="js/bootstrap.js"></script>
+
+   
+
+   
+
+  </body>
+</html>
