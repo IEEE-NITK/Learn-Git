@@ -41,6 +41,22 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem "rb-readline"
+
+group :development, :test do
+  gem 'rspec-rails'
+   gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
+  gem 'guard-rspec'
+end
+
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
+end
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
