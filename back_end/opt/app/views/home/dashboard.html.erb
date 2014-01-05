@@ -21,6 +21,7 @@
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
+
   <style>
 body {
     margin: 0;
@@ -272,8 +273,8 @@ jQuery(document).ready(function($) {
         <p class="course-references"><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
         <h3>Useful Links:</h3>
         <p class="links"><%= @stage.useful_links %></p>
-        <h3 id="shint">Show hint</h3>
-        <div style="display:none;" id="hint"><p><%= @stage.hints %></p></div>
+        <h3>Command:</h3>
+        <p id="hint"><%= @stage.hints %></p>
       </div>
 
 
@@ -298,7 +299,7 @@ jQuery(document).ready(function($) {
       <div class="row-fluid span12">
         <div class="span2" id="toggle">
       <div id="treeView"></div></div>
-        <div class="span5">
+        <div class="span3">
 
           <pre id="editor">// Type your code here </pre>
           <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -332,8 +333,9 @@ function trim_str (str) {
 // alert(str.replaceAll('A','X'));
 
 //There is gonna be problem with firefox websockets, solve that later
-  address= "ws:127.0.0.1:4000";
+  address= "ws:10.42.0.1:4000";
   ws = new WebSocket(address);
+
   ws.onopen = function(){
     // ws.send("Connnecting");
     ws.send("id:<%= current_user.repos.where(course_id:params[:id]).first.id %>")
@@ -395,6 +397,23 @@ function trim_str (str) {
       var myCode = editor.getSession().getValue();
       editor.getSession().setValue(myCode+obj.content)
     }
+    else if(obj.opt == "file-content")
+    {
+      var myCode = editor.getSession().getValue();
+      editor.getSession().setValue(myCode+obj.content)
+    }
+    else if(obj.opt == "progress1")
+    {
+      console.log("sdiuhsdiuh");
+      // alert("jfshioh");
+      progress1(obj.content)
+    }
+    else if(obj.opt == "progress2")
+    {
+      console.log("vvvvvvvvvvv");
+      // alert("jfshioh");
+      progress2(obj.content)
+    }
     else
     {
       $(".terminal-output").append("<div>"+obj.content.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
@@ -406,20 +425,76 @@ function trim_str (str) {
   ws.onclose = function(){
     // $("body").append("End");
   }
-</script>
 
+</script>
+  <button class="btn btn-success" style="float:right;" onclick="write_content();">Save</button>
     </div>
 
-    <div class="span7">
+    <div class="span5" style="diplay:inline;">
 
     <div id="tilda"></div>
+
         </div>
-      </div>
+        <div class="span1">
+        <div class="progress" style="width:20px;min-height:240px;">
+        <div class="progress-bar progress-bar-warning" style="height:45%;width:100%;" id="test1">
+    <span class="sr-only">35% Complete (success)</span>
+  </div>
+  <div class="progress-bar progress-bar-success" style="height:55%;width:100%;" id="test2">
+    <span class="sr-only">35% Complete (success)</span>
+  </div>
+
+</div>
+User1
+</div>
+<div class="span1">
+
+<div class="progress" style="width:20px;min-height:240px;">
+
+  <div class="progress-bar progress-bar-warning" style="height: 20%;width:100%;" id="test3">
+    <span class="sr-only">20% Complete (warning)</span>
+  </div>
+  <div class="progress-bar progress-bar-default" style="height: 80%;width:100%;" id="test4">
+    <span class="sr-only">20% Complete (warning)</span>
+  </div>
+
+</div>
+User2
+</div>
+        </div>
+
+
+
 
         </div>
         <hr>
     </div>
     <!-- JavaScript -->
      <script src="/assets/bootstrap.js"></script>
+     <script type="text/javascript">
+     function progress1(num1)
+     {
+      $("#test2").css('height',String(100/8*num1)+"%");
+      $("#test1").css('height',String(100-((100/8*num1)-num1)+"%"));
+      // document.getElementById("test2").style.height=num;
+      // document.getElementById("test1").style.height=100-num;
+     }
+     function progress2(num2)
+     {
+      $("#test4").css('height',String(100/7*num2)+"%");
+      $("#test3").css('height',String(100-((100/7*num2)-num2)+"%"));
+      // document.getElementById("test2").style.height=num;
+      // document.getElementById("test1").style.height=100-num;
+     }
+       progress1(<%= @numA %>)
+  progress2(<%= @numB %>)
+
+  function write_content()
+  {
+      alert("sdkuhdsfuig");
+      var myCode = editor.getSession().getValue();
+      ws.send("save:"+myCode);
+  }
+     </script>
   </body>
 </html>

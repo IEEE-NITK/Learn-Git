@@ -3,8 +3,8 @@ require 'json'
 class Directory
 
   # attr_accessor :prefix
-  
-  def initialize 
+
+  def initialize
     # @prefix = prefix
   end
 
@@ -12,7 +12,7 @@ class Directory
   # child =[]
   # puts "IN #{prefix+path+'/'}"
     # if @counter > 5
-    #   return 
+    #   return
     # end
     # @counter+=1
     Dir.foreach(prefix+path) do |entry|
@@ -20,7 +20,7 @@ class Directory
       #   puts entry
       # end
       # puts @counter
-      if entry == "." || entry == ".." || entry[0] == "." 
+      if entry == "." || entry == ".." || entry[0] == "."
         next
       elsif(File::directory?(prefix+path+'/'+entry))
         childrens = []
@@ -38,6 +38,7 @@ class Directory
   end
 
   def get_content prefix,file_path
+    puts prefix+file_path
     f = File.open(prefix+file_path,"r+")
   end
 

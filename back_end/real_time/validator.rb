@@ -11,15 +11,33 @@ class Validator
 
 	def validate msg,output
 		if @stage && @stage.validation[0] == "cmd_r"
-			if (msg =~ /#{@stage.validation[1]}+/).nil?
+			puts "**#{(msg =~ @stage.validation[1]).nil?}" *50
+			if (msg =~ @stage.validation[1]).nil?
 				return false
 			else
 				#This will be more complicated!![TODO]
-				@repo.status+=1
-				@repo.save
+				num = @repo.order.find_index(@repo.status)
+				unless num.nil?
+					unless(@repo.order[num+1].nil?)
+						@repo.status = @repo.order[num+1]
+						@repo.save
+					end
+				end
 				return true
 			end
-		end	
+		end
+	end
+
+	def step_index
+		num = @repo.order.find_index(@repo.status)
+	end
+
+	def get_user
+		if @repo.order.size == 8
+			1
+		else
+			2
+		end
 	end
 
 	def next_stage

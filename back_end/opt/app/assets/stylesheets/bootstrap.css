@@ -25,7 +25,7 @@ summary {
 
 audio,
 canvas,
-video {
+video { 
   display: inline-block;
 }
 
@@ -12591,7 +12591,7 @@ a.thumbnail.active {
 }
 
 .progress-bar-warning {
-  background-color: #f0ad4e;
+  background-color:#F0F0F0;
 }
 
 .progress-striped .progress-bar-warning {
