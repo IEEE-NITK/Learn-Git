@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.0.1 by @fat and @mdo
+ * Bootstrap v3.0.2 by @fat and @mdo
  * Copyright 2013 Twitter, Inc.
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -322,14 +322,14 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: #9C9999;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #2a6496;
-  text-decoration: underline;
+  color: #BEBEBE;
+  text-decoration: none;
 }
 
 a:focus {
@@ -783,8 +783,8 @@ pre code {
 .container {
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+ 
+  margin-left: 50px;
 }
 
 .container:before,
@@ -809,7 +809,7 @@ pre code {
 
 .row {
   margin-right: -15px;
-  margin-left: -15px;
+  margin-left: -115px;
 }
 
 .row:before,
@@ -996,6 +996,10 @@ pre code {
   right: 8.333333333333332%;
 }
 
+.col-xs-pull-0 {
+  right: 0;
+}
+
 .col-xs-push-12 {
   left: 100%;
 }
@@ -1044,6 +1048,10 @@ pre code {
   left: 8.333333333333332%;
 }
 
+.col-xs-push-0 {
+  left: 0;
+}
+
 .col-xs-offset-12 {
   margin-left: 100%;
 }
@@ -1090,6 +1098,10 @@ pre code {
 
 .col-xs-offset-1 {
   margin-left: 8.333333333333332%;
+}
+
+.col-xs-offset-0 {
+  margin-left: 0;
 }
 
 @media (min-width: 768px) {
@@ -1181,6 +1193,9 @@ pre code {
   .col-sm-pull-1 {
     right: 8.333333333333332%;
   }
+  .col-sm-pull-0 {
+    right: 0;
+  }
   .col-sm-push-12 {
     left: 100%;
   }
@@ -1217,6 +1232,9 @@ pre code {
   .col-sm-push-1 {
     left: 8.333333333333332%;
   }
+  .col-sm-push-0 {
+    left: 0;
+  }
   .col-sm-offset-12 {
     margin-left: 100%;
   }
@@ -1252,6 +1270,9 @@ pre code {
   }
   .col-sm-offset-1 {
     margin-left: 8.333333333333332%;
+  }
+  .col-sm-offset-0 {
+    margin-left: 0;
   }
 }
 
@@ -1344,6 +1365,9 @@ pre code {
   .col-md-pull-1 {
     right: 8.333333333333332%;
   }
+  .col-md-pull-0 {
+    right: 0;
+  }
   .col-md-push-12 {
     left: 100%;
   }
@@ -1380,6 +1404,9 @@ pre code {
   .col-md-push-1 {
     left: 8.333333333333332%;
   }
+  .col-md-push-0 {
+    left: 0;
+  }
   .col-md-offset-12 {
     margin-left: 100%;
   }
@@ -1415,6 +1442,9 @@ pre code {
   }
   .col-md-offset-1 {
     margin-left: 8.333333333333332%;
+  }
+  .col-md-offset-0 {
+    margin-left: 0;
   }
 }
 
@@ -1507,6 +1537,9 @@ pre code {
   .col-lg-pull-1 {
     right: 8.333333333333332%;
   }
+  .col-lg-pull-0 {
+    right: 0;
+  }
   .col-lg-push-12 {
     left: 100%;
   }
@@ -1543,6 +1576,9 @@ pre code {
   .col-lg-push-1 {
     left: 8.333333333333332%;
   }
+  .col-lg-push-0 {
+    left: 0;
+  }
   .col-lg-offset-12 {
     margin-left: 100%;
   }
@@ -1578,6 +1614,9 @@ pre code {
   }
   .col-lg-offset-1 {
     margin-left: 8.333333333333332%;
+  }
+  .col-lg-offset-0 {
+    margin-left: 0;
   }
 }
 
@@ -1639,7 +1678,7 @@ th {
 }
 
 .table-bordered {
-  border: 1px solid #dddddd;
+  /*border: 1px solid #dddddd;*/
 }
 
 .table-bordered > thead > tr > th,
@@ -1648,7 +1687,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #dddddd;
+  /*border: 1px solid #dddddd;*/
 }
 
 .table-bordered > thead > tr > th,
@@ -1663,7 +1702,7 @@ th {
 
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
 }
 
 table col[class*="col-"] {
@@ -1882,22 +1921,6 @@ output {
   vertical-align: middle;
 }
 
-.form-control:-moz-placeholder {
-  color: #999999;
-}
-
-.form-control::-moz-placeholder {
-  color: #999999;
-}
-
-.form-control:-ms-input-placeholder {
-  color: #999999;
-}
-
-.form-control::-webkit-input-placeholder {
-  color: #999999;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -1922,6 +1945,22 @@ output {
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.form-control:-moz-placeholder {
+  color: #999999;
+}
+
+.form-control::-moz-placeholder {
+  color: #999999;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #999999;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #999999;
 }
 
 .form-control[disabled],
@@ -4279,7 +4318,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 51px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4749,39 +4788,42 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-link {
-  color: #777777;
+  color: #ffffff;
 }
 
 .navbar-default .navbar-link:hover {
-  color: #333333;
+  color: #777777;
 }
 
 .navbar-inverse {
   background-color: #222222;
   border-color: #080808;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #ffffff;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  color: #BEBEBE;
   background-color: transparent;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #BEBEBE;
   background-color: transparent;
 }
 
@@ -4801,6 +4843,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-toggle {
   border-color: #333333;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -4814,7 +4857,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #303030;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -4822,16 +4866,19 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #ffffff;
   background-color: #080808;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
   border-top-color: #999999;
   border-bottom-color: #999999;
+  z-index:100;
 }
 
 .navbar-inverse .navbar-nav > .open > a .caret,
@@ -4839,6 +4886,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .open > a:focus .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
+  z-index:100;
 }
 
 @media (max-width: 767px) {
@@ -5151,11 +5199,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
-  color: #ffffff;
+  color: #999999;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: #999999;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
@@ -5513,7 +5561,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  /*border: 1px solid #dddddd;*/
 }
 
 .list-group-item:first-child {
@@ -5546,7 +5594,7 @@ a.list-group-item .list-group-item-heading {
 a.list-group-item:hover,
 a.list-group-item:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
 }
 
 a.list-group-item.active,
@@ -5585,8 +5633,8 @@ a.list-group-item.active:focus .list-group-item-text {
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  /*-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);*/
 }
 
 .panel-body {
@@ -5772,13 +5820,14 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-primary {
-  border-color: #428bca;
+  /*border-color: #428bca;*/
 }
 
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #38A890;
+  border-color: #38A890;
+  /*border-color: #428bca;*/
 }
 
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
