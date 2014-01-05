@@ -6,7 +6,7 @@ require_relative './class'
 soc = []
 
 
-EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
+EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 
 	# t= Stage.new
 	git_user = nil

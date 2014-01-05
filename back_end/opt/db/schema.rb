@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20140102085444) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
-    t.string   "url"
     t.string   "name"
+    t.string   "url"
   end
 
   create_table "repos", force: true do |t|
