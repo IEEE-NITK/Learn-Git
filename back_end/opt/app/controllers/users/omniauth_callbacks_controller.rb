@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           sign_in_and_redirect @user, :event => :authentication
         else
           session["devise.google_data"] = request.env["omniauth.auth"]
-          redirect_to root_url
+          redirect_to contoller: "home",action: "index"
         end
     end
 
@@ -20,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           sign_in_and_redirect @user, :event => :authentication
         else
           session["devise.github_data"] = request.env["omniauth.auth"]
-          redirect_to root_url
+          redirect_to contoller: "home",action: "index"
         end
     end
 
