@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <!-- Page Specific CSS -->
     <!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
-    
+
     <link href="css/heroic-features.css" rel="stylesheet">
-    
+
 <link href="jquery.terminal.css" rel="stylesheet"/>
    <link rel="stylesheet" href="jquery-ui.css" />
 
@@ -39,7 +39,7 @@
   </style>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
+
   <style>
 body {
     margin: 0;
@@ -48,8 +48,8 @@ body {
 .tilda {
     position: inherit;
 }
-#editor {         
-        
+#editor {
+
         position: relative;
         height: 550px;
     }
@@ -69,7 +69,7 @@ $('#treeView').jstree({
 
 
 "json_data" : {
-  "data":[  
+  "data":[
 {"data":"Example 1","children":[{"data":"Yahoo","metadata":{"href":"http://www.yahoo.com"}},{"data":"Google","metadata":{"href":"http://www.google.com"}},{"data":"Bing","metadata":{"href":"http://www.bing.com"}}]},{"data":"Example 2","children":[{"data":"Twitter","metadata":{"href":"http://www.twitter.com"}},{"data":"Facebook","metadata":{"http://href":"www.facebook.com"}},{"data":"MySpace","metadata":{"href":"http://www.myspace.com"}}]}
   ]
 
@@ -77,11 +77,11 @@ $('#treeView').jstree({
 
 }).bind("select_node.jstree",function(e,data)
                     {
-                     
-                
+
+
                               console.log(data.inst.get_text(data.rslt.obj) + data.rslt.obj.attr("href"));
-                        
-                        
+
+
                     })
 });
 </script>
@@ -169,7 +169,7 @@ jQuery(document).ready(function($) {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    
+
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -198,7 +198,7 @@ jQuery(document).ready(function($) {
    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          
+
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -216,11 +216,11 @@ jQuery(document).ready(function($) {
       <li class="active"><a href="index.html">Course</a></li>
       <li ><a href="#">About</a></li>
       <li ><a href="#">Contact</a></li>
-      
-      
-     
+
+
+
     </ul>
-    
+
     <ul class="nav navbar-nav navbar-right">
     <li class="dropdown dropdown-user"  style="width:150px;margin-top:5px;">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <div class="progress">
@@ -238,9 +238,9 @@ jQuery(document).ready(function($) {
   </div>
 </div>
 </li>
-                
-              
-                
+
+
+
                 <li class="divider"></li>
                 <li><div style="margin-left:35%;"> User 2 </div><div class="progress" style="margin:5px;">
 
@@ -253,13 +253,13 @@ jQuery(document).ready(function($) {
 
        <li class="dropdown messages-dropdown" >
 
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> Notifications <span class="badge">7</span> <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> Notificationsssss <span class="badge"><%= @notifications.count %></span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                
+
                 <li class="message-preview">
                   <a href="#">
                     <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
-                    <span class="name">Thej</span>
+                    <span class="name">ZZ</span>
                     <span class="message">Hey there !</span>
                     <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
                   </a>
@@ -286,29 +286,29 @@ jQuery(document).ready(function($) {
                 <li><a href="notif.html">View All  <span class="badge">7</span></a></li>
               </ul>
             </li>
-     
+
       <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thejdeep <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="fa fa-user" style="color:#BEBEBE;"></i> Profile</a></li>
-                
+
                 <li><a href="#"><i class="fa fa-gear" style="color:#BEBEBE;"></i> Settings</a></li>
-                
+
                 <li class="divider"></li>
                 <li><a href="#"><i class="fa fa-power-off" style="color:#BEBEBE;"></i> Log Out</a></li>
               </ul>
             </li>
 
     </ul>
-  </div><!-- /.navbar-collapse --> 
+  </div><!-- /.navbar-collapse -->
 
 
 
 
 
-         
 
-         
+
+
         <!-- /.navbar-collapse -->
       </nav>
        <div class="container">
@@ -318,17 +318,17 @@ jQuery(document).ready(function($) {
         <p>An introduction to the problem statement</p>
        <!--  <p><a class="btn btn-primary btn-large">Start</a></p> -->
       </div>
-      
-      
-      
+
+
+
       <div class="row">
         <div class="col-lg-12">
            <h3>Workspace</h3>
         </div>
       </div><!-- /.row -->
-      
+
       <!-- /.row -->
-      
+
       <hr>
       <div class="row">
         <div class="col-lg-12">
@@ -337,7 +337,7 @@ jQuery(document).ready(function($) {
         <div class="span4 offset1 "><h3>Code Editor</h3></div>
         <div class="span5"><h3>Terminal</h3></div></div>  -->
        <button class="btn btn-default" id="button">Directory</button>
-    
+
       <div class="row-fluid span12">
         <div class="span2" id="hidden_content">
       <div id="treeView" style="margin-top:38px;"></div></div>
@@ -360,32 +360,32 @@ jQuery(document).ready(function($) {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/javascript");</script>
-     
-    
-    
-   
+
+
+
+
 
     </div>
-    
+
     <div class="span7">
 
     <div id="tilda" style="margin-top:38px;"></div>
-    
+
         </div>
 
       </div>
-     
+
         </div>
         <hr>
 
-      
-      
+
+
     </div>
 
-  
+
 
     <!-- JavaScript -->
-    
+
      <script src="js/bootstrap.js"></script>
            <script>
 // $(document).ready(function () {
@@ -402,15 +402,15 @@ jQuery(document).ready(function($) {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/javascript");</script>
-     
+
     <button class="btn btn-success" style="margin-left:73%;">Save</button>
     <button class="fadeandscale_close btn btn-default">Close</button>
-   
+
 
     </div>
 
-   
-    
+
+
 </div> -->
 
 <script type="text/javascript">
@@ -427,9 +427,9 @@ $(document).ready(function() {
 </script>
 
 
-   
 
-   
+
+
 
   </body>
 </html>

@@ -6,22 +6,26 @@ class TeamController < ApplicationController
     end
 
     def create
-        u = User.where(email: params[:email])
-        if !u.first.nil?
-            u = u.first
+        #Expand to allow more than 1 user being invited
+        user = User.where(email: params[:email])
+        course = Course.find_by_id(params[:course_id])
+        if !user.first.nil? && !course.nil?
+            user = user.first
             #Add a notification to the user
-            makeNotification(u.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for Git course!")
+            makeNotification(user.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for #{course.name} course!")
             #create a new Team
-            t = Team.new
-            t.name = params[:tname]
-            t.status = 0.00
-            t.save
-            current_user.team_ids << t.id
+            team = Team.new
+            team.name = params[:tname]
+            team.status = 0.00
+            team.course_id = course.id
+            team.acceptedInvites = 1
+            team.save
+            current_user.team_ids << team.id
             current_user.save
-            u.team_ids << t.id
-            u.save
-            t.save
-            flash[:notice] = "#{u.name} has been invited to join the team. The course will begin when he accepts!"
+            user.team_ids << team.id
+            user.save
+            team.save
+            flash[:notice] = "#{user.name} has been invited to join the team. The course will begin when he accepts!"
         else
             flash[:notice] = "The user you want to add doesn't exist. Please ask him to join the site first!"
         end
@@ -29,39 +33,47 @@ class TeamController < ApplicationController
     end
 
     def acceptInvite
-        #current user
-        z = SecureRandom.hex(16)
-        r = Repo.new
-        r.name = z
-        r.user_id = current_user.id
-        r.team_id = t.id
-        r.course_id = 2
-        r.name = z
-        r.status = 1
-        `mkdir #{Dir.pwd}/../repositories/#{z}`
-        r.path ="../repositories/#{z}"
-        r.order = [1,2,3,4,8,10,11,12]
-        r.save
 
-        #Other Team member
-        u = current_user
-        z = SecureRandom.hex(16)
-        r = Repo.new
-        r.name = z
-        r.user_id = u.id
-        r.team_id = t.id
-        r.course_id = 2
-        r.name = z
-        r.status = 1
-        `mkdir #{Dir.pwd}/../repositories/#{z}`
-        r.path ="../repositories/#{z}"
-        r.order = [1,2,3,5,6,7,8,9]
-        r.save
+        course = Course.find(params[:course_id])
+
+        if course
+            team = current_user.teams.find_by_course_id(course.id)
+            if team
+                team.acceptedInvites+=1
+                if team.acceptedInvites == course.mcount
+                    team.users.each do |q|
+                        createRepo(q.id,course.id)
+                    end
+                end
+            end
+        end
+
     end
 
 
 
+    private
 
+    def createRepo(user_id,course_id)
+
+        user = User.find(user_id)
+        course = Course.find(course_id)
+        team = user.teams.select{|t| t.course_id = course_id}.first
+
+        if user && course && team
+            z = SecureRandom.hex(16)
+            repo = Repo.new
+                repo.name = z #TODO: Allow user to name his repo?
+                repo.user_id = user.id
+                repo.team_id = team.id
+                repo.course_id = course.id
+                repo.status = 1
+                `mkdir #{Dir.pwd}/../repositories/#{z}`
+                repo.path ="../repositories/#{z}"
+                repo.order = [1,2,3,4,8,10,11,12] #TODO: Order to be populated dynamically
+                repo.save
+            end
+    end
 
 
 end
