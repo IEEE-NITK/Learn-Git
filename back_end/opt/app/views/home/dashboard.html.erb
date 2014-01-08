@@ -37,7 +37,7 @@ body {
     }
 </style>
 <script>
-
+var global_variable=0;
 
 jQuery(document).ready(function($) {
    $(window).scroll(function() {
@@ -333,7 +333,7 @@ function trim_str (str) {
 // alert(str.replaceAll('A','X'));
 
 //There is gonna be problem with firefox websockets, solve that later
-  address= "ws:10.42.0.1:4000";
+  address= "ws:127.0.0.1:4000";
   ws = new WebSocket(address);
 
   ws.onopen = function(){
@@ -361,6 +361,7 @@ function trim_str (str) {
                         str+="/"+trim_str(parents[i].description)
                         // console.log(parents[i].description)
                       }
+                      global_variable = str+"/"+trim_str(data.rslt.obj.text());
                       // console.log(data.rslt.obj.text());
                       // console.log(str);
                       ws.send("open:"+str+"/"+trim_str(data.rslt.obj.text()))
@@ -493,7 +494,7 @@ User2
   {
       alert("sdkuhdsfuig");
       var myCode = editor.getSession().getValue();
-      ws.send("save:"+myCode);
+      ws.send("save:"+global_variable+":"+myCode);
   }
      </script>
   </body>
