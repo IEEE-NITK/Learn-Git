@@ -1,20 +1,26 @@
 Opt::Application.routes.draw do
+  # get "/user" => "user#show"
   # devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  authenticated :user do
+    root "user#show" ,:as => "authenticated_root"
+  end
+
+  root 'home#index'
   # get "/:controller/:action" => "controller#action"
   # post "/:controller/:action" => "controller#action"
-  get "/home/dashboard" => "home#dashboard"
+  get "/dashboard" => "home#dashboard"
   get "/team/new" => "team#new"
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  get "/courses" => "course#index"
   # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

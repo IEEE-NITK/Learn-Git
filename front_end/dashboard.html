@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <title>NITK OPT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="index_files/bootstrap.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <title>NITK OPT</title>
 
-     <link href="index_files/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
-  <link href="jquery.terminal.css" rel="stylesheet"/>
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <!-- Page Specific CSS -->
+    <!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
+    
+    <link href="css/heroic-features.css" rel="stylesheet">
+    
+<link href="jquery.terminal.css" rel="stylesheet"/>
    <link rel="stylesheet" href="jquery-ui.css" />
 
 <script src="jquery-ui.js"></script>
   <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
   <script src="jquery-1.7.1.min.js"></script>
   <script src="simple-expand.js"></script>
+  <script src="jquery.popupoverlay.js"></script>
 
   <script src="jquery.mousewheel-min.js"></script>
   <script src="jquery.terminal-0.7.7.js"></script>
   <script type="text/javascript" src="jquery.jstree.js"></script>
+  <style type="text/css">
+#hidden_content{display:none;}
+
+  </style>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     
@@ -33,7 +46,7 @@ body {
     padding: 0;
 }
 .tilda {
-    position: relative;
+    position: inherit;
 }
 #editor {         
         
@@ -62,48 +75,17 @@ $('#treeView').jstree({
 
 },"plugins":["themes","json_data","ui"]
 
-}).bind("select_node.jstree", function(e, data)
+}).bind("select_node.jstree",function(e,data)
                     {
-                        if(jQuery.data(data.rslt.obj[0], "href"))
-                        {
-                            window.location=jQuery.data(data.rslt.obj[0], "href");
-                        }
-                        else
-                        {
-                            alert("No href defined for this element");
-                        }
+                     
+                
+                              console.log(data.inst.get_text(data.rslt.obj) + data.rslt.obj.attr("href"));
+                        
+                        
                     })
-            });
-</script>
-<!--[if IE]>
-<style>
-body {
-    margin: 0;
-    padding: 0;
-}
-.tilda {
-    position: relative;
-}
-#editor {         
-        
-        position: relative;
-        top: 50%;
-        bottom: 10%;  
-        left: 70%;
-        right: 10%;
-        height: 150px;
-    }
-</style>
-<script>
-jQuery(document).ready(function($) {
-   $(window).scroll(function() {
-      $('.tilda').each(function() {
-         $(this).css({top: $('body').prop('scrollTop')});
-      });
-   });
 });
 </script>
-<![endif]-->
+
 <script>
 
 
@@ -139,7 +121,7 @@ $.extend_if_has = function(desc, source, array) {
             height: 550,
             // width: 550,
             enabled: false,
-            greetings: 'Terminal Emulator',
+            greetings: '',
             keypress: function(e) {
                 if (e.which == 96) {
                     // return false;
@@ -187,60 +169,179 @@ jQuery(document).ready(function($) {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="index_files/bootstrap-responsive.css" rel="stylesheet">
+    
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+<link href="style.css" rel="stylesheet" type="text/css" />
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="http://getbootstrap.com/2.3.2/assets/ico/favicon.png">
+<style type="text/css">
+    .selection {
+        display: none;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+      function test(name)
+      {
+        document.getElementById("new1").innerHTML=name;
+
+      }
+
+
+      </script>
+
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">NITK OPT</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+ <a class="navbar-brand" href="index.html"><i class="fa fa-home" style="margin-right:15px;color:white;"></i>NITK-OPT</a>
+          </div>
 
-    
-     
+
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li ><a href="landing.html">Home</a></li>
+      <li class="active"><a href="index.html">Course</a></li>
+      <li ><a href="#">About</a></li>
+      <li ><a href="#">Contact</a></li>
       
-      <div class="row-fluid span12" height="20%">
+      
+     
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown dropdown-user"  style="width:150px;margin-top:5px;">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <div class="progress">
+
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+    <span class="sr-only">60% Complete</span>
+
+  </div>
+</div><!--  <b class="caret"></b --></a>
+              <ul class="dropdown-menu">
+                <li> <div style="margin-left:35%;"> User 1 </div><div class="progress" style="margin:5px;">
+
+  <div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    <span class="sr-only">60% Complete</span>
+  </div>
+</div>
+</li>
+                
+              
+                
+                <li class="divider"></li>
+                <li><div style="margin-left:35%;"> User 2 </div><div class="progress" style="margin:5px;">
+
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+    <span class="sr-only">40% Complete</span>
+  </div>
+</div></li>
+              </ul>
+            </li>
+
+       <li class="dropdown messages-dropdown" >
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> Notifications <span class="badge">7</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
+                    <span class="name">Thej</span>
+                    <span class="message">Hey there !</span>
+                    <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="notif.html">View All  <span class="badge">7</span></a></li>
+              </ul>
+            </li>
+     
+      <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thejdeep <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user" style="color:#BEBEBE;"></i> Profile</a></li>
+                
+                <li><a href="#"><i class="fa fa-gear" style="color:#BEBEBE;"></i> Settings</a></li>
+                
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off" style="color:#BEBEBE;"></i> Log Out</a></li>
+              </ul>
+            </li>
+
+    </ul>
+  </div><!-- /.navbar-collapse --> 
+
+
+
+
+
+         
+
+         
+        <!-- /.navbar-collapse -->
+      </nav>
+       <div class="container">
+
+      <div class="jumbotron hero-spacer">
+        <h1>Problem</h1>
+        <p>An introduction to the problem statement</p>
+       <!--  <p><a class="btn btn-primary btn-large">Start</a></p> -->
+      </div>
+      
+      
+      
+      <div class="row">
+        <div class="col-lg-12">
+           <h3>Workspace</h3>
+        </div>
+      </div><!-- /.row -->
+      
+      <!-- /.row -->
+      
+      <hr>
+      <div class="row">
+        <div class="col-lg-12">
+          <!--  <div class="row-fluid span12" height="20%">
         <div class="span1"><h3>Directory</h3></div>
         <div class="span4 offset1 "><h3>Code Editor</h3></div>
-        <div class="span5 offset1"><h3>Terminal</h3></div></div> 
-       
-     <div class="row-fluid"><button type="button" class="btn btn-default btn-small" id="clickme">
-  <span class=".glyphicon .glyphicon-list"></span> Click
-</button>
-<br/> 
-</div>
+        <div class="span5"><h3>Terminal</h3></div></div>  -->
+       <button class="btn btn-default" id="button">Directory</button>
+    
       <div class="row-fluid span12">
-        <div class="span2" id="toggle">
-      <div id="treeView"></div></div>
-        <div class="span5 ">
+        <div class="span2" id="hidden_content">
+      <div id="treeView" style="margin-top:38px;"></div></div>
+        <!-- <div class="span5">
 
           <pre id="editor">// Type your code here </pre>
           <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -248,70 +349,87 @@ jQuery(document).ready(function($) {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/javascript");</script>
+    <button class="btn btn-success" style="float:right;">Save</button>
+    </div> -->
+    <div class="span5">
+      <button class="btn btn-success" style="margin-left:86%;margin-bottom:5px;">Save</button>
+
+          <pre id="editor">// Type your code here </pre>
+          <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/chrome");
+    editor.getSession().setMode("ace/mode/javascript");</script>
+     
+    
+    
+   
+
     </div>
     
-    <div class="span5">
+    <div class="span7">
 
-    <div id="tilda"></div>
+    <div id="tilda" style="margin-top:38px;"></div>
+    
         </div>
+
       </div>
-      <script>
-$( document.getElementById("clickme") ).click(function() {
-$( "#toggle" ).toggle( "slide" );
-});
-</script>
-
-<script>
-String.prototype.replaceAll = function(search, replace)
-{
-    //if replace is null, return original string otherwise it will
-    //replace search string with 'undefined'.
-    if(!replace) 
-        return this;
-
-    return this.replace(new RegExp('[' + search + ']', 'g'), replace);
-};
-
-// var str = 'ABCADRAE';
-// alert(str.replaceAll('A','X')); 
-
-//There is gonna be problem with firefox websockets, solve that later 
-  address= "ws:127.0.0.1:4000";
-  ws = new WebSocket(address);
-  ws.onopen = function(){
-    ws.send("Connnecting");
-  } 
-  ws.onmessage = function(msg){ 
-    console.log(msg.data);
-    console.log(msg.data);
-    $("body").append("<div>"+msg.data.replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('\n','<br />')+"</div>");
-  }
-  ws.onclose = function(){
-    $("body").append("End");
-  }
-</script>
-
+     
+        </div>
+        <hr>
 
       
-    <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- // <script src="index_files/jquery.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-transition.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-alert.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-modal.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-dropdown.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-scrollspy.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-tab.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-tooltip.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-popover.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-button.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-collapse.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-carousel.js"></script> -->
-    <!-- // <script src="index_files/bootstrap-typeahead.js"></script> -->
+      
+    </div>
 
   
 
-</body></html>
+    <!-- JavaScript -->
+    
+     <script src="js/bootstrap.js"></script>
+           <script>
+// $(document).ready(function () {
+//     $.fn.popup.defaults.pagecontainer = '.container'
+// });
+// </script>
+
+<!-- <div id="fadeandscale" class="well">
+    <div class="span5">
+
+          <pre id="editor">// Type your code here </pre>
+          <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/chrome");
+    editor.getSession().setMode("ace/mode/javascript");</script>
+     
+    <button class="btn btn-success" style="margin-left:73%;">Save</button>
+    <button class="fadeandscale_close btn btn-default">Close</button>
+   
+
+    </div>
+
+   
+    
+</div> -->
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $("#button").toggle(function() {
+        $(this).text('Close');
+    }, function() {
+        $(this).text('Directory');
+    }).click(function(){
+        $("#hidden_content").slideToggle("fast");
+    });
+});
+</script>
+
+
+   
+
+   
+
+  </body>
+</html>

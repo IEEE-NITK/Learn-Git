@@ -1,0 +1,9 @@
+TO RUN THE REAL TIME SERVER DO: 
+
+1. bundle install 
+
+2. bundle exec ruby server.rb
+
+3. For Production use: 
+
+  ENVIRONMENT=PRODUCTION bundle exec ruby sever.rb

@@ -1,0 +1,10 @@
+gem 'eventmachine'
+gem 'em-websocket'
+gem "redis"
+gem 'json'
+gem 'rails'
+gem 'sqlite3'
+
+group :test do 
+	gem 'rspec'
+end
