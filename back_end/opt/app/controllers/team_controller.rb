@@ -12,7 +12,7 @@ class TeamController < ApplicationController
         if !user.first.nil? && !course.nil?
             user = user.first
             #Add a notification to the user
-            makeNotification(user.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for #{course.name} course!")
+            makeNotification(user.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for #{course.name} course!","Tinvite","/acceptInvite?course_id=#{course.id}")
             #create a new Team
             team = Team.new
             team.name = params[:tname]
