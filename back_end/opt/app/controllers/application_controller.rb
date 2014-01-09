@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def makeNotification(targetUsers,notification_string)
+    def makeNotification(targetUsers,notification_string,type="Tinvite",link=nil)
         #DO THIS THROUGH A SIDEKIQ WORKER!!!!
         #Extend the target user to be multiple users when pushed to sidekiq!
         #notification should look like this - [<notification string>,<user_id or user_name>]
-        notification = [notification_string,current_user.id]
+        notification = {content: notification_string,from: current_user.id, time: Time.now, type: type, link: link}
         NotificationMaker.perform_async(targetUsers,notification)
     end
 
