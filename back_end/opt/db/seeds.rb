@@ -16,6 +16,7 @@ c.prerequisites = "None"
 c.rating = 10.00
 c.references = "http://www.git-tower.com/blog/git-cheat-sheet-detail/,http://git-scm.com/"
 c.useful_materials = "http://git-scm.com/book"
+c.image_url = "git.jpg"
 c.mcount = 1
 c.id=1
 c.save
@@ -161,6 +162,7 @@ s.save
 #Course 2
 c=Course.new
 c.name="First Step Using Git"
+c.image_url = "git1.jpg"
 c.objective="To develop a quiz game using Git, on being paired with another developer thus inducing team work."
 c.problem="Git"
 c.prerequisites="Git Basics Course"

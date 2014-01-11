@@ -1,47 +1,94 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-	<%= stylesheet_link_tag "normalize" %>
-	<%= stylesheet_link_tag "grid" %>
-	<%= stylesheet_link_tag "style" %>
-	<!--<link rel="stylesheet" href="normalize.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="buttontest.css" type="text/css" media="screen">-->
-		<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<%= javascript_include_tag "/assets/jquery.min.js" %>
+		<%= javascript_include_tag "/assets/skel.min.js" %>
+		<%= javascript_include_tag "/assets/init.js" %>
+			<%= stylesheet_link_tag "/assets/skel-noscript.css" %>
+			<%= stylesheet_link_tag "/assets/style.css" %>
+			<%= stylesheet_link_tag "/assets/style-wide.css" %>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	</head>
+	<body>
 
-	<!--<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">-->
-	<!-- <link rel="stylesheet" href="css/style.min.css" type="text/css" media="screen"> -->
-	<!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-</head>
+		<!-- Header -->
+			<section id="header" class="dark">
+				<header>
+					<h1>Welcome to OPT</h1>
+					<p>A website that teaches software engineering</p>
+					<p>With love from <a href="http://nitkrug.herokuapp.com" target="_blank">NITK RUG</a></p>
+				</header>
+				<footer>
+					<a href="#first" class="button scrolly">Know More</a>
+					<a href="#second" class="button scrolly">Log In</a>
+				</footer>
+			</section>
+			
+		<!-- First -->
+			<section id="first" class="main">
+				<header>
+					<div class="container">
+						<h2>NITK OPT </h2>
+						<p>Our aim through this project is to enhance the software development process by making it as interactive and collaborative as possible</p>
+						<p>We have introduced a few courses which you can learn right now in this browser</p>
+						<p>Scroll down to know more about the list of courses available</p>
+						<div class="row">
+							<div class="12u">
+								<footer>
+									<a href="#tenth" class="button scrolly">List of Courses</a>
+								</footer>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="content dark style1 featured">
+					<div class="container">
+						<div class="row">
+							<div class="4u">
+								<section id="tenth">
+									<span class="feature-icon"><span class="fa fa-github-alt"></span></span>
+									<header>
+										<h3>GIT</h3>
+									</header>
+									<p>We try to teach you the basics of Git version control by letting you create a simple game and making everything happen in this browser itself</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<span class="feature-icon"><span class="fa fa-css3"></span></span>
+									<header>
+										<h3>CSS</h3>
+									</header>
+									<p>We try to teach you the basics of CSS by letting you letting you apply styles to a simple webpage and making everything happen in this browser itself</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<span class="feature-icon"><span class="fa fa-html5"></span></span>
+									<header>
+										<h3>HTML5</h3>
+									</header>
+									<p>We try to teach you the basics of HTML5 by letting you letting you get back to the roots and building the structure of web pages</p>
+								</section>
+							</div>
+						</div>
+						<!-- <div class="row">
+							<div class="12u">
+								<footer>
+									<a href="#second" class="button scrolly">Gravida tempor lacinia</a>
+								</footer>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</section>
 
-<body>
-
-	<div class="menu">
-		<div class="container clearfix">
-
-			<div id="logo" class="grid_3">
-				<h1 style="color: 
-#383B3B
-;">NITK OPT</h1>
-			</div>
-
-			<div id="nav" class="grid_9 omega">
-				<ul class="navigation">
-					<li data-slide="1">Learn Git</li>
-					<li data-slide="2">What is Git ?</li>
-					<li data-slide="3">Why Learn Git ?</li>
-					<li data-slide="4">About Us</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
-
-
-	<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
-		<div class="container clearfix">
-
-			<div id="content" class="grid_7">
-				<h1>Want to learn Git ?</h1><br/>
-				<h2>Its now easier than ever </h2>
+		<!-- Second -->
+			<section id="second" class="main">
+				<header>
+					<div class="container">
+						<h2>Log In / Sign Up</h2>
+						
 				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 				 <h3><%= f.label :email %></h3><br />
 				  <%= f.email_field :email, :autofocus => true %>
@@ -66,87 +113,101 @@
 				<h3>Sign In via </h3> -->
 				<%= link_to image_tag("plus.jpeg",width:"35px",height:"35px") ,  user_omniauth_authorize_path(:google_oauth2) %>
 				<%= link_to image_tag("git.jpeg",width:"45px",height:"45px") ,  user_omniauth_authorize_path(:github) %>
-				<!-- <a href="#"><%= image_tag("git.jpeg",width:"45px",height:"45px")%></a> -->
-
-					
-			</div>
-			<div id="decorative" class="grid_5 omega">
-				<%= image_tag("images.jpeg",width:"400px",height:"400px")%>
-			</div>
-
-		</div>
-	</div>
-
-
-
-	<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
-		<div class="container clearfix">
-
-			<div id="content" class="grid_12">
-				<h1>What is Git ?</h1><br/>
+					</div>
+				</header>
 				
-				<h4>In software development, Git /ɡɪt/ is a distributed revision control and source code management (SCM) system with an emphasis on speed.[4] Git was initially designed and developed by Linus Torvalds for Linux kernel development in 2005. Based on a recent survey of Eclipse IDE users, Git is reported to have 30% adoption as of 2013.<br/>
-
-Every Git working directory is a full-fledged repository with complete history and full version tracking capabilities, not dependent on network access or a central server.<br/>
-
-Git is free software distributed under the terms of the GNU General Public License version 2.</h4>
-			</div>
-
-		</div>
-	</div>
-
-
-
-	<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
-		<div class="container clearfix">
-
-			<div id="content" class="grid_12">
-				<h1>Why Learn Git ?</h1><br/>
-				<h4>You see, when you learn Git you learn two things.<br/>
-
-Thing A: The mechanics of Git, the commands, how to use them – things like push/pull, branching, rebase and so on.<br/>
-
-Thing B: The workflow of Version Control – code management for team work, individual work and deployment. The freedom to experiment knowing you can always go back to a working version. Breaking problems down into smaller blocks and doing and finishing one thing at a time (ie. do one small commit at a time) instead of trying several things all at once and getting stuck.<br/>
-
-When you teach students Git, you aren’t really teaching them Thing A. They should be able to teach themselves this. (If nothing else, 10 years ago SVN was an industry standard, now Git is one, in 10 years time maybe it’ll be Mercurial or something else we haven’t even heard of yet. Tools change.)<br/>
-
-What you are really teaching them is Thing B. That’s really important, and the good habits that result from that take time to learn and get used to. Universities absolutely should be teaching good development practices.</h4>
-<p></p>
-
-			</div>
-
-
+			</section>
 			
+		<!-- Third -->
+			<section id="third" class="main">
 
-		</div>
-	</div>
+				<div class="content dark style3">
+
+					<div class="container">
+						<div class="row">
+							<h2 style="font-size:2.25em;margin-left:37%;">Who We Are </h2>
+						</div>
+						<!-- <div class="row">
+							<div class="12u">
+								<footer>
+									<a href="#second" class="button scrolly">Gravida tempor lacinia</a>
+								</footer>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</section>
+
+		
+		
+		<!-- Fourth -->
+			<section id="fourth" class="main">
+				<header>
+					<div class="container">
+						<h2>Feedback</h2>
+						<p>Do you like what we have done ?</p>
+						<p>Do let us know what you think about what we have built</p>
+					</div>
+				</header>
+				<div class="content style4 featured">
+					<div class="container small">
+						<form method="post" action="#">
+							<div class="row half">
+								<div class="6u"><input type="text" class="text" placeholder="Name" /></div>
+								<div class="6u"><input type="text" class="text" placeholder="Email" /></div>
+							</div>
+							<div class="row half">
+								<div class="12u"><textarea name="message" placeholder="Message"></textarea></div>
+							</div>
+							<div class="row">
+								<div class="12u">
+									<ul class="actions">
+										<li><input type="submit" class="button" value="Send Message" /></li>
+										
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+					<li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+					<li><a href="#" class="fa fa-google-plus solo"><span>Google+</span></a></li>					
+					<li><a href="#" class="fa fa-github solo"><span>GitHub</span></a></li>
+				</ul>
+				<div class="copyright">
+					<ul class="menu">
+						<li><a href="http://nitkrug.herokuapp.com">NITK RUG</a></li>
+						<li>Surathkal, India
+						
+					</ul>
+				</div>
+			</section>
+
+	</body>
 
 
 
 
 
-	<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
-		<div class="container clearfix">
 
-			<div id="content" class="grid_12">
-				<h1>About Us</h1>
-				<h2>NITK IEEE</h2>
-				<h4> 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-			</div>
 
-		</div>
-	</div>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<%= javascript_include_tag "jquery.stellar.min.js" %>
-	<%= javascript_include_tag "waypoints.min.js" %>
-	<%= javascript_include_tag "jquery.easing.1.3.js" %>
-	<%= javascript_include_tag "scripts.js" %>
-	<!--<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
-	<script type="text/javascript" src="js/waypoints.min.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>-->
-	<!-- <script type="text/javascript" src="js/scripts.min.js"></script> -->
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

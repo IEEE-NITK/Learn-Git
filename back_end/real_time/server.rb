@@ -8,7 +8,6 @@ soc = []
 
 EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 
-	# t= Stage.new
 	git_user = nil
 	repo_id=nil
 	ws.onopen do
@@ -23,7 +22,6 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 	end
 
 	ws.onmessage do |msg|
-		# msg
 	  puts "got message #{msg}"
 		temp = msg.split(":")
 		op = temp[0]

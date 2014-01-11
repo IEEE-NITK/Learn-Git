@@ -33,7 +33,6 @@ class Directory
         child << tmp_hash
       end
     end
-    # p child
   child
   end
 

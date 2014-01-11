@@ -3,4 +3,8 @@ class UserController < ApplicationController
 
   def show
   end
+
+  def dashboard
+  	@courses = Course.all
+  end
 end

@@ -11,7 +11,7 @@ Opt::Application.routes.draw do
   root 'home#index'
   # get "/:controller/:action" => "controller#action"
   # post "/:controller/:action" => "controller#action"
-  get "/dashboard" => "home#dashboard"
+  get "/dashboard" => "user#dashboard"
   get "/team/new" => "team#new"
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

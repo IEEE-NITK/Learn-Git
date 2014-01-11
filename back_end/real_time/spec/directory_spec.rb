@@ -31,30 +31,19 @@ class CreateDirectory
 	end
 end
 
-def equal? array1 , array2
-	if array1.each do ||
-end
-
-tmp1 = CreateDirectory.new "./test1"
-tmp1.create_dir all_test_data , ""
-dir1 =Directory.new
-dir1_hash= dir1.get_files_in_directory "test1" , "./" , [])
-tmp1.destroy
-
-tmp2 = CreateDirectory.new "./test2"
-tmp1.create_dir dir1 , ""
-dir1 =Directory.new
-dir1_hash= dir1.get_files_in_directory "test1" , "./" , [])
-tmp1.destroy
-
-
-
-# describe "For Directories" do 
-
-# 	it "should give all the directories and sub directories with files"
-# 		d = Directory.new
-# 		d.get_files_in_directory "tmp" , "." , hash
-# 		# hash to_be 
-# 	end	
-
+# def equal? array1 , array2
+# 	# if array1.each do 
 # end
+
+# tmp1 = CreateDirectory.new "./test1"
+# tmp1.create_dir all_test_data , ""
+# dir1 =Directory.new
+# dir1_hash= dir1.get_files_in_directory("test1" , "./" , [])
+# tmp1.destroy
+
+# tmp2 = CreateDirectory.new "./test2"
+# tmp1.create_dir dir1 , ""
+# dir1 =Directory.new
+# dir1_hash= dir1.get_files_in_directory("test1" , "./" , [])
+# tmp1.destroy
+
