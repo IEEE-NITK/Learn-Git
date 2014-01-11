@@ -43,6 +43,9 @@ class Directory
 
   def save_content prefix,file_path,content
     #CHECK THE AUTHORIZATION BASED ON THE URL!!
+    puts content
+    puts prefix
+    puts file_path
     f = File.open(prefix+file_path,"w+")
     f.puts content
     f.close

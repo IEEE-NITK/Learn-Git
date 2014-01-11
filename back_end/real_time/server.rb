@@ -60,6 +60,7 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			  ws.send({opt: "file-content",content: line}.to_json)
 			end
 		elsif op == "save"
+			puts "temp0"*100
 			temp.delete(op)
 			file_path=temp[0]
 			temp.delete(op)
