@@ -49,6 +49,6 @@ class Directory
     f = File.open(prefix+file_path,"w+")
     f.puts content
     f.close
-  end
+  end 
 
 end
