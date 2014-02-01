@@ -10,6 +10,7 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 
 	git_user = nil
 	repo_id=nil
+
 	ws.onopen do
 		soc << ws
 		puts "#{soc.length} clients are connected"
@@ -27,6 +28,7 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 		op = temp[0]
 		#Create an instance of the git repo !!
 		if(op=="cmd")
+
 			temp.delete(op)
 			out=git_user.execute temp.join(':')
 			puts out.inspect
@@ -35,13 +37,20 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 				ws.send({opt: "output",content: line}.to_json)
 			end
 			valid = Validator.new(repo_id)
+			# puts "IT IS FINALLY:"+(valid.validate(msg,out)).to_s
 			if(valid.validate(msg,out))
 				new_stage = valid.next_stage
+				puts "-"*25
+				puts new_stage.inspect
 				base="course-"
 				output_array=[{opt: base+"body", content: new_stage.pbody},{opt: base+"references", content: new_stage.references},{opt: base+"hint", content: new_stage.hints},{opt: base+"objective", content: new_stage.objective}]
+				puts "-"*25
+				puts output_array
+
 				output_array.each do |hash|
 					ws.send(hash.to_json)
 				end
+
 				if valid.get_user == 1
 					ws.send({opt: "progress1",content: valid.step_index}.to_json)
 				else
@@ -70,7 +79,9 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 			#SEND SOMETHING TO CONFIRM AND AVOID SAVE BUTTON FOR Repeation
 		else
 			git_user = GitUser.new(temp[1])
+			puts "-"*100
 			repo_id = temp[1]
+			puts repo_id
 		end
 	end
 

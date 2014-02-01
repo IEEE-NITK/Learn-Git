@@ -12,7 +12,7 @@ module RepoHelper
             repo.status = 1
             `mkdir #{Dir.pwd}/../repositories/#{z}`
             repo.path ="../repositories/#{z}"
-            repo.order = [(1..9)] #TODO: Order to be populated dynamically
+            repo.order = [1,2,4,5,6,7,8,9] #TODO: Order to be populated dynamically
             repo.save
         end
     end
