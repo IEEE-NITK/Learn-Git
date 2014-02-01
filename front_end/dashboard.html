@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <!-- Page Specific CSS -->
     <!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
-    
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400' rel='stylesheet' type='text/css'>
     <link href="css/heroic-features.css" rel="stylesheet">
     
 <link href="jquery.terminal.css" rel="stylesheet"/>
@@ -56,7 +56,7 @@ body {
 </style>
 <script>
 
-
+ var parentNode;
 jQuery(document).ready(function($) {
    $(window).scroll(function() {
       $('.tilda').each(function() {
@@ -76,18 +76,48 @@ $('#treeView').jstree({
 },"plugins":["themes","json_data","ui"]
 
 }).bind("select_node.jstree",function(e,data)
-                    {
-                     
-                
-                              console.log(data.inst.get_text(data.rslt.obj) + data.rslt.obj.attr("href"));
-                        
-                        
-                    })
+{
+    var i, j, r = [];
+    console.log(data);
+    
+   
+    // console.log(jQuery.jstree._reference("#treeView")._get_parent(parentNode));
+    // data.inst._get_parent(data.rslt.obj).open_node(this, false);
+    data.inst.toggle_node(data.rslt.obj);
+    // parentNode.open_node(this,false,false);
+    data.rslt.obj.siblings().css( "display", "none" );
+  
+  if (window["parentNode"]==null) { 
+    window["parentNode"] = data.rslt.obj;
+    clickme(data);
+  };
+  window["parentNode"] = data.rslt.obj;
+    // for(i = 0, j = data.selected.length; i < j; i++) {
+    //   console.log(data.selected[i])
+    //   // r.push(data.instance.get_node(data.selected[i]).text);
+    // }
+    // $('#event_result').html('Selected: ' + r.join(', '));  
+  console.log(data.inst.get_text(data.rslt.obj) + data.rslt.obj.attr("href"));
+})
 });
+function clickme(data){
+  $('#click').click(function(){
+   data.inst.toggle_node(window["parentNode"]);
+   console.log(data.rslt.obj);
+
+   window["parentNode"].siblings().css( "display", "block" );
+});
+}
+
+
+// $('.treeView').jstree().delegate(".jstree-open>a", "click.jstree", function(event){
+//   close_node(this,false,false);
+// }).delegate(".jstree-closed>a", "click.jstree", function(event){
+//     open_node(this,false,false);
+// });
 </script>
 
 <script>
-
 
 String.prototype.strip = function(char) {
     return this.replace(new RegExp("^" + char + "*"), '').
@@ -322,8 +352,10 @@ jQuery(document).ready(function($) {
       
       
       <div class="row">
-        <div class="col-lg-12">
-           <h3>Workspace</h3>
+        <div class="col-lg-12" style="display:inline-block;">
+           <h3 style="float:left;">Workspace</h3>
+           <a href="#" style="float:left;margin-top:25px;margin-left:10px;" id="click">Go Back</a>
+           <div id="treeView" style="margin-top:38px; float:left;margin-left:40px;"></div>
         </div>
       </div><!-- /.row -->
       
@@ -336,11 +368,11 @@ jQuery(document).ready(function($) {
         <div class="span1"><h3>Directory</h3></div>
         <div class="span4 offset1 "><h3>Code Editor</h3></div>
         <div class="span5"><h3>Terminal</h3></div></div>  -->
-       <button class="btn btn-default" id="button">Directory</button>
+      
     
       <div class="row-fluid span12">
-        <div class="span2" id="hidden_content">
-      <div id="treeView" style="margin-top:38px;"></div></div>
+        
+      
         <!-- <div class="span5">
 
           <pre id="editor">// Type your code here </pre>
