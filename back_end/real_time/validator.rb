@@ -13,6 +13,7 @@ class Validator
 		if @stage && @stage.validation[0] == "cmd_r"
 			puts "**#{(msg =~ @stage.validation[1]).nil?}" *50
 			if (msg =~ @stage.validation[1]).nil?
+				puts "IT IS FINALLY: False"
 				return false
 			else
 				#This will be more complicated!![TODO]
@@ -23,6 +24,7 @@ class Validator
 						@repo.save
 					end
 				end
+				puts "IT IS FINALLY: True"
 				return true
 			end
 		end
@@ -33,10 +35,12 @@ class Validator
 	end
 
 	def get_user
-		if @repo.order.size == 8
-			1
-		else
-			2
+		if @repo.course_id == 2
+			if @repo.order.size == 8
+				1
+			else
+				2
+			end
 		end
 	end
 

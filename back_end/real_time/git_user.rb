@@ -10,16 +10,18 @@ class GitUser
 
 	def execute cmd
 		# if cmd ~= 'git clone *'
-		cmd = cmd[3,cmd.length]
-		if(cmd.include?"clone")
-			run_clone(cmd)
-		else
-		puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/#{cmd}\n"
-		stdin, stdout, stderr = Open3.popen3('git-shell')
-		stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/ #{cmd}\n"
-		stdin.close
-		flag = true
-		stdout
+		if !cmd.empty?
+			cmd = cmd[3,cmd.length]
+			if(cmd.include?"clone")
+				run_clone(cmd)
+			else
+			puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/#{cmd}\n"
+			stdin, stdout, stderr = Open3.popen3('git-shell')
+			stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/ #{cmd}\n"
+			stdin.close
+			flag = true
+			stdout
+			end
 		end
 
 		# stdout.each do |line|
