@@ -5,13 +5,14 @@ Opt::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   authenticated :user do
-    root "user#show" ,:as => "authenticated_root"
+    root "user#dashboard" ,:as => "authenticated_root"
   end
 
   root 'home#index'
   # get "/:controller/:action" => "controller#action"
   # post "/:controller/:action" => "controller#action"
-  get "/dashboard" => "user#dashboard"
+  # get "/dashboard" => "user#dashboard"
+  # get "/course/:course_id/stage/stage_id" => ""
   get "/team/new" => "team#new"
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
