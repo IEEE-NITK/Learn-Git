@@ -20,7 +20,8 @@
 <script type="text/javascript" src="/assets/jquery.jstree.js"></script>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+<script src="/assets/server.js"></script>
+<script src="/assets/client.js"></script>
 
 <style>
 body {
@@ -139,7 +140,7 @@ $('body').data('tilda', this);
 jQuery(document).ready(function($) {
 
   $('#tilda').tilda(function(command, terminal) {
-    ws.send("cmd:"+command);
+    s.ws.send("cmd:"+command);
         // terminal.echo('you type command "' + command + '"');
       });
   $('#testbutton').click(function(){
@@ -324,9 +325,13 @@ function test(name)
 // alert(str.replaceAll('A','X'));
 
 //There is gonna be problem with firefox websockets, solve that later
-address= "ws:10.42.0.1:4000";
-ws = new WebSocket(address);
-
+address= "ws:127.0.0.1:4000";
+s = new Server();
+var onOpenSendMsg = "id:<%= current_user.repos.where(course_id:params[:id]).first.id %>";
+s.init(address, onOpenSendMsg);
+//s.init(address);
+//ws = new WebSocket(address);
+/*
 ws.onopen = function(){
     // ws.send("Connnecting");
     ws.send("id:<%= current_user.repos.where(course_id:params[:id]).first.id %>")
@@ -417,7 +422,7 @@ else if(obj.opt == "progress1")
   ws.onclose = function(){
     // $("body").append("End");
   }
-
+*/
   </script>
   <button class="btn btn-success" style="float:right;" onclick="write_content();">Save</button>
 </div>
