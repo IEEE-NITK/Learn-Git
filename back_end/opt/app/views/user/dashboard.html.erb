@@ -174,7 +174,10 @@ body {
           </div>
           <div class="col-lg-2 offset1" style="margin-top:20px;">
           <!-- This one should be dynamic !!! -->
-            <a class="btn btn-success" href="/">Start</a>
+          <%= form_for(:course , url: course_join_path) do |f| %>
+            <input type="hidden" value="<%= course.id %>" name="id">
+            <%= f.submit "Start", class: "btn btn-success" %>
+          <% end %>
           </div>
           </div>
         </div>

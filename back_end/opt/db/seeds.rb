@@ -32,6 +32,7 @@ s.hints='$ git config --local user.name "John Doe"
 $ git config --local user.email johndoe@example.com'
 s.references="http://git-scm.com/book/en/Customizing-Git-Git-Configuration"
 # s.validation = []
+s.validation = ["cmd_r",/git config/]
 s.useful_links=""
 s.extras=""
 s.save
@@ -44,6 +45,7 @@ s.objective="To initialise a git repository."
 s.pbody="In order to do anything in Git, you have to have a Git repository. This is where Git stores the data for the snapshots you are saving. Initialize a new one from an existing directory, such as a new project or a project new to source control."
 s.hints="$ git init"
 s.references="http://git-scm.com/docs/git-init"
+s.validation = ["cmd_r",/git init/]
 s.useful_links=""
 s.extras="-q\n
 --quiet\n
@@ -61,6 +63,7 @@ s.objective="To create a new file with some contents."
 s.pbody=""
 s.hints=""
 s.references=""
+s.validation = ["cmd_r",//]
 s.useful_links=""
 s.extras=""
 s.save
@@ -73,6 +76,7 @@ s.objective="To check the status of the repository"
 s.pbody="In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command."
 s.hints="$ git status"
 s.references="http://git-scm.com/docs/git-status"
+s.validation = ["cmd_r",/git status/]
 s.useful_links=""
 s.extras="-s\n
 --short\n
@@ -92,6 +96,7 @@ s.pbody='In Git, you have to add file contents to your staging area before you c
 s.hints="$ git add <filename>\n
 $ git add ."
 s.references="http://git-scm.com/docs/git-add"
+s.validation = ["cmd_r",/git add/]
 s.useful_links=""
 s.extras=""
 s.save
@@ -104,6 +109,7 @@ s.objective="To check the status of the repository"
 s.pbody="In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command."
 s.hints="$ git status"
 s.references="http://git-scm.com/docs/git-status"
+s.validation = ["cmd_r",/git status/]
 s.useful_links=""
 s.extras="-s\n
 --short\n
@@ -122,6 +128,7 @@ s.objective="To commit the current stage of the tracked repository."
 s.pbody="Now that you have staged the content you want to snapshot with the git add command, you run git commit to actually record the snapshot. Git records your name and email address(done in stage 1) with every commit you make."
 s.hints='$ git commit -m "<commit message>"'
 s.references="http://git-scm.com/docs/git-commit"
+s.validation = ["cmd_r",/git commit -/]
 s.useful_links=""
 s.extras='$ git commit -am "<commit message>" : To directly commit with all tracked files.'
 s.save
@@ -134,6 +141,7 @@ s.objective="To check the status of the repository"
 s.pbody="In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command."
 s.hints="$ git status"
 s.references="http://git-scm.com/docs/git-status"
+s.validation = ["cmd_r",/git status/]
 s.useful_links=""
 s.extras="-s\n
 --short\n
@@ -152,6 +160,7 @@ s.objective="To get a list of previous commits and its specifications."
 s.pbody="The git log command gives a record of the recent commits on the current git initialised repository."
 s.hints="$ git log"
 s.references="http://git-scm.com/docs/git-log"
+s.validation = ["cmd_r",/git log/]
 s.useful_links=""
 s.extras=""
 s.save

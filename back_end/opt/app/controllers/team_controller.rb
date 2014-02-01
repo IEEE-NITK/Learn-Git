@@ -2,14 +2,19 @@ require 'securerandom'
 class TeamController < ApplicationController
 
     def new
-
+        course = Course.find_by_id(params[:id]) 
+        if !course.nil? && course.mcount > 1
+            @Team = Team.new
+        else
+            redirect_to root_path
+        end
     end
 
     def create
         #Expand to allow more than 1 user being invited
         user = User.where(email: params[:email])
-        course = Course.find_by_id(params[:course_id])
-        if !user.first.nil? && !course.nil?
+        course = Course.find_by_id(params[:course_id]) 
+        if !user.first.nil? && !course.nil? && !coursecourse.mcount > 1
             user = user.first
             #Add a notification to the user
             makeNotification(user.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for #{course.name} course!","Tinvite","/acceptInvite?course_id=#{course.id}")
