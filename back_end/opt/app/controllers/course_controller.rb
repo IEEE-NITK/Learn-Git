@@ -18,20 +18,18 @@ class CourseController < ApplicationController
     end
     puts "-"*100
     puts flag 
+    #THis is to check if he is registered for the course or not
     if flag == 0
       redirect_to root_path
     else
-      if @course.mcount < 1
-
-
-      end
       # @notification = cour
-    	@stage = Stage.new
+    	# @stage = Stage.new
       repos = current_user.repos
     	# puts "**"*100
-      puts current_user.inspect
-      num1 = repos.first.order.find_index(repos.first.status)
-      t = repos.find_by_course_id(@course.id).team
+      # puts current_user.inspect
+      @all_repos = Repo.where(team_id: repos.find_by_course_id(@course.id).team.id) 
+      # num1 = repos.first.order.find_index(repos.first.status)
+      # @t = repos.find_by_course_id(@course.id).team
       # t = current_user.teams.first
       # r = Repo.where(team_id: t.id)
       # r = r.select{|s| s.id != repos.first.id}
@@ -60,7 +58,7 @@ class CourseController < ApplicationController
   	#Check if course is of team or not
   	if @course.mcount > 1
   		#Handle Team registration
-
+      redirect_to "/team/new/#{@course.id}"
   	else
   		create_team(@course.id)
       puts "redddirectinggg"*20

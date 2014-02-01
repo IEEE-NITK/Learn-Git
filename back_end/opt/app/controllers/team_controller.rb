@@ -38,9 +38,7 @@ class TeamController < ApplicationController
     end
 
     def acceptInvite
-
         course = Course.find(params[:course_id])
-
         if course
             team = current_user.teams.find_by_course_id(course.id)
             if team
@@ -76,8 +74,7 @@ class TeamController < ApplicationController
                 `mkdir #{Dir.pwd}/../repositories/#{z}`
                 repo.path ="../repositories/#{z}"
                 repo.order = [1,2,3,4,8,10,11,12] #TODO: Order to be populated dynamically
-                repo.save
-            end
+                repo.save            end
     end
 
 
