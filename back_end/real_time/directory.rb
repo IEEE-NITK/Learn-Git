@@ -37,8 +37,11 @@ class Directory
   end
 
   def get_content prefix,file_path
-    puts prefix+file_path
-    f = File.open(prefix+file_path,"r+")
+    #Check if he is autorized to do so
+    if File.file?(prefix+file_path)
+      puts prefix+file_path
+      f = File.open(prefix+file_path,"r+")
+    end
   end
 
   def save_content prefix,file_path,content

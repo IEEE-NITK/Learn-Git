@@ -13,10 +13,12 @@ Opt::Application.routes.draw do
   # post "/:controller/:action" => "controller#action"
   # get "/dashboard" => "user#dashboard"
   # get "/course/:course_id/stage/stage_id" => ""
-  get "/team/new" => "team#new"
+  get "/team/new/:id" => "team#new"
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/courses" => "course#index"
+  get "/course/:id" => "course#show"
+  post "/course/join" => "course#join"
   # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

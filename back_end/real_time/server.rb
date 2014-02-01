@@ -6,7 +6,7 @@ require_relative './class'
 soc = []
 
 
-EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
+EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 
 	git_user = nil
 	repo_id=nil
@@ -55,9 +55,11 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 		elsif op == "open"
 			temp.delete(op)
 			text=Directory.new.get_content "../",temp.join(':')
-			text.each_line do |line|
-				puts line
-			  ws.send({opt: "file-content",content: line}.to_json)
+			if text
+				text.each_line do |line|
+					puts line
+				  ws.send({opt: "file-content",content: line}.to_json)
+				end
 			end
 		elsif op == "save"
 			puts "temp0"*100
@@ -65,7 +67,7 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			file_path=temp[0]
 			temp.delete(op)
 			text=Directory.new.save_content "../",file_path,temp.join(':')
-			#SEND SOMETHING TO CONFIRM AND AVOID SAVE BUTTON
+			#SEND SOMETHING TO CONFIRM AND AVOID SAVE BUTTON FOR Repeation
 		else
 			git_user = GitUser.new(temp[1])
 			repo_id = temp[1]
