@@ -12088,7 +12088,7 @@ var editorCss = ".ace_editor {\
 position: relative;\
 overflow: hidden;\
 font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;\
-font-size: 12px;\
+font-size: 18px;\
 line-height: normal;\
 color: black;\
 -ms-user-select: none;\
