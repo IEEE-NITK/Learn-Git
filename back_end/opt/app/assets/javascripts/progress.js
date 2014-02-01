@@ -43,11 +43,26 @@ Progress.prototype.init = function( maxProgressValue, initialProgressValue){
 Progress.prototype.increment = function(incrementValue){
 	if ( incrementValue < 0 )
 		return;
+	
 	if ( (this.currentProgressValue + incrementValue) < this.maxProgressValue ) {
-		this.currentProgressValue = this.maxProgressValue
+		this.currentProgressValue = this.currentProgressValue + incrementValue;
 	}
 	else {
-		this.currentProgressValue = this.currentProgressValue + incrementValue;
+		this.currentProgressValue = this.maxProgressValue
+	}
+	
+	this.updatePercentage();
+}
+
+Progress.prototype.setCurrentValue = function(currentValue) {
+	if ( currentValue >= this.maxProgressValue ) {
+		this.currentProgressValue = this.maxProgressValue;
+	}
+	else if ( currentValue < 0 ) {
+		this.currentProgressValue = 0;
+	}
+	else {
+		this.currentProgressValue = currentValue;
 	}
 	this.updatePercentage();
 }

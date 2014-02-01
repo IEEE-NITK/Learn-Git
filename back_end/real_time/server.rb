@@ -50,12 +50,7 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 				output_array.each do |hash|
 					ws.send(hash.to_json)
 				end
-
-				if valid.get_user == 1
-					ws.send({opt: "progress1",content: valid.step_index}.to_json)
-				else
-					ws.send({opt: "progress2",content: valid.step_index}.to_json)
-				end
+				ws.send({opt: "progress1",content: valid.step_index,size: Repo.find(repo_id).order.size}.to_json)
 				# ws.send()
 				ws.send("Success!!")
 			else

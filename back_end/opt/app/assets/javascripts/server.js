@@ -7,7 +7,7 @@ Server.prototype.init = function(address, onOpenSendMsg) {
     this.address = address;
     this.numProgressBars = 0;
     this.progressBars = new Array();
-    
+    this.averageProgress = 0;
 
     this.ws = new WebSocket(address);
     
@@ -20,6 +20,8 @@ Server.prototype.init = function(address, onOpenSendMsg) {
     }
     this.ws.onmessage = function(msg){
         obj = jQuery.parseJSON(msg.data);
+        //console.log(msg.data)
+        console.log(obj.opt)
         var ws = this;
         switch( obj.opt ) {
             case "dir" :
@@ -67,37 +69,75 @@ Server.prototype.init = function(address, onOpenSendMsg) {
                 break;
 
             default :
-                if ( obj.opt.substring(0,7) == "progress" ) {
+                
+                if ( obj.opt.substring(0,8) == "progress" ) {
                     // We have progress..... Get the index if exists or create one....
-                    console.log("We have progress type....");
+                    
                     // Get the index first....
-                    var index = obj.opt.substring(8);
-                    if ( parseInt(index).isNan() ) {
+                    var ind = obj.opt.substring(8);
+                    
+                    var index = parseInt(ind);
+                    
+                    if ( isNaN(index) ) {
                         // Error in the index
-
+                        
                     }
                     else {
                         // No error
-                        if ( index > this.numProgressBars ){
+                        
+                        if ( typeof window["s"].progressBars[index] == 'undefined' ){
+                            // Does not exist......
+                            // Create .....
+                            temp = window["s"].progressBars[index] = new Progress();
+                            temp.init(obj.size,obj.content);
+                            window["s"].numProgressBars++;
+                        }
+                        else {
+                            window["s"].progressBars[index].setCurrentValue(obj.content);
+                        }
+
+                        var sum = 0.0;
+                        for ( var i=1; i<= window["s"].numProgressBars; i++ ){
+                            sum += window["s"].progressBars[i].getProgressPercent()
+                        }
+                        if ( window["s"].numProgressBars > 0 ){
+                            window["s"].averageProgress = (sum*1.0)/window["s"].numProgressBars;
+                        }
+                        else {
+                            window["s"].averageProgress = 0   
+                        }
+
+                        console.log("Average - "+window["s"].averageProgress);
+                        /*
+                        if ( index > window["s"].numProgressBars ){
                             // Create as many progress bars .....
-                            while ( index > this.numProgressBars ) {
-                                this.progressBars[++this.numProgressBars] = new Progress();
-                                console.log("progress bars created....");
+                            while ( index > window["s"].numProgressBars ) {
+                                temp = window["s"].progressBars[(++window["s"].numProgressBars)] = new Progress();
+                                if ( window["s"].numProgressBars == index ){
+                                    temp.init(obj.size, 0);
+                                }
                             }
                         }
-
-                        this.progressBars[index].increment(obj.content);
+                        
+                        window["s"].progressBars[index].increment(obj.content);
                         // Should be reflected in UI ...  ?!!!
-                        sum = 0.0;
-                        for ( var i=1; i<=numProgressBars; i++ ){
-                            sum += this.progressBars[i].getProgressPercent()
-                        }
-                        this.averageProgress = (sum*1.0)/this.numProgressBars;
+                        var sum = 0.0;
+                        for ( var i=1; i<= window["s"].numProgressBars; i++ ){
 
-                        console.log("average progress = "+this.averageProgress);
+                            sum += window["s"].progressBars[i].getProgressPercent()
+                        }
+
+                        if ( window["s"].numProgressBars > 0 ){
+                            window["s"].averageProgress = (sum*1.0)/window["s"].numProgressBars;
+                        }
+                        else {
+                            window["s"].averageProgress = 0   
+                        }
+                        */
                     }
                 }
                 else {
+                    console.log("Not progress");
                     $(".terminal-output").append("<div>"+obj.content.replaceAll("<","&lt;").replaceAll(">","&gt;")+"<div>");
                     $(".terminal-output").css("line-height","initial");
                     $(".terminal-output").css("font-size","15px");

@@ -21,7 +21,7 @@
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="/assets/server.js"></script>
-<script src="/assets/client.js"></script>
+<script src="/assets/progress.js"></script>
 
 <style>
 body {
@@ -325,8 +325,8 @@ function test(name)
 // alert(str.replaceAll('A','X'));
 
 //There is gonna be problem with firefox websockets, solve that later
-address= "ws:127.0.0.1:4000";
-s = new Server();
+address= "ws:10.42.0.1:4000";
+var s = new Server();
 var onOpenSendMsg = "id:<%= current_user.repos.where(course_id:params[:id]).first.id %>";
 s.init(address, onOpenSendMsg);
 //s.init(address);
