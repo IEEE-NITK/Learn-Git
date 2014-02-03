@@ -6,7 +6,7 @@ require_relative './class'
 soc = []
 
 
-EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
+EM::WebSocket.start(host: '0.0.0.0',port: 4000) do |ws|
 
 	git_user = nil
 	repo_id=nil
@@ -14,12 +14,6 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 	ws.onopen do
 		soc << ws
 		puts "#{soc.length} clients are connected"
-		d = Directory.new
-		tmp = []
-		d.get_files_in_directory ".." , "" , tmp
-		hash = {opt: "dir",content: tmp}
-		puts hash
-		ws.send(hash.to_json)
 	end
 
 	ws.onmessage do |msg|
@@ -63,7 +57,10 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 			end
 		elsif op == "open"
 			temp.delete(op)
-			text=Directory.new.get_content "../",temp.join(':')
+      repo = Repo.find(repo_id)
+      #puts temp
+      #puts repo.path+temp.join(':')
+      text=Directory.new.get_content repo.path+"/",temp.join(':')
 			if text
 				text.each_line do |line|
 					puts line
@@ -73,15 +70,29 @@ EM::WebSocket.start(host: '10.42.0.1',port: 4000) do |ws|
 		elsif op == "save"
 			puts "temp0"*100
 			temp.delete(op)
+      repo = Repo.find(repo_id)
 			file_path=temp[0]
-			temp.delete(op)
-			text=Directory.new.save_content "../",file_path,temp.join(':')
+      temp.delete(file_path)
+      puts "*"*20
+      puts temp
+      text=Directory.new.save_content repo.path+"/",file_path,temp.join(':')
 			#SEND SOMETHING TO CONFIRM AND AVOID SAVE BUTTON FOR Repeation
 		else
 			git_user = GitUser.new(temp[1])
 			puts "-"*100
 			repo_id = temp[1]
-			puts repo_id
+      d = Directory.new
+		  tmp = []
+      repo = Repo.find(repo_id)
+      if !repo.nil?
+        d.get_files_in_directory repo.path , "" , tmp 
+        puts "*"*100
+        puts repo.path
+		    hash = {opt: "dir",content: tmp}
+        puts hash
+        ws.send(hash.to_json)
+			  puts repo_id
+      end
 		end
 	end
 

@@ -55,3 +55,11 @@ class Directory
   end
 
 end
+=begin
+d = Directory.new
+tmp = []
+d.get_files_in_directory "../repositories/94422747cfabc14b93cbde1b26a6f226" , "" , tmp 
+puts "*"*100
+hash = {opt: "dir",content: tmp}
+puts hash
+=end
