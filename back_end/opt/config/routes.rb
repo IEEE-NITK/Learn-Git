@@ -13,6 +13,8 @@ Opt::Application.routes.draw do
   # post "/:controller/:action" => "controller#action"
   # get "/dashboard" => "user#dashboard"
   # get "/course/:course_id/stage/stage_id" => ""
+
+  post "/team/accept" => "team#acceptInvite"
   get "/team/new/:id" => "team#new"
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

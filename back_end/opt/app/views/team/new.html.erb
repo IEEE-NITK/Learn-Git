@@ -259,6 +259,7 @@ function test(name)
         <div class="span12">
             <%=form_tag({action: "create"},method: "post") do %>
             <%= label_tag "Team name" %>
+            <%= hidden_field_tag(:id, @course.id) %> <br/>
             <%= text_field_tag(:tname) %> <br/>
             <%= label_tag "Email" %>
             <%= text_field_tag(:email) %> <br/>

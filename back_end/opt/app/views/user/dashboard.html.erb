@@ -178,6 +178,11 @@ body {
             <input type="hidden" value="<%= course.id %>" name="id">
             <%= f.submit "Start", class: "btn btn-success" %>
           <% end %>
+        
+          <%= form_for(:team , url: team_accept_path) do |f| %>
+            <input type="hidden" value="<%= course.id %>" name="id">
+            <%= f.submit "Accept", class: "btn btn-success" %>
+          <% end %>
           </div>
           </div>
         </div>
@@ -199,3 +204,4 @@ body {
 
   </body>
 </html>
+

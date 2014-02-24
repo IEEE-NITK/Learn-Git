@@ -2,9 +2,9 @@ require 'securerandom'
 class TeamController < ApplicationController
 
     def new
-        course = Course.find_by_id(params[:id]) 
-        if !course.nil? && course.mcount > 1
-            @Team = Team.new
+        @course = Course.find_by_id(params[:id]) 
+        if !@course.nil? && @course.mcount > 1
+            # @Team = Team.new
         else
             redirect_to root_path
         end
@@ -13,8 +13,8 @@ class TeamController < ApplicationController
     def create
         #Expand to allow more than 1 user being invited
         user = User.where(email: params[:email])
-        course = Course.find_by_id(params[:course_id]) 
-        if !user.first.nil? && !course.nil? && !coursecourse.mcount > 1
+        course = Course.find_by_id(params[:id]) 
+        if !user.first.nil? && !course.nil? && (course.mcount > 1)
             user = user.first
             #Add a notification to the user
             makeNotification(user.id,"You have been invited by #{current_user.name} to join the team #{params[:tname]} for #{course.name} course!","Tinvite","/acceptInvite?course_id=#{course.id}")
@@ -25,11 +25,10 @@ class TeamController < ApplicationController
             team.course_id = course.id
             team.acceptedInvites = 1
             team.save
-            current_user.team_ids << team.id
+            current_user.teams << team
             current_user.save
-            user.team_ids << team.id
+            user.teams << team
             user.save
-            team.save
             flash[:notice] = "#{user.name} has been invited to join the team. The course will begin when he accepts!"
         else
             flash[:notice] = "The user you want to add doesn't exist. Please ask him to join the site first!"
@@ -38,19 +37,22 @@ class TeamController < ApplicationController
     end
 
     def acceptInvite
-        course = Course.find(params[:course_id])
+        course = Course.find(params[:id])
         if course
             team = current_user.teams.find_by_course_id(course.id)
             if team
                 team.acceptedInvites+=1
+                puts "Accepted !!!team"
                 if team.acceptedInvites == course.mcount
                     team.users.each do |q|
                         createRepo(q.id,course.id)
                     end
                 end
+                puts team.inspect
+                team.save
             end
         end
-
+        redirect_to "/course/2"
     end
 
 
@@ -74,7 +76,8 @@ class TeamController < ApplicationController
                 `mkdir #{Dir.pwd}/../repositories/#{z}`
                 repo.path ="../repositories/#{z}"
                 repo.order = [1,2,3,4,8,10,11,12] #TODO: Order to be populated dynamically
-                repo.save            end
+                repo.save  
+              end
     end
 
 
