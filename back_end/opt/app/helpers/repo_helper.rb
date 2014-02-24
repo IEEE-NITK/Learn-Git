@@ -12,6 +12,8 @@ module RepoHelper
             repo.status = 1
             `mkdir #{Dir.pwd}/../repositories/#{z}`
             repo.path ="../repositories/#{z}"
+            #Copy the contents of the course to the repository
+            `cp -r #{Dir.pwd}/../courses/#{course_id} ../repositories/#{z}`
             repo.order = [1,2,4,5,6,7,8,9] #TODO: Order to be populated dynamically
             repo.save
         end
