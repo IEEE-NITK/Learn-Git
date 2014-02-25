@@ -30,7 +30,7 @@ class CourseController < ApplicationController
       repos = current_user.repos
     	# puts "**"*100
       puts current_user.inspect
-      num1 = repos.first.order.find_index(repos.first.status)
+      # num1 = repos.find_bu.order.find_index(repos.first.status)
       t = repos.find_by_course_id(@course.id).team
       # t = current_user.teams.first
       # r = Repo.where(team_id: t.id)
@@ -67,6 +67,61 @@ class CourseController < ApplicationController
       redirect_to "/course/#{@course.id}"
   	end
   end
+
+  def merge_it
+
+        file1='/home/karthik/Documents/second_app/app/controllers/mine1'
+        file3='/home/karthik/Documents/second_app/app/controllers/orig1'
+
+        `diff3 /home/karthik/Documents/second_app/app/controllers/mine1 /home/karthik/Documents/second_app/app/controllers/mine1 /home/karthik/Documents/second_app/app/controllers/orig1 > diffinput.txt`
+            #puts "hello"
+            puts Dir.pwd+'/diffinput.txt'
+            @diff_str=''
+            @file1_str=''
+            @file3_str=''
+
+            File.open(Dir.pwd+'/diffinput.txt','r') do |f|
+                while line=f.getc
+                    if(line.ord==10)
+                        line='\n'
+                    end
+                    @diff_str+=line
+                end     
+            end
+
+            File.open(file1,'r') do |f|
+                while line=f.getc
+                    if(line.ord==10)
+                        line='\n'
+                    end
+                    @file1_str+=line
+                end
+            end
+
+            # file2=file1
+
+            File.open(file3,'r') do |f|
+                while line=f.getc
+                    if(line.ord==10)
+                        line='\n'
+                    end
+                    @file3_str+=line
+                end
+            end
+
+            @file1_str = @file1_str.gsub(/[']/,'\\\\\'').html_safe
+            @file3_str = @file3_str.gsub(/[']/,'\\\\\'').html_safe
+
+            puts @diff_str
+            puts @file1_str
+            puts @file3_str
+    end
+
+
+
+
+
+
 
 
 end

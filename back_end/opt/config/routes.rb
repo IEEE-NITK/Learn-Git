@@ -17,6 +17,7 @@ Opt::Application.routes.draw do
   post "/team/create" => "team#create"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/courses" => "course#index"
+  get "course/merge_it.html" => "course#merge_it"
   get "/course/:id" => "course#show"
   post "/course/join" => "course#join"
   # devise_for :users

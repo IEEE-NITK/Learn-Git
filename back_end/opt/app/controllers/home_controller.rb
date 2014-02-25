@@ -1,6 +1,6 @@
 require 'securerandom'
 class HomeController < ApplicationController
-before_filter :getNotifications
+    before_filter :getNotifications
 
     def random_string
     	@str=SecureRandom.uuid()
@@ -35,6 +35,7 @@ before_filter :getNotifications
             @stage = @course.stages.first
         end
     end
+
 
 private
 
