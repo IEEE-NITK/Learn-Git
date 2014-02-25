@@ -14,16 +14,16 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 	ws.onopen do
 		soc << ws
 		puts "#{soc.length} clients are connected"
-		d = Directory.new
-		tmp = []
-		d.get_files_in_directory ".." , "" , tmp
-		hash = {opt: "dir",content: tmp}
-		puts hash
-		ws.send(hash.to_json)
+		# d = Directory.new
+		# tmp = []
+		# d.get_files_in_directory "../repositories/" , "" , tmp
+		# hash = {opt: "dir",content: tmp}
+		# puts hash
+		# ws.send(hash.to_json)
 	end
 
 	ws.onmessage do |msg|
-	  puts "got message #{msg}"
+		puts "got message #{msg}"
 		temp = msg.split(":")
 		op = temp[0]
 		#Create an instance of the git repo !!
@@ -33,7 +33,9 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			out=git_user.execute temp.join(':')
 			puts out.inspect
 			puts "HEREE"
+			puts out.nil?
 			out.each_line do |line|
+				puts "z"+line
 				ws.send({opt: "output",content: line}.to_json)
 			end
 			valid = Validator.new(repo_id)
@@ -63,11 +65,11 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			end
 		elsif op == "open"
 			temp.delete(op)
-			text=Directory.new.get_content "../",temp.join(':')
+			text=Directory.new.get_content "#{Dir.pwd}/#{git_user.path}/",temp.join(':')
 			if text
 				text.each_line do |line|
 					puts line
-				  ws.send({opt: "file-content",content: line}.to_json)
+					ws.send({opt: "file-content",content: line.split(":",2).last}.to_json)
 				end
 			end
 		elsif op == "save"
@@ -75,13 +77,19 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			temp.delete(op)
 			file_path=temp[0]
 			temp.delete(op)
-			text=Directory.new.save_content "../",file_path,temp.join(':')
+			text=Directory.new.save_content "#{Dir.pwd}/#{git_user.path}/",file_path,temp.join(':')
 			#SEND SOMETHING TO CONFIRM AND AVOID SAVE BUTTON FOR Repeation
 		else
 			git_user = GitUser.new(temp[1])
 			puts "-"*100
 			repo_id = temp[1]
 			puts repo_id
+			d = Directory.new
+			tmp = []
+			d.get_files_in_directory "#{Dir.pwd}/#{git_user.path}/", "" , tmp
+			hash = {opt: "dir",content: tmp}
+			puts hash
+			ws.send(hash.to_json)
 		end
 	end
 
