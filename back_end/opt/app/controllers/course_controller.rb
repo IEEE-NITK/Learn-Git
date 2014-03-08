@@ -17,7 +17,7 @@ class CourseController < ApplicationController
       end
     end
     puts "-"*100
-    puts flag 
+    puts flag
     #THis is to check if he is registered for the course or not
     if flag == 0
       redirect_to root_path
@@ -27,7 +27,7 @@ class CourseController < ApplicationController
       repos = current_user.repos
     	# puts "**"*100
       # puts current_user.inspect
-      @all_repos = Repo.where(team_id: repos.find_by_course_id(@course.id).team.id) 
+      @all_repos = Repo.where(team_id: repos.find_by_course_id(@course.id).team.id)
       # num1 = repos.first.order.find_index(repos.first.status)
       # @t = repos.find_by_course_id(@course.id).team
       # t = current_user.teams.first
@@ -53,14 +53,14 @@ class CourseController < ApplicationController
     end
   end
 
-  def join 
+  def join
   	@course = Course.find(params[:id])
   	#Check if course is of team or not
   	if @course.mcount > 1
   		#Handle Team registration
       redirect_to "/team/new/#{@course.id}"
   	else
-  		create_team(@course.id)
+  	create_team(@course.id)
       puts "redddirectinggg"*20
       redirect_to "/course/#{@course.id}"
   	end

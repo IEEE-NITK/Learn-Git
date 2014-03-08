@@ -15,12 +15,12 @@ class GitUser
 			if(cmd.include?"clone")
 				run_clone(cmd)
 			else
-			puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/#{cmd}\n"
-			stdin, stdout, stderr = Open3.popen3('git-shell')
-			stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/course2/.git --work-tree=#{Dir.pwd}/#{@path}/course2/ #{cmd}\n"
-			stdin.close
-			flag = true
-			stdout
+				puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
+				stdin, stdout, stderr = Open3.popen3('git-shell')
+				stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
+				stdin.close
+				flag = true
+				stdout
 			end
 		end
 
@@ -46,9 +46,9 @@ class GitUser
 	end
 
 	def run_clone(cmd)
-		puts "git clone #{Dir.pwd}/../courses/2 #{Dir.pwd}/#{@path}/course2"
+		puts "git clone #{Dir.pwd}/../courses/#{@id} #{Dir.pwd}/#{@path}"
 		stdin, stdout, stderr = Open3.popen3('git-shell')
-		stdin.puts "git clone #{Dir.pwd}/../courses/2  #{Dir.pwd}/#{@path}/course2"
+		stdin.puts "git clone #{Dir.pwd}/../courses/#{@id}  #{Dir.pwd}/#{@path}"
 		stdin.close
 		stdout
 	end
@@ -56,7 +56,7 @@ class GitUser
 	# def get_content
 
 
-private
+	private
 
 end
 

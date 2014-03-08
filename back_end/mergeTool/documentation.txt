@@ -5,5 +5,6 @@ The Merge tool allows you to merge contents from different files.
 4. The right-most pane contains the file you want to merge into yours.
 5. The differences in the files are highlighted by colored bands.
 6. Click on any colored band in the right or on the centre pane to merge it
-   into your file. 
+   into your file.
 7. Click 'DONE' to save the changes into your file.
+8. Add "Yaaay! you finished the course screen"
