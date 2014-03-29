@@ -35,10 +35,11 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			puts "HEREE"
 			puts out.nil?
 			unless out.nil?
-				out.each_line do |line|
-					puts "z"+line
-					ws.send({opt: "output",content: line}.to_json)
-r			end
+			out.each_line do |line|
+				puts "z"+line
+				ws.send({opt: "output",content: line}.to_json)
+			end
+			end
 			valid = Validator.new(repo_id)
 			# puts "IT IS FINALLY:"+(valid.validate(msg,out)).to_s
 			if(valid.validate(msg,out))
@@ -61,6 +62,15 @@ r			end
 				# end
 				# ws.send()
 				ws.send("Success!!")
+				cmd = temp.join(':')
+				if cmd[3,cmd.length].match("clone")
+					d = Directory.new
+					tmp = []
+					d.get_files_in_directory "#{Dir.pwd}/#{git_user.path}/", "" , tmp
+					hash = {opt: "dir",content: tmp}
+					puts hash
+					ws.send(hash.to_json)
+				end
 			else
 
 			end
@@ -70,7 +80,7 @@ r			end
 			if text
 				text.each_line do |line|
 					puts line
-					ws.send({opt: "file-content",content: line.split(":",2).last}.to_json)
+					ws.send({opt: "file-content",content: line}.to_json)
 				end
 			end
 		elsif op == "save"

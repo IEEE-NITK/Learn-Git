@@ -17,16 +17,27 @@ class GitUser
 			if cmd.include? "config"
 				save_config(cmd)
 			end
-			if(cmd.include?"clone")
+			if cmd.include?("remote add")
+				r1,r2 = Repo.where(id: @id).first.team.repos
+
+				r2 = r1 if r1.id.to_i!=@id.to_i
+				puts "zzzz"*1000
+				puts @id
+				 path = "#{Dir.pwd}/#{r2.path}"
+				 puts path
+				stdin, stdout, stderr = Open3.popen3('git-shell')
+				stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ remote add upstream #{path}/.git\n"
+				stdin.close
+			elsif(cmd.include?"clone")
 				run_clone(cmd)
 			else
-				cmd = cmd + " --quiet" if cmd.include? "init"
+				cmd = cmd + " --quiet" if (cmd.include?("init") || cmd.include?("clone"))
 				puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
 				stdin, stdout, stderr = Open3.popen3('git-shell')
 				stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
 				stdin.close
 				flag = true
-				if cmd.include? "init"
+				if(cmd.include?("init") || cmd.include?("clone"))
 					execute "git config --local user.name \"#{@username}\" "
 					execute "git config --local user.email \"#{@email}\" "
 				end
@@ -70,7 +81,7 @@ class GitUser
 	def run_clone(cmd)
 		puts "git clone #{Dir.pwd}/../courses/#{@id} #{Dir.pwd}/#{@path}"
 		stdin, stdout, stderr = Open3.popen3('git-shell')
-		stdin.puts "git clone #{Dir.pwd}/../courses/#{@id}  #{Dir.pwd}/#{@path}"
+		stdin.puts "git clone #{Dir.pwd}/../courses/2  #{Dir.pwd}/#{@path}"
 		stdin.close
 		stdout
 	end

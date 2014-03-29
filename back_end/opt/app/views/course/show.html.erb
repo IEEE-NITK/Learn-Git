@@ -5,11 +5,12 @@
 <link href="/assets/sb-admin.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <!-- Page Specific CSS -->
-
+<script data-main="js/main" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js"></script>
 
 <link href="/assets/heroic-features.css" rel="stylesheet">
 <link href="/assets/jquery.terminal.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/jquery-ui.css" />
+<link rel="stylesheet" href="/assets/explaingit.css">
 
 <script type="text/javascript" src="/assets/jquery-1.10.2.min.js"></script>
 <script src="/assets/jquery-1.7.1.min.js"></script>
@@ -131,7 +132,7 @@ $.extend_if_has = function(desc, source, array) {
         //     }
         // });
 $('body').data('tilda', this);
-        // this.hide();
+        // this.hide();$(".control-box input").val(command)
         return self;
       };
     })(jQuery);
@@ -140,12 +141,15 @@ $('body').data('tilda', this);
 jQuery(document).ready(function($) {
 
   $('#tilda').tilda(function(command, terminal) {
+    $(".control-box input").val(command);
+    $(".control-box input").focus();
+    $(".control-box input").blur();
     ws.send("cmd:"+command);
-        // terminal.echo('you type command "' + command + '"');
+        //terminal.echo('you type command "' + command + '"');
       });
   $('#testbutton').click(function(){
    var searchThis = document.getElementById('new1').innerHTML;
-
+  
  });
 });
 
@@ -307,20 +311,563 @@ function test(name)
       <div class="row-fluid span12">
         <ul id="tab" class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Terminal</a></li>
-        <li ><a href="#tab2" data-toggle="tab">Editor</a></li>
-         <li ><a href="#tab3" data-toggle="tab">Visualizations</a></li>
-
+        <li ><a href="#tab2" data-toggle="tab" id="edit_open">Editor</a></li>
+         <li ><a href="#tab3" data-toggle="tab" id="open-fetch">Visualizations</a></li>
+        
     </ul>
        <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
            <div id="tilda"></div>
         </div>
         <div class="tab-pane fade" id="tab3">
+          <div class="container">
+  <div class="row command-list">
+    <div class="twocol">
+      <h4>Basic Commands</h3>
+      <a id="open-commit" class="openswitch" href="#">git commit</a>
+      <a id="open-branch" class="openswitch" href="#">git branch</a>
+    </div>
+    <div class="twocol">
+      <h4>&nbsp;</h4>
+      <a id="open-checkout" class="openswitch" href="#">git checkout</a>
+      <a id="open-checkout-b" class="openswitch" href="#">git checkout -b</a>
+    </div>
+    <div class="twocol">
+      <h4>Undo Commits</h4>
+      <a id="open-reset" class="openswitch" href="#">git reset</a>
+      <a id="open-revert" class="openswitch" href="#">git revert</a>
+    </div>
+    <div class="twocol">
+      <h4>Combine Branches</h4>
+      <a id="open-merge" class="openswitch" href="#">git merge</a>
+      <a id="open-rebase" class="openswitch" href="#">git rebase</a>
+    </div>
+    <div class="twocol">
+      <h4>Remote Server</h4>
+      <a id="" class="openswitch" href="#">git fetch</a>
+      <a id="open-pull" class="openswitch" href="#">git pull</a>
+    </div>
+    <div class="twocol last">
+      <h4>&nbsp;</h4>
+      <a id="open-push" class="openswitch" href="#">git push</a>
+    </div>
+  </div>
+  <div class="row concept-area">
+    <div id="ExplainGitCommit-Container" class="twelvecol concept-container">
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitBranch-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitCheckout-Container" class="twelvecol concept-container">
+      
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitCheckout-b-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitReset-Container" class="twelvecol concept-container">
+    
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitRevert-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitMerge-Container" class="twelvecol concept-container">
+      
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitRebase-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitFetch-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitPull-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitPush-Container" class="twelvecol concept-container">
+      
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitClean-Container" class="twelvecol concept-container">
+    
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitFetchRebase-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitDeleteBranches-Container" class="twelvecol concept-container">
+     
+      <div class="playground-container"></div>
+    </div>
+    <div id="ExplainGitFree-Container" class="twelvecol concept-container">
+      
+      <div class="playground-container"></div>
+    </div>
+  </div>
+ 
+</div>
 
+<svg version="1.1" baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     width="0" height="0">
+
+    <marker id="triangle" refX="5" refY="5" markerUnits="strokeWidth" fill="#666"
+            markerWidth="4" markerHeight="3" orient="auto" viewBox="0 0 10 10">
+        <path d="M 0 0 L 10 5 L 0 10 z"/>
+    </marker>
+    <marker id="faded-triangle" refX="5" refY="5" markerUnits="strokeWidth" fill="#DDD"
+            markerWidth="4" markerHeight="3" orient="auto" viewBox="0 0 10 10">
+        <path d="M 0 0 L 10 5 L 0 10 z"/>
+    </marker>
+    <marker id="brown-triangle" refX="5" refY="5" markerUnits="strokeWidth" fill="#663300"
+            markerWidth="4" markerHeight="3" orient="auto" viewBox="0 0 10 10">
+        <path d="M 0 0 L 10 5 L 0 10 z"/>
+    </marker>
+</svg>
+
+<script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-commit'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Commit',
+            height: 200,
+            baseLine: 0.4,
+            commitData: [
+                {id: 'e137e9b', tags: ['master']}
+            ],
+            initialMessage: 'Type git commit a few times.'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+<script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-branch'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Branch',
+            baseLine: 0.6,
+            commitData: [
+                {id: 'e137e9b', tags: ['master']}
+            ]
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+ </script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-checkout'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Checkout',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: 'bb92e0e', parent: 'e137e9b', tags: ['master']},
+                {id: 'e088135', parent: 'e137e9b', tags: ['dev']}
+            ],
+            initialMessage:
+                'Use git checkout, git branch, and git commit commands until you understand.'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-checkout-b'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Checkout-b',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: 'f5b32c8', parent: 'e137e9b'},
+                {id: 'bb92e0e', parent: 'f5b32c8', tags: ['master']},
+                {id: 'e088135', parent: 'e137e9b', tags: ['dev']}
+            ],
+            initialMessage:
+                'Use git checkout -b and git commit commands until you understand.'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-reset'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Reset',
+            height: 200,
+            baseLine: 0.5,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: '0e70093', parent: 'e137e9b'},
+                {id: '3e33afd', parent: '0e70093', tags: ['master']}
+            ],
+            initialMessage: 'Type "git reset HEAD^".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+<script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-revert'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Revert',
+            height: 200,
+            baseLine: 0.5,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: '0e70093', parent: 'e137e9b'},
+                {id: '3e33afd', parent: '0e70093', tags: ['master']}
+            ],
+            initialMessage: 'Type "git revert 0e70093".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-merge'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Merge',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: 'bb92e0e', parent: 'e137e9b', tags: ['master']},
+                {id: 'f5b32c8', parent: 'e137e9b', tags: ['ff']},
+                {id: 'e088135', parent: 'f5b32c8', tags: ['dev']}
+            ],
+            initialMessage:
+                'Type "git merge dev".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-rebase'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Rebase',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: 'bb92e0e', parent: 'e137e9b', tags: ['master']},
+                {id: 'f5b32c8', parent: 'e137e9b'},
+                {id: 'e088135', parent: 'f5b32c8', tags: ['dev']}
+            ],
+            currentBranch: 'dev',
+            initialMessage:
+                'Type "git rebase master".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-fetch'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Fetch',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master']},
+                {id: '6ce726f', parent: 'e137e9b'},
+                {id: 'bb92e0e', parent: '6ce726f', tags: ['master']},
+                {id: '0cff760', parent: 'e137e9b', tags: ['origin/dev']},
+                {id: '4ed301d', parent: '0cff760', tags: ['dev']}
+            ],
+            originData: [
+                {id: 'e137e9b'},
+                {id: '7eb7654', parent: 'e137e9b'},
+                {id: '090e2b8', parent: '7eb7654'},
+                {id: 'ee5df4b', parent: '090e2b8', tags: ['master']},
+                {id: '0cff760', parent: 'e137e9b'},
+                {id: '2f8d946', parent: '0cff760'},
+                {id: '29235ca', parent: '2f8d946', tags: ['dev']}
+            ],
+            initialMessage:
+                'Carefully compare the commit IDs between the origin and the local repository. ' +
+                'Then type "git fetch".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-pull'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Pull',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master']},
+                {id: '46d095b', parent: 'e137e9b', tags: ['master']}
+            ],
+            originData: [
+                {id: 'e137e9b'},
+                {id: '7eb7654', parent: 'e137e9b'},
+                {id: '090e2b8', parent: '7eb7654'},
+                {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
+            ],
+            initialMessage:
+                'Carefully compare the commit IDs between the origin and the local repository. ' +
+                'Then type "git pull".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-push'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Push',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master']},
+                {id: '46d095b', parent: 'e137e9b', tags: ['master']}
+            ],
+            originData: [
+                {id: 'e137e9b'},
+                {id: '7eb7654', parent: 'e137e9b', tags: ['master']}
+            ],
+            initialMessage:
+                'Carefully compare the commit IDs between the origin and the local repository. ' +
+                'Then type "git push".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+<script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-clean'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Clean',
+            height: 200,
+            baseLine: 0.4,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master']},
+                {id: '0e70093', parent: 'e137e9b'},
+                {id: '3e33afd', parent: '0e70093', tags: ['master']}
+            ],
+            initialMessage: 'Type "git reset origin/master".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-fetchrebase'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'FetchRebase',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master', 'master']},
+                {id: '46d095b', parent: 'e137e9b'},
+                {id: 'dccdc4d', parent: '46d095b', tags: ['my-branch']}
+            ],
+            currentBranch: 'my-branch',
+            originData: [
+                {id: 'e137e9b'},
+                {id: '7eb7654', parent: 'e137e9b'},
+                {id: '090e2b8', parent: '7eb7654'},
+                {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
+            ],
+            initialMessage:
+                'First type "git fetch". Then type "git rebase origin/master".'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-deletebranches'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'DeleteBranches',
+            height: 500,
+            baseLine: 0.6,
+            commitData: [
+                {id: 'e137e9b'},
+                {id: 'bb92e0e', parent: 'e137e9b'},
+                {id: 'd25ee9b', parent: 'bb92e0e', tags: ['master']},
+                {id: '071ff28', parent: 'e137e9b', tags: ['protoss']},
+                {id: 'f5b32c8', parent: 'bb92e0e'},
+                {id: 'e088135', parent: 'f5b32c8', tags: ['zerg']},
+                {id: '9e6c322', parent: 'bb92e0e'},
+                {id: '593ae02', parent: '9e6c322', tags: ['terran']}
+            ],
+            currentBranch: 'terran',
+            initialMessage:
+                'Delete some branches.'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
+
+ <script type="text/javascript">
+require(['explaingit'], function (explainGit) {
+    var openSwitch = document.getElementById('open-freeplay'),
+        open;
+
+    open = function () {
+        explainGit.reset();
+        this.classList.add('selected');
+
+        explainGit.open({
+            name: 'Free',
+            height: 500,
+            commitData: [
+                {id: 'e137e9b', tags: ['origin/master', 'master']}
+            ],
+            originData: [
+                {id: 'e137e9b'},
+                {id: '7eb7654', parent: 'e137e9b'},
+                {id: '090e2b8', parent: '7eb7654'},
+                {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
+            ],
+            initialMessage:
+                'Have fun.'
+        });
+    };
+
+    openSwitch.addEventListener('click', open, false);
+});
+</script>
         </div>
         <div class="tab-pane fade " id="tab2">
-            <pre id="editor">// Type your code here </pre>
-             <button type="button" class="btn btn-info" onClick="write_content();">Save</button>
+          <div id="texte" style="background-color:#eee;width:101%;height:101%;">
+            <pre id="editor">// Type your code here </pre></div>
+             <button type="button" class="btn btn-info" onClick="write_content();clickb();">Save</button>
           <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
           <script>
           var editor = ace.edit("editor");
@@ -385,6 +932,7 @@ ws.onopen = function(){
                       // console.log(data.rslt.obj.text());
                       // console.log(str);
                       ws.send("open:"+str+"/"+trim_str(data.rslt.obj.text()))
+                      $("#edit_open").click();
                       editor.getSession().setValue("")
                       // if(jQuery.data(data.rslt.obj[0], "href"))
                       // {
@@ -506,6 +1054,12 @@ function write_content()
     </script>
     <script type="text/javascript">
        $("#question").effect("highlight",{},1000);
+    </script>
+    <script type="text/javascript">
+    function clickb()
+    {
+      $("#texte").effect("highlight",{},1000);
+    }
     </script>
 
   </body>
