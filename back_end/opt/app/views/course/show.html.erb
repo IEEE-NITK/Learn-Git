@@ -20,7 +20,7 @@
 <script type="text/javascript" src="/assets/jquery.jstree.js"></script>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400' rel='stylesheet' type='text/css'><!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
 
 <style>
@@ -457,7 +457,8 @@ else if(obj.opt == "progress1")
 
 </div>
 <div class="col-lg-2" style="margin-left:20px;padding:20px;">
-  <div class="" style="background-color:#eee;padding:10px;width:100%;">
+  <div id="question" style="background-color:#eee;padding:10px;width:100%;">
+    
     <h1 class="course-objective"><%= @stage.objective %></h1>
     <p class="course-body"><%= @stage.pbody %></p>
     <h3>References:</h3>
@@ -496,6 +497,9 @@ function write_content()
   var myCode = editor.getSession().getValue();
   ws.send("save:"+global_variable+":"+myCode);
 }
+    </script>
+    <script type="text/javascript">
+       $("#question").effect("highlight",{},1000);
     </script>
 
   </body>
