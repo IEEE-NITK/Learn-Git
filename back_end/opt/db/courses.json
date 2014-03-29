@@ -1,0 +1,205 @@
+{
+    "name": "Git Basics",
+    "objective": "Teach the basics of git in an interactive way.",
+    "problem": "Git",
+    "prerequisites": "None",
+    "rating": 10,
+    "references": "http://www.git-tower.com/blog/git-cheat-sheet-detail/,http://git-scm.com/",
+    "useful_materials": "http://git-scm.com/book",
+    "image_url": "git.jpg",
+    "mcount": 1,
+    "steps": [
+        {
+            "objective": "To configure git with shell.",
+            "pbody": "One can specify Git configuration settings with the git config command. Set up your name and e-mail addres",
+            "hints": "$ git config --local user.name \"John Doe\" $ git config --local user.email \"johndoe@example.com\"",
+            "references": "http://git-scm.com/book/en/Customizing-Git-Git-Configuration",
+            "validation": [
+                "cmd_r",
+                "git config"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "To initialise a git repository.",
+            "pbody": "In order to do anything in Git, you have to have a Git repository. This is where Git stores the data for the snapshots you are saving. Initialize a new one from an existing directory, such as a new project or a project new to source control.",
+            "hints": "$ git init",
+            "references": "http://git-scm.com/docs/git-init",
+            "validation": [
+                "cmd_r",
+                "git init"
+            ],
+            "useful_links": "",
+            "extras": "-q\n--quiet\nOnly print error and warning messages, all other output will be suppressed.\n--bare\nCreate a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+        },
+        {
+            "objective": "To create a new file with some content",
+            "pbody": "",
+            "hints": "",
+            "references": "",
+            "validation": [
+                "cmd_r",
+                " "
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "To check the status of the repository",
+            "pbody": "In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command.",
+            "hints": "$ git status",
+            "references": "http://git-scm.com/docs/git-status",
+            "validation": [
+                "cmd_r",
+                "git status"
+            ],
+            "useful_links": "",
+            "extras": "-q\n--quiet\nOnly print error and warning messages, all other output will be suppressed.\n--bare\nCreate a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+        },
+        {
+            "objective": "To add a file to be tracked by Git.",
+            "pbody": "In Git, you have to add file contents to your staging area before you can commit them. If the file is new, you can run git add to initially add the file to your staging area, but even if the file is already tracked - ie, it was in your last commit - you still need to call git add to add new modifications to your staging area.",
+            "hints": "$ git add <filename>\n$ git add .",
+            "references": "http://git-scm.com/docs/git-add",
+            "validation": [
+                "cmd_r",
+                "git add"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "To check the status of the repository",
+            "pbody": "In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command.",
+            "hints": "$ git status",
+            "references": "http://git-scm.com/docs/git-status",
+            "validation": [
+                "cmd_r",
+                "git status"
+            ],
+            "useful_links": "",
+            "extras": "-q\n--quiet\nOnly print error and warning messages, all other output will be suppressed.\n--bare\nCreate a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+        },
+        {
+            "objective": "To commit the current stage of the tracked repository.",
+            "pbody": "Now that you have staged the content you want to snapshot with the git add command, you run git commit to actually record the snapshot. Git records your name and email address(done in stage 1) with every commit you make.",
+            "hints": "$ git commit -m \"<commit message>\"",
+            "references": "http://git-scm.com/docs/git-status",
+            "validation": [
+                "cmd_r",
+                "git commit -"
+            ],
+            "useful_links": "",
+            "extras": "$ git commit -am \"<commit message>\" : To directly commit with all tracked files."
+        },
+        {
+            "objective": "To check the status of the repository",
+            "pbody": "In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command.",
+            "hints": "$ git status",
+            "references": "http://git-scm.com/docs/git-status",
+            "validation": [
+                "cmd_r",
+                "git status"
+            ],
+            "useful_links": "",
+            "extras": "-q\n--quiet\nOnly print error and warning messages, all other output will be suppressed.\n--bare\nCreate a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+        },
+        {
+            "objective": "To get a list of previous commits and its specification",
+            "pbody": "The git log command gives a record of the recent commits on the current git initialised repository.",
+            "hints": "$ git log",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git log"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "To create a new branch",
+            "pbody": "",
+            "hints": "$ git checkout -b \"branch name\"",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git log"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "Make changes to a file",
+            "pbody": "",
+            "hints": "Modify first.txt File",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                ""
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "Commit the changes",
+            "pbody": "",
+            "hints": "$ git commit -m \"message\"",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git commit -"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "To check the status of the repository",
+            "pbody": "In order to see what the status of your staging area is compared to the code in your working directory, you can run the git status command.",
+            "hints": "$ git status",
+            "references": "http://git-scm.com/docs/git-status",
+            "validation": [
+                "cmd_r",
+                "git status"
+            ],
+            "useful_links": "",
+            "extras": "-q\n--quiet\nOnly print error and warning messages, all other output will be suppressed.\n--bare\nCreate a bare repository. If GIT_DIR environment is not set, it is set to the current working directory."
+        },
+        {
+            "objective": "Switch back to master",
+            "pbody": "",
+            "hints": "$ git checkout master",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git checkout master"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "Check commit log",
+            "pbody": "",
+            "hints": "$ git log",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git log"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "Merge the branch",
+            "pbody": "",
+            "hints": "$ git merge \"branch name\"",
+            "references": "http://git-scm.com/docs/git-log",
+            "validation": [
+                "cmd_r",
+                "git merge"
+            ],
+            "useful_links": "",
+            "extras": ""
+        }
+    ]
+}
