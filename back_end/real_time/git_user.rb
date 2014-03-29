@@ -6,12 +6,17 @@ class GitUser
 		#check the status and load the question!!
 		@id = id
 		@path = Repo.find(id).path
+		@username = "Foo"
+		@email = "bar@baz.com"
 	end
 
 	def execute cmd
 		# if cmd ~= 'git clone *'
 		if !cmd.empty?
 			cmd = cmd[3,cmd.length]
+			if cmd.include? "config"
+				save_config(cmd)
+			end
 			if(cmd.include?"clone")
 				run_clone(cmd)
 			else
@@ -20,6 +25,10 @@ class GitUser
 				stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
 				stdin.close
 				flag = true
+				if cmd.include? "init"
+					execute "git config --local user.name \"#{@username}\" "
+					execute "git config --local user.email \"#{@email}\" "
+				end
 				stdout
 			end
 		end
@@ -33,6 +42,18 @@ class GitUser
 		# 	puts line if flag
 		# end
 		#Replace !!!
+	end
+
+	def save_config cmd
+		if cmd.include? "user.name"
+			@username = cmd.split("\"")[1]
+		elsif cmd.include? "user.email"
+			@email = cmd.split("\"")[1]
+		end
+	end
+
+	def run_config
+
 	end
 
 
