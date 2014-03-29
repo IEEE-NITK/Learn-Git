@@ -4316,6 +4316,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar {
+  height: 20px;
   position: relative;
   min-height: 51px;
   margin-bottom: 20px;
