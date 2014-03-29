@@ -145,7 +145,7 @@ jQuery(document).ready(function($) {
       });
   $('#testbutton').click(function(){
    var searchThis = document.getElementById('new1').innerHTML;
-   alert(searchThis);
+  
  });
 });
 
@@ -284,35 +284,35 @@ function test(name)
 </nav>
 <div class="container">
 
-  <div class="jumbotron hero-spacer">
-    <h1 class="course-objective"><%= @stage.objective %></h1>
-    <p class="course-body"><%= @stage.pbody %></p>
-    <h3>References:</h3>
-    <p class="course-references"><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
-    <h3>Useful Links:</h3>
-    <p class="links"><%= @stage.useful_links %></p>
-    <h3>Command:</h3>
-    <p id="hint"><%= @stage.hints %></p>
-  </div>
+  
 
 
 
-  <div class="row">
+ <!--  <div class="row">
   <div class="col-lg-12" style="display:inline-block;">
     <h3 style="float:left;">Workspace</h3>
     <a href="#" style="float:left;margin-top:25px;margin-left:10px;" id="click">Go Back</a>
     <div id="treeView" style="margin-top:38px; float:left;margin-left:40px;"></div>
   </div>
- </div><!-- /.row -->
+ </div> --><!-- /.row -->
  <!-- /.row -->
  <hr>
  <div class="row">
-     <div class="col-lg-12">
+    <div class="col-lg-1">
+      <h3>Directory</h3>
+      <div id="treeView"></div>
+    </div>
+     <div class="col-lg-8">
 
       <div class="row-fluid span12">
-    <div class="span5">
-      <button class="btn btn-success" style="margin-left:86%;margin-bottom:5px;" onclick="write_content();">Save</button>
-          <pre id="editor">// Type your code here </pre>
+        <ul id="tab" class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Editor</a></li>
+        <li><a href="#tab2" data-toggle="tab">Terminal</a></li>
+        
+    </ul>
+       <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+            <pre id="editor">// Type your code here </pre>
           <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
           <script>
           var editor = ace.edit("editor");
@@ -340,6 +340,7 @@ function test(name)
     return str;
   }
 
+        
 // var str = 'ABCADRAE';
 // alert(str.replaceAll('A','X'));
 
@@ -416,13 +417,13 @@ else if(obj.opt == "file-content")
 }
 else if(obj.opt == "progress1")
 {
-  console.log("sdiuhsdiuh");
+  
       // alert("jfshioh");
       progress1(obj.content)
     }
     else if(obj.opt == "progress2")
     {
-      console.log("vvvvvvvvvvv");
+      
       // alert("jfshioh");
       progress2(obj.content)
     }
@@ -439,20 +440,34 @@ else if(obj.opt == "progress1")
   }
 
   </script>
-</div>
-
-<div class="span7" style="diplay:inline;">
-
-  <div id="tilda"></div>
+<!-- </div> -->
 
 </div>
+        <div class="tab-pane fade" id="tab2">
+           <div id="tilda"></div>
+        </div>
+        
+    </div>
+    </div>
+
+
+
+
+
 </div>
+<div class="col-lg-2" style="margin-left:20px;padding:20px;">
+  <div class="" style="background-color:#eee;padding:10px;">
+    <h1 class="course-objective"><%= @stage.objective %></h1>
+    <p class="course-body"><%= @stage.pbody %></p>
+    <h3>References:</h3>
+    <p class="course-references"><%= link_to @stage.references,@stage.references,target: "_blank" %></p>
+    <h3>Useful Links:</h3>
+    <p class="links"><%= @stage.useful_links %></p>
+    <h3>Command:</h3>
+    <p id="hint"><%= @stage.hints %></p>
+  <div>
+  </div>
 
-
-
-
-</div>
-<hr>
 </div>
 <!-- JavaScript -->
 <script src="/assets/bootstrap.js"></script>
@@ -476,10 +491,11 @@ progress2(<%= @numB %>)
 
 function write_content()
 {
-  alert("sdkuhdsfuig");
+  
   var myCode = editor.getSession().getValue();
   ws.send("save:"+global_variable+":"+myCode);
 }
     </script>
+
   </body>
   </html>
