@@ -20,7 +20,7 @@
 <script type="text/javascript" src="/assets/jquery.jstree.js"></script>
 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400' rel='stylesheet' type='text/css'><!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
 
 <style>
@@ -207,8 +207,8 @@ function test(name)
 
     <ul class="nav navbar-nav navbar-right">
 
-      <li class="dropdown dropdown-user"  style="width:150px;margin-top:5px;">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <div class="progress">
+      <li class="dropdown dropdown-user" data-toggle="dropdown" style="width:150px;">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:50px;"> <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
         <span class="sr-only">60% Complete</span>
         </div>
@@ -296,9 +296,9 @@ function test(name)
   </div>
  </div> --><!-- /.row -->
  <!-- /.row -->
- <hr>
+ 
  <div class="row">
-    <div class="col-lg-1">
+    <div class="col-lg-1" style="margin-left:5px;">
       <h3>Directory</h3>
       <div id="treeView"></div>
     </div>
@@ -457,7 +457,8 @@ else if(obj.opt == "progress1")
 
 </div>
 <div class="col-lg-2" style="margin-left:20px;padding:20px;">
-  <div class="" style="background-color:#eee;padding:10px;width:100%;">
+  <div id="question" style="background-color:#eee;padding:10px;width:100%;">
+    
     <h1 class="course-objective"><%= @stage.objective %></h1>
     <p class="course-body"><%= @stage.pbody %></p>
     <h3>References:</h3>
@@ -496,6 +497,9 @@ function write_content()
   var myCode = editor.getSession().getValue();
   ws.send("save:"+global_variable+":"+myCode);
 }
+    </script>
+    <script type="text/javascript">
+       $("#question").effect("highlight",{},1000);
     </script>
 
   </body>
