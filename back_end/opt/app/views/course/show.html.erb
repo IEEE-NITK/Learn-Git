@@ -391,6 +391,7 @@ ws.onopen = function(){
 else if(obj.opt == "course-objective")
 {
   $(".course-objective").html(obj.content)
+  $("#question").effect("highlight",{},1000)
 }
 else if(obj.opt == "course-references")
 {
