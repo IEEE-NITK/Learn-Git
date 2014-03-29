@@ -308,14 +308,19 @@ function test(name)
         <ul id="tab" class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Terminal</a></li>
         <li ><a href="#tab2" data-toggle="tab">Editor</a></li>
+         <li ><a href="#tab3" data-toggle="tab">Visualizations</a></li>
         
     </ul>
        <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
            <div id="tilda"></div>
         </div>
+        <div class="tab-pane fade" id="tab3">
+
+        </div>
         <div class="tab-pane fade " id="tab2">
             <pre id="editor">// Type your code here </pre>
+             <button type="button" class="btn btn-info" onClick="write_content();">Save</button>
           <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
           <script>
           var editor = ace.edit("editor");
