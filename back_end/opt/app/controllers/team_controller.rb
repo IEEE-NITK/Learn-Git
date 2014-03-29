@@ -2,7 +2,7 @@ require 'securerandom'
 class TeamController < ApplicationController
 
     def new
-        @course = Course.find_by_id(params[:id])
+        @course = Course.find_by_id(params[:id]) 
         if !@course.nil? && @course.mcount > 1
             # @Team = Team.new
         else
@@ -13,7 +13,7 @@ class TeamController < ApplicationController
     def create
         #Expand to allow more than 1 user being invited
         user = User.where(email: params[:email])
-        course = Course.find_by_id(params[:id])
+        course = Course.find_by_id(params[:id]) 
         if !user.first.nil? && !course.nil? && (course.mcount > 1)
             user = user.first
             #Add a notification to the user
@@ -44,8 +44,10 @@ class TeamController < ApplicationController
                 team.acceptedInvites+=1
                 puts "Accepted !!!team"
                 if team.acceptedInvites == course.mcount
+                    tmp=1
                     team.users.each do |q|
-                        createRepo(q.id,course.id)
+                        createRepo(q.id,course.id,tmp)
+                        tmp+=1
                     end
                 end
                 puts team.inspect
@@ -59,7 +61,7 @@ class TeamController < ApplicationController
 
     private
 
-    def createRepo(user_id,course_id)
+    def createRepo(user_id,course_id,tmp)
 
         user = User.find(user_id)
         course = Course.find(course_id)
@@ -75,8 +77,12 @@ class TeamController < ApplicationController
                 repo.status = 1
                 `mkdir #{Dir.pwd}/../repositories/#{z}`
                 repo.path ="../repositories/#{z}"
-                repo.order = [1,2,3,4,8,10,11,12] #TODO: Order to be populated dynamically
-                repo.save
+                if (tmp == 1) #TODO: Order to be populated dynamically
+                    repo.order = [1,2,3,4,8,10,11,12] 
+                else
+                    repo.order = [1,2,3,5,6,7,8,9]
+                end
+                repo.save  
               end
     end
 
