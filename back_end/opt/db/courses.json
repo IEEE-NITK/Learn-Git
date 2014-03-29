@@ -119,19 +119,19 @@
         },
         {
             "objective": "To create a new branch",
-            "pbody": "",
+            "pbody": "To prepare for working on <branch>, switch to it by updating the index and the files in the working tree, and by pointing HEAD at the branch. Specifying -b causes a new branch to be created and then checked out.",
             "hints": "$ git checkout -b \"branch name\"",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
                 "cmd_r",
-                "git log"
+                "git checkout -b"
             ],
-            "useful_links": "",
+            "useful_links": "http://git-scm.com/docs/git-checkout",
             "extras": ""
         },
         {
             "objective": "Make changes to a file",
-            "pbody": "",
+            "pbody": "Use the text editor to add content to the file.",
             "hints": "Modify first.txt File",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
@@ -143,7 +143,7 @@
         },
         {
             "objective": "Commit the changes",
-            "pbody": "",
+            "pbody": "Snapshot with the git add command, you run git commit to record the snapshot. (Git records your name and email address with every commit you make)",
             "hints": "$ git commit -m \"message\"",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
@@ -167,19 +167,19 @@
         },
         {
             "objective": "Switch back to master",
-            "pbody": "",
+            "pbody": "Switch to a branch (master is also a branch) by updating the index and the files in the working tree, and by pointing HEAD at the branch.",
             "hints": "$ git checkout master",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
                 "cmd_r",
                 "git checkout master"
             ],
-            "useful_links": "",
+            "useful_links": "http://git-scm.com/docs/git-checkout",
             "extras": ""
         },
         {
             "objective": "Check commit log",
-            "pbody": "",
+            "pbody": "The git log command gives a record of the recent commits on the current git initialised repository.",
             "hints": "$ git log",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
@@ -191,9 +191,9 @@
         },
         {
             "objective": "Merge the branch",
-            "pbody": "",
+            "pbody": "If work is complete on the new branch and ready to be merged into your master branch, merge in the new branch using this command",
             "hints": "$ git merge \"branch name\"",
-            "references": "http://git-scm.com/docs/git-log",
+            "references": "http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging",
             "validation": [
                 "cmd_r",
                 "git merge"
