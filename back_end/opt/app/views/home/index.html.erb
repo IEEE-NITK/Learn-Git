@@ -91,7 +91,7 @@
 						
 				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 				 <h3><%= f.label :email %></h3><br />
-				  <%= f.email_field :email, :autofocus => true %>
+				  <%= f.email_field :email, :autofocus => false %>
 
 				  <h3><%= f.label :password %></h3><br />
 				  <%= f.password_field :password %>
