@@ -12,7 +12,7 @@ class GitUser
 
 	def execute cmd
 		# if cmd ~= 'git clone *'
-		if !cmd.empty?
+		if !cmd.empty? && cmd.length>=3 && cmd[0,3].match("git")
 			cmd = cmd[3,cmd.length]
 			if cmd.include? "config"
 				save_config(cmd)

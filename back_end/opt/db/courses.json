@@ -1,4 +1,4 @@
-{
+Pen {
     "name": "Git Basics",
     "objective": "Teach the basics of git in an interactive way.",
     "problem": "Git",
@@ -35,9 +35,9 @@
         },
         {
             "objective": "To create a new file with some content",
-            "pbody": "",
-            "hints": "",
-            "references": "",
+            "pbody": "Open the file first.txt and tell about yourself",
+            "hints": "After doing that enter git <space>",
+            "references": "yourself",
             "validation": [
                 "cmd_r",
                 " "
@@ -124,14 +124,14 @@
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
                 "cmd_r",
-                "git log"
+                "git checkout -b"
             ],
             "useful_links": "",
             "extras": ""
         },
         {
             "objective": "Make changes to a file",
-            "pbody": "",
+            "pbody": "After modification press ",
             "hints": "Modify first.txt File",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [

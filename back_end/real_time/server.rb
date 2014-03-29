@@ -34,10 +34,11 @@ EM::WebSocket.start(host: '127.0.0.1',port: 4000) do |ws|
 			puts out.inspect
 			puts "HEREE"
 			puts out.nil?
-			out.each_line do |line|
-				puts "z"+line
-				ws.send({opt: "output",content: line}.to_json)
-			end
+			unless out.nil?
+				out.each_line do |line|
+					puts "z"+line
+					ws.send({opt: "output",content: line}.to_json)
+r			end
 			valid = Validator.new(repo_id)
 			# puts "IT IS FINALLY:"+(valid.validate(msg,out)).to_s
 			if(valid.validate(msg,out))

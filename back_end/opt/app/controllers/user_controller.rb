@@ -1,4 +1,4 @@
-class UserController < ApplicationController	
+class UserController < ApplicationController
   before_filter :authenticate_user!
 
   def show
@@ -6,5 +6,7 @@ class UserController < ApplicationController
 
   def dashboard
   	@courses = Course.all
+    @notifications = getNotifications
+
   end
 end
