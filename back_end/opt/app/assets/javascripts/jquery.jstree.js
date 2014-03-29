@@ -271,7 +271,8 @@
 		var u = navigator.userAgent.toLowerCase(),
 			v = (u.match( /.+?(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1],
 			css_string = '' + 
-				'.jstree ul, .jstree li { display:block; margin:0 0 0 0; padding:0 0 0 0; list-style-type:none; } ' + 
+				'.jstree ul{ display:inline-block; margin:0 0 0 0; padding:0 0 0 0; list-style-type:none;float:right; } ' + 
+			    '.jstree li { display:inline-block; margin:0 0 0 0; padding:0 0 0 0; list-style-type:none;float:left; } ' +
 				'.jstree li { display:block; min-height:18px; line-height:18px; white-space:nowrap; margin-left:18px; min-width:18px; } ' + 
 				'.jstree-rtl li { margin-left:0; margin-right:18px; } ' + 
 				'.jstree > ul > li { margin-left:0px; } ' + 
@@ -279,12 +280,18 @@
 				'.jstree ins { display:inline-block; text-decoration:none; width:18px; height:18px; margin:0 0 0 0; padding:0; } ' + 
 				'.jstree a { display:inline-block; line-height:16px; height:16px; color:black; white-space:nowrap; text-decoration:none; padding:1px 2px; margin:0; } ' + 
 				'.jstree a:focus { outline: none; } ' + 
-				'.jstree a > ins { height:16px; width:16px; } ' + 
+				'.jstree a > ins { height:25px; width:25px; } ' + 
 				'.jstree a > .jstree-icon { margin-right:3px; } ' + 
 				'.jstree-rtl a > .jstree-icon { margin-left:3px; margin-right:0; } ' + 
-				'li.jstree-open > ul { display:block; } ' + 
+				'li.jstree-open { display:block;visibility:hidden;} ' + 
+				'li.jstree-open > ul { display:block;visibility:visible;float:left;} ' + 
 				'li.jstree-closed > ul { display:none; } ';
 		// Correct IE 6 (does not support the > CSS selector)
+					
+		$('.jstree-icon').click(function(){
+			alert("HI");
+		});
+
 		if(/msie/.test(u) && parseInt(v, 10) == 6) { 
 			is_ie6 = true;
 
@@ -300,7 +307,7 @@
 				'li.jstree-open ul { display:block; } ' + 
 				'li.jstree-closed ul { display:none !important; } ' + 
 				'.jstree li a { display:inline; border-width:0 !important; padding:0px 2px !important; } ' + 
-				'.jstree li a ins { height:16px; width:16px; margin-right:3px; } ' + 
+				'.jstree li a ins { height:100px; width:100px; margin-right:3px; } ' + 
 				'.jstree-rtl li a ins { margin-right:0px; margin-left:3px; } ';
 		}
 		// Correct IE 7 (shifts anchor nodes onhover)
