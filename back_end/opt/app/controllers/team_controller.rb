@@ -84,8 +84,8 @@ class TeamController < ApplicationController
                 repo.course_id = course.id
                 repo.status = 1
                 `mkdir #{Dir.pwd}/../repositories/#{z}`
-                `cp #{Dir.pwd}/../courses/#{course_id}/ #{Dir.pwd}/../repositories/#{z}`
-                repo.path ="../repositories/#{z}"
+                `cp -r #{Dir.pwd}/../courses/#{course_id}/ #{Dir.pwd}/../repositories/#{z}`
+                repo.path ="../repositories/#{z}/#{course_id}"
                 if (tmp == 1) #TODO: Order to be populated dynamically
                     repo.order = [1,2,3,4,8,10,11,12]
                 else

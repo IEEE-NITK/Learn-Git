@@ -96,11 +96,11 @@ body {
 <!--           <%# else %>
           <a href="#"> -->
             <%# end %>
-            <span class="avatar"><img src="thej.jpeg" width="50px" height="50px" class="img-circle"></span>
-            <% puts "** #{n.inspect}" %>
             <% user = User.find(n["from"].to_i) %>
+            <span class="avatar"><%=  image_tag "http://www.gravatar.com/avatar/"+Digest::MD5.hexdigest(user.email)+"?s=60" %></span>
+            <% puts "** #{n.inspect}" %>
             <span class="name"><%= user.name %></span>
-            <span class="message"><%= truncate n["content"], length: 35 %></span>
+            <span class="message"><%= n["content"] %></span>
             <span class="time"><i class="fa fa-clock-o"style="color:#BEBEBE;"></i>&nbsp;&nbsp;<%= time_ago_in_words n["time"]%> ago</span>
           </a>
         </li>
