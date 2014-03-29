@@ -166,7 +166,7 @@ Stage.delete_all
 # s.save
 
 path = Rails.root.join("db","courses.json")
-puts path
+
 f = File.open(path,"r+").read
 a = JSON.parse(f)
 

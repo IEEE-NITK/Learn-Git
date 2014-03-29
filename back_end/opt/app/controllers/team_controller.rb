@@ -2,7 +2,7 @@ require 'securerandom'
 class TeamController < ApplicationController
 
     def new
-        @course = Course.find_by_id(params[:id]) 
+        @course = Course.find_by_id(params[:id])
         if !@course.nil? && @course.mcount > 1
             # @Team = Team.new
         else
@@ -13,7 +13,7 @@ class TeamController < ApplicationController
     def create
         #Expand to allow more than 1 user being invited
         user = User.where(email: params[:email])
-        course = Course.find_by_id(params[:id]) 
+        course = Course.find_by_id(params[:id])
         if !user.first.nil? && !course.nil? && (course.mcount > 1)
             user = user.first
             #Add a notification to the user
@@ -76,7 +76,7 @@ class TeamController < ApplicationController
                 `mkdir #{Dir.pwd}/../repositories/#{z}`
                 repo.path ="../repositories/#{z}"
                 repo.order = [1,2,3,4,8,10,11,12] #TODO: Order to be populated dynamically
-                repo.save  
+                repo.save
               end
     end
 

@@ -20,6 +20,7 @@ class GitUser
 			if(cmd.include?"clone")
 				run_clone(cmd)
 			else
+				cmd = cmd + " --quiet" if cmd.include? "init"
 				puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
 				stdin, stdout, stderr = Open3.popen3('git-shell')
 				stdin.puts "git --git-dir #{Dir.pwd}/#{@path}/.git --work-tree=#{Dir.pwd}/#{@path}/ #{cmd}\n"
