@@ -35,9 +35,9 @@
         },
         {
             "objective": "To create a new file with some content",
-            "pbody": "",
-            "hints": "",
-            "references": "",
+            "pbody": "Open the file first.txt and tell about yourself",
+            "hints": "After doing that enter git <space>",
+            "references": "yourself",
             "validation": [
                 "cmd_r",
                 " "
@@ -132,11 +132,11 @@
         {
             "objective": "Make changes to a file",
             "pbody": "Use the text editor to add content to the file.",
-            "hints": "Modify first.txt File",
+            "hints": "Modify first.txt File and type git <space>",
             "references": "http://git-scm.com/docs/git-log",
             "validation": [
                 "cmd_r",
-                ""
+                " "
             ],
             "useful_links": "",
             "extras": ""
@@ -197,6 +197,18 @@
             "validation": [
                 "cmd_r",
                 "git merge"
+            ],
+            "useful_links": "",
+            "extras": ""
+        },
+        {
+            "objective": "Yay !! you are done with basic git course feel free to play around",
+            "pbody": ".Also checkout the advanced git course",
+            "hints": "",
+            "references": "http://git-scm.com/book/en/",
+            "validation": [
+                "cmd_r",
+                ""
             ],
             "useful_links": "",
             "extras": ""

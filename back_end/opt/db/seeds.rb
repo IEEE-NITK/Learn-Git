@@ -166,7 +166,7 @@ Stage.delete_all
 # s.save
 
 path = Rails.root.join("db","courses.json")
-puts path
+
 f = File.open(path,"r+").read
 a = JSON.parse(f)
 
@@ -250,7 +250,7 @@ s=Stage.new
 s.course_id=c.id
 s.step_number=3
 s.objective="To edit a JSON file by adding questions."
-s.pbody="JSON file has to be modified and questions have to be added."
+s.pbody="JSON file has to be modified and questions have to be added and commit"
 s.hints='{"name":"answer","alt":"question"}'
 s.references="www.w3schools.com/json/"
 s.useful_links=""

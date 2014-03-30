@@ -59,11 +59,10 @@ class ApplicationController < ActionController::Base
     def getNotifications
         if current_user
             f = $Rnotification.LLEN current_user.id
-            @notifications = $Rnotification.lrange(current_user.id,0,f)
+            return $Rnotification.lrange(current_user.id,0,f)
           else
-            @notification = nil
+            return nil
         end
-            return @notifications
     end
 
 

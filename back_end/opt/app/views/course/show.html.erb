@@ -197,7 +197,7 @@ function test(name)
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html"><i class="fa fa-home" style="margin-right:15px;color:white;"></i>NITK-OPT</a>
+    <a class="navbar-brand" href="/ "><i class="fa fa-home" style="margin-right:15px;color:white;"></i>NITK-OPT</a>
   </div>
 
 
@@ -218,10 +218,10 @@ function test(name)
         </div>
         </div><!--  <b class="caret"></b --></a>
         <ul class="dropdown-menu">
-          <li> 
+          <li>
             <div style="margin-left:35%;"> User 1 </div>
             <div class="progress" style="margin:5px;">
-            <div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            <div class="progress-bar  progress-bar-success" id="progressU1" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
               <span class="sr-only">60% Complete</span>
             </div>
             </div>
@@ -230,7 +230,7 @@ function test(name)
           <li>
             <div style="margin-left:35%;"> User 2 </div>
             <div class="progress" style="margin:5px;">
-            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+            <div class="progress-bar progress-bar-warning" id="progressU2" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
               <span class="sr-only">40% Complete</span>
             </div>
             </div>
@@ -288,7 +288,7 @@ function test(name)
 </nav>
 <div class="container">
 
-  
+
 
 
 
@@ -300,7 +300,7 @@ function test(name)
   </div>
  </div> --><!-- /.row -->
  <!-- /.row -->
- 
+
  <div class="row">
     <div class="col-lg-1" style="margin-left:5px;">
       <h3>Directory</h3>
@@ -895,7 +895,7 @@ require(['explaingit'], function (explainGit) {
     return str;
   }
 
-        
+
 // var str = 'ABCADRAE';
 // alert(str.replaceAll('A','X'));
 
@@ -974,13 +974,13 @@ else if(obj.opt == "file-content")
 }
 else if(obj.opt == "progress1")
 {
-  
+
       // alert("jfshioh");
       progress1(obj.content)
     }
     else if(obj.opt == "progress2")
     {
-      
+
       // alert("jfshioh");
       progress2(obj.content)
     }
@@ -1000,8 +1000,8 @@ else if(obj.opt == "progress1")
 <!-- </div> -->
 
 </div>
-        
-        
+
+
     </div>
     </div>
 
@@ -1012,7 +1012,7 @@ else if(obj.opt == "progress1")
 </div>
 <div class="col-lg-2" style="margin-left:20px;padding:20px;">
   <div id="question" style="background-color:#eee;padding:10px;width:100%;">
-    
+
     <h1 class="course-objective"><%= @stage.objective %></h1>
     <p class="course-body"><%= @stage.pbody %></p>
     <h3>References:</h3>
@@ -1030,15 +1030,15 @@ else if(obj.opt == "progress1")
 <script type="text/javascript">
 function progress1(num1)
 {
-  $("#test2").css('height',String(100/8*num1)+"%");
-  $("#test1").css('height',String(100-((100/8*num1)-num1)+"%"));
+  $("#progressU1").css('width',String(100/8*num1)+"%");
+  $("#progressU1").css('width',String(100-((100/8*num1)-num1)+"%"));
       // document.getElementById("test2").style.height=num;
       // document.getElementById("test1").style.height=100-num;
 }
 function progress2(num2)
 {
-  $("#test4").css('height',String(100/7*num2)+"%");
-  $("#test3").css('height',String(100-((100/7*num2)-num2)+"%"));
+  $("#progressU2").css('width',String(100/7*num2)+"%");
+  $("#progressU2").css('width',String(100-((100/7*num2)-num2)+"%"));
   // document.getElementById("test2").style.height=num;
   // document.getElementById("test1").style.height=100-num;
 }
@@ -1047,7 +1047,7 @@ progress2(<%= @numB %>)
 
 function write_content()
 {
-  
+
   var myCode = editor.getSession().getValue();
   ws.send("save:"+global_variable+":"+myCode);
 }
