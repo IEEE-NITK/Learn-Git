@@ -3,7 +3,7 @@ Basic steps to setup the repository are as follows
 
 ```
 git clone https://github.com/IEEE-NITK/Learn-Git.git
-cd Learn-Git/back_end
+cd Learn-Git/
 ./build.sh
 ```
 
