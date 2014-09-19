@@ -8,12 +8,12 @@
 /.bundle
 
 # Ignore the default SQLite database.
-back_end/opt/db/*.sqlite3
-back_end/opt/db/*.sqlite3-journal
+/opt/db/*.sqlite3
+/opt/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-back_end/opt/log/*.log
-back_end/opt/tmp
+/opt/log/*.log
+/opt/tmp
 
 #ignore user repositories
-back_end/repositories
+/repositories
